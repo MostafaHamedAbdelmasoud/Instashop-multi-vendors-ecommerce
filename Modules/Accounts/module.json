@@ -1,0 +1,13 @@
+{
+    "name": "Accounts",
+    "alias": "accounts",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Accounts\\Providers\\AccountsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

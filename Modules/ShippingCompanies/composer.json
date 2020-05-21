@@ -1,0 +1,25 @@
+{
+    "name": "elnooronline/shippingcompanies",
+    "description": "",
+    "authors": [
+        {
+            "name": "Elnooronline",
+            "email": "info@elnooronline.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\ShippingCompanies\\Providers\\ShippingCompaniesServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ShippingCompanies\\": ""
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "name": "elnooronline/accounts",
+    "description": "",
+    "authors": [
+        {
+            "name": "Elnooronline",
+            "email": "info@elnooronline.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^7.0",
+        "laravel/passport": "^7.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Accounts\\Providers\\AccountsServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Accounts\\": ""
+        },
+        "classmap": [
+            "Database/Seeders",
+            "Database/factories"
+        ]
+    }
+}

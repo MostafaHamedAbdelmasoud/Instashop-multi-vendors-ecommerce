@@ -1,0 +1,37 @@
+{
+    "name": "elnooronline/dashboard",
+    "description": "",
+    "authors": [
+        {
+            "name": "Elnooronline",
+            "email": "info@elnooronline.com"
+        }
+    ],
+    "require": {
+        "davejamesmiller/laravel-breadcrumbs": "^5.3",
+        "elnooronline/laravel-bootstrap-forms": "^2.2",
+        "elnooronline/laravel-locales": "^1.0",
+        "laracasts/flash": "^3.0",
+        "laracasts/presenter": "^0.2.1",
+        "laravel/ui": "^2.0"
+    },
+    "require-dev": {
+        "laraeast/laravel-adminlte": "dev-master",
+        "maged-karim/laravel-scaffolding": "dev-master"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Dashboard\\Providers\\DashboardServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Dashboard\\": ""
+        }
+    }
+}
