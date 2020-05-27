@@ -1,0 +1,11 @@
+@import "~icheck-bootstrap/icheck-bootstrap.css";
+/*!rtl:raw:
+[class*=icheck-]>input:first-child:checked+input[type=hidden]+label:after, [class*=icheck-]>input:first-child:checked+label:after {
+    right: 0 !important;
+    border-left: none !important;
+    border-right: 2px solid #fff !important;
+    -webkit-transform: translate(-7.75px,4.5px) rotate(45deg) !important;
+    transform: translate(-7.75px,4.5px) rotate(45deg) !important;
+    -ms-transform: translate(-7.75px,4.5px) rotate(45deg) !important;
+}
+*/

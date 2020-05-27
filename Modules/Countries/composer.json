@@ -1,0 +1,32 @@
+{
+    "name": "laravel-modules/countries",
+    "description": "This module references to scaffolding project.",
+    "authors": [
+        {
+            "name": "Ahmed Fathy",
+            "email": "fathy.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "astrotomic/laravel-translatable": "^11.8"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Countries\\Providers\\CountriesServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Countries\\": ""
+        },
+        "classmap": [
+            "Database/Seeders",
+            "Database/factories"
+        ]
+    }
+}

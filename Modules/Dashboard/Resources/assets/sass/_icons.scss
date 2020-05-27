@@ -1,0 +1,19 @@
+/*!rtl:begin:options:
+{
+  "autoRename": true,
+  "stringMap":[
+      {
+      "name"    : "prev-next-left-right",
+      "search"  : ["prev", "next", "left", "right"],
+      "replace" : ["next", "prev", "right", "left"]
+      }
+  ]
+}
+*/
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~icomoon/style.css";
+/*!rtl:end:options*/

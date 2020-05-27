@@ -1,0 +1,38 @@
+stages:
+- test
+
+# Variables: these have to match
+# the .env.example credentials in your Laravel app
+# use the default homestead/secret combination, since
+# that database gets created in the edbizarro/gitlab-ci-pipeline-php:7.3
+# docker image.
+variables:
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_USER: homestead
+  MYSQL_PASSWORD: secret
+  MYSQL_DATABASE: homestead
+  DB_HOST: mysql
+
+# Speed up builds
+cache:
+  key: $CI_COMMIT_REF_NAME # changed to $CI_COMMIT_REF_NAME in Gitlab 9.x
+  paths:
+  - vendor
+  - public
+
+test:
+  stage: test
+  services:
+  - mysql:5.7
+  image: edbizarro/gitlab-ci-pipeline-php:7.3
+  script:
+  - composer install
+  - cp .env.example .env
+  - php artisan key:generate
+  - php artisan passport:keys
+  - ./vendor/phpunit/phpunit/phpunit
+  artifacts:
+    paths:
+    - ./storage/logs # for debugging
+    expire_in: 1 days
+    when: always

@@ -1,0 +1,40 @@
+@import "~select2/dist/css/select2.css";
+@import "~admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.css";
+
+
+/*!rtl:raw:
+.select2-container--open .select2-dropdown {
+    right: auto;
+    left: 0;
+}
+.select2-container--bootstrap4[dir=rtl] .select2-selection--multiple .select2-search--inline, .select2-container--bootstrap4[dir=rtl] .select2-selection--multiple .select2-selection__choice, .select2-container--bootstrap4[dir=rtl] .select2-selection--multiple .select2-selection__placeholder {
+    float: right;
+}
+.select2-selection--multiple .select2-selection__choice__remove {
+    margin-right: 2px;
+    margin-left: auto;
+    float: left;
+}
+.select2-container--bootstrap4[dir=rtl] .select2-selection--single .select2-selection__rendered {
+    text-align: right;
+}
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-search--inline, .select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {
+    float: right;
+}
+.select2-container--bootstrap4[dir=rtl] .select2-selection--single .select2-selection__arrow {
+    left: .75rem;
+    right: auto;
+}
+.select2-container--default[dir=rtl] .select2-selection--single .select2-selection__arrow {
+    left: 1px;
+    right: auto;
+}
+.select2-container--default[dir=rtl] .select2-selection--single .select2-selection__rendered {
+    padding-right: 0px;
+    padding-left: 10px;
+}
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {
+    margin-left: 5px;
+    margin-right: auto;
+}
+*/
