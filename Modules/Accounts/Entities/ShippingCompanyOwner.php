@@ -3,7 +3,7 @@
 namespace Modules\Accounts\Entities;
 
 use Parental\HasParent;
-use Modules\ShippingCompanies\Entities\ShippingCompany;
+use Modules\Accounts\Entities\ShippingCompany;
 use Modules\Accounts\Entities\Relations\CustomerRelations;
 
 /**
@@ -30,7 +30,7 @@ class ShippingCompanyOwner extends User
      */
     public function getForeignKey()
     {
-        return 'user_id';
+        return 'owner_id';
     }
 
     /**
@@ -40,4 +40,7 @@ class ShippingCompanyOwner extends User
     {
         return $this->hasMany(ShippingCompany::class);
     }
+
+
+
 }

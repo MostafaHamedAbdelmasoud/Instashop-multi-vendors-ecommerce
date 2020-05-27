@@ -75,7 +75,9 @@ class ShippingCompanyOwnerController extends Controller
     {
         $shippingCompanyOwner = $this->repository->find($shippingCompanyOwner);
 
-        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner'));
+        $shippingCompanies = $shippingCompanyOwner->ShippingCompanies()->paginate();
+//        dd($shippingCompanies->first()->name);
+        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner','shippingCompanies'));
     }
 
     /**

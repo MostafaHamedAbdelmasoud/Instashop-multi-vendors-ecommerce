@@ -1,6 +1,6 @@
 @component('dashboard::layouts.components.sidebarItem')
     @slot('can', ['ability' => 'viewAny', 'model' => \Modules\Accounts\Entities\User::class])
-    @slot('url', '#')
+    @slot('url', 'shipping_company_owners')
     @slot('name', trans('accounts::users.plural'))
     @slot('isActive', request()->routeIs('accounts*'))
     @slot('icon', 'fas fa-users')

@@ -26,6 +26,8 @@ Route::middleware('dashboard')
                         Route::resource('shipping_company_owners', 'Dashboard\ShippingCompanyOwnerController');
                         Route::resource('delegates', 'Dashboard\DelegateController');
                         Route::resource('customers.addresses', 'Dashboard\AddressController');
+                        Route::resource('shipping_company_owners.shipping_companies', 'Dashboard\ShippingCompanyController');
+                        Route::resource('shipping_company.shipping_companies_prices', 'Dashboard\ShippingCompanyPriceController');
                     }
                 );
         }
