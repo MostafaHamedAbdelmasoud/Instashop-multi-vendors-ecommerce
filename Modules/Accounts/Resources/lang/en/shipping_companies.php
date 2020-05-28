@@ -26,6 +26,9 @@ return [
     ],
     'attributes' => [
         'name' => 'Shipping Company Name',
+        'price' => 'Shipping Company Price',
+        'city' => 'City  ',
+        'country' => 'Country',
         'currency' => 'Currency',
         'code' => 'Shipping Company Code',
         'key' => 'Shipping Company Key',

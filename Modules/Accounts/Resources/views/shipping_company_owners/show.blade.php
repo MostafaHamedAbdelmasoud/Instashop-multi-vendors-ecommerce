@@ -59,19 +59,31 @@
                     <thead>
                     <tr>
                         <th>@lang('accounts::shipping_companies.attributes.name')</th>
+
+                            <th>@lang('accounts::shipping_companies.attributes.price')</th>
+                            <th>@lang('accounts::shipping_companies.attributes.city')</th>
+                            <th>@lang('accounts::shipping_companies.attributes.country')</th>
+
                         <th style="width: 160px">...</th>
                     </tr>
                     </thead>
                     <tbody>
                     @forelse($shippingCompanies as $shippingCompany)
+
+                            @foreach($shippingCompany->shippingCompanyPrices as $shippingCompanyPrice)
+
                         <tr>
                             <td>{{ $shippingCompany->name }}</td>
+                            <td>{{ $shippingCompanyPrice->price }}</td>
+                            <td>{{ $shippingCompanyPrice->City()->first()->name }}</td>
+                            <td>{{ $shippingCompanyPrice->City()->first()->country()->first()->name }}</td>
                             <td style="width: 160px">
                                 @include('accounts::shipping_companies.partials.actions.edit')
                                 @include('accounts::shipping_companies.partials.actions.delete')
 
                             </td>
                         </tr>
+                            @endforeach
                     @empty
                         <tr>
                             <td colspan="100" class="text-center">@lang('accounts::shipping_companies.empty')</td>

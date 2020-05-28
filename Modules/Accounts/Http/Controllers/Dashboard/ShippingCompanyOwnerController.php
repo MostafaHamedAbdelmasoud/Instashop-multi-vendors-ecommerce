@@ -12,6 +12,7 @@ use Modules\Accounts\Repositories\ShippingCompanyOwnerRepository;
 class ShippingCompanyOwnerController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
+
     /**
      * The repository instance.
      *
@@ -75,9 +76,24 @@ class ShippingCompanyOwnerController extends Controller
     {
         $shippingCompanyOwner = $this->repository->find($shippingCompanyOwner);
 
-        $shippingCompanies = $shippingCompanyOwner->ShippingCompanies()->paginate();
-//        dd($shippingCompanies->first()->name);
-        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner','shippingCompanies'));
+        $shippingCompanies = $shippingCompanyOwner->ShippingCompanies()->with(['ShippingCompanyPrices'])->paginate();
+
+
+//        dd($shippingCompanies->first()->ShippingCompanyPrices()->first()->City()->first()->name);
+
+//        $shippingCompaniesPrices = $shippingCompanyOwner->ShippingCompanies()->ShippingCompanyPrices()->paginate();
+//        $shippingCompaniesPrices = $shippingCompanies->with('shippingCompanyPrices')->paginate();
+//        foreach ($shippingCompanies as  $shippingCompany) {
+        ////            dd($shippingCompany->ShippingCompanyPrices()->first()->price);
+//            foreach ($shippingCompany->ShippingCompanyPrices() as  $shippingCompanyPrice) {
+//                dump( $shippingCompanyPrice->price);
+//            }
+//        }
+//        $shippingCompanyPrice = $shippingCompanies->first()->ShippingCompanyPrices()->paginate();
+//        dd(($shippingCompanies->first()->ShippingCompanyPrices()->get()));
+//        $cities = $shippingCompanies->first()->ShippingCompanyPrices()->with('City')->paginate();
+//        dd($cities->first()->name);
+        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner', 'shippingCompanies','address'));
     }
 
     /**

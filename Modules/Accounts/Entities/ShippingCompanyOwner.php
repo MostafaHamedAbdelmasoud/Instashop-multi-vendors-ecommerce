@@ -40,7 +40,4 @@ class ShippingCompanyOwner extends User
     {
         return $this->hasMany(ShippingCompany::class);
     }
-
-
-
 }

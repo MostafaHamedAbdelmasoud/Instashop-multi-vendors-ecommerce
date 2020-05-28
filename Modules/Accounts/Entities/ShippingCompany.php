@@ -35,7 +35,9 @@ class ShippingCompany extends Model
      *
      * @var array
      */
-    public $fillable = ['owner_id'];
+    public $fillable = [
+        'owner_id',
+    ];
 
     /**
      * Get the default foreign key name for the model.
@@ -47,7 +49,6 @@ class ShippingCompany extends Model
         return 'shipping_company_id';
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
@@ -56,9 +57,8 @@ class ShippingCompany extends Model
         return $this->belongsTo(ShippingCompanyOwner::class, 'owner_id', 'id');
     }
 
-
     public function ShippingCompanyPrices()
     {
-        return $this->hasMany(ShippingCompanyPrice::class);
+        return $this->hasMany(ShippingCompanyPrice::class, 'shipping_company_id', 'id');
     }
 }

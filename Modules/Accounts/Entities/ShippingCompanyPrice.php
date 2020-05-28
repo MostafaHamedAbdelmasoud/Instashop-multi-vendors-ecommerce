@@ -4,15 +4,15 @@ namespace Modules\Accounts\Entities;
 
 use App\Http\Filters\Filterable;
 use Modules\Accounts\Entities\User;
-use Modules\Support\Traits\Selectable;
+use Modules\Countries\Entities\City;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
-use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Modules\Accounts\Entities\ShippingCompany;
+use Modules\Accounts\Entities\ShippingCompanyOwner;
 
 class ShippingCompanyPrice extends Model
 {
-    use Translatable, Filterable, Selectable;
+
 
 
     /**
@@ -20,10 +20,9 @@ class ShippingCompanyPrice extends Model
      *
      * @var array
      */
-    protected $with = [
-        'translations',
-        'ShippingCompanyOwner',
-    ];
+//    protected $with = [
+//        'ShippingCompany'
+//    ];
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +32,7 @@ class ShippingCompanyPrice extends Model
     public $fillable = [
         'shipping_company_id',
         'city_id',
-        'price',
+        'price'
     ];
 
     /**

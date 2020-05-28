@@ -8,12 +8,12 @@ use Modules\Accounts\Entities\ShippingCompany;
 use Modules\Accounts\Http\Requests\AddressRequest;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Modules\Accounts\Http\Filters\ShippingCompanyFilter;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Modules\Accounts\Http\Requests\ShippingCompanyRequest;
+use Modules\Accounts\Repositories\ShippingCompanyRepository;
 use Modules\Accounts\Http\Requests\ShippingCompanyOwnerRequest;
 use Modules\Accounts\Repositories\ShippingCompanyOwnerRepository;
-use Modules\Accounts\Http\Filters\ShippingCompanyFilter;
-use Modules\Accounts\Repositories\ShippingCompanyRepository;
 
 /**
  * Class ShippingCompanyController.
@@ -48,8 +48,8 @@ class ShippingCompanyController extends Controller
      */
     public function store(ShippingCompanyRequest $request, ShippingCompanyOwner $shippingCompanyOwner)
     {
-//        dd($request);
         $this->repository->createShippingCompany($shippingCompanyOwner, $request->all());
+
         flash(trans('accounts::shipping_company.messages.created'));
 
         return redirect()->route('dashboard.shipping_company_owners.show', $shippingCompanyOwner);
@@ -62,7 +62,16 @@ class ShippingCompanyController extends Controller
      */
     public function edit(ShippingCompanyOwner $shippingCompanyOwner, ShippingCompany $shippingCompany)
     {
-        return view('accounts::shipping_companies.edit', compact('shippingCompanyOwner', 'shippingCompany'));
+        $shippingCompanyPrice = $shippingCompany->ShippingCompanyPrices()->first();
+
+        $price = $shippingCompanyPrice->price;
+
+        $city_id = $shippingCompanyPrice->City()->first()->id;
+
+        $price = (float) $price;
+//        dd($price);
+
+        return view('accounts::shipping_companies.edit', compact('shippingCompanyOwner', 'shippingCompany', 'price', 'city_id'));
     }
 
     /**

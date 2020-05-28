@@ -13,6 +13,8 @@ class ShippingCompanyOwnerTest extends TestCase
     /** @test */
     public function it_can_display_list_of_shipping_company_owners()
     {
+        $this->withoutExceptionHandling();
+
         $this->actingAsAdmin();
 
         $shippingCompanyOwner = factory(ShippingCompanyOwner::class)->create();
@@ -25,8 +27,11 @@ class ShippingCompanyOwnerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_store_owner_details()
+    public function it_can_display_shipping_company_owner_details()
     {
+        $this->withoutExceptionHandling();
+
+
         $this->actingAsAdmin();
 
         $shippingCompanyOwner = factory(ShippingCompanyOwner::class)->create();
@@ -39,7 +44,7 @@ class ShippingCompanyOwnerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_store_owner_create_form()
+    public function it_can_display_shipping_company_owner_create_form()
     {
         $this->actingAsAdmin();
 
@@ -74,7 +79,7 @@ class ShippingCompanyOwnerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_store_owner_edit_form()
+    public function it_can_display_shipping_company_owner_edit_form()
     {
         $this->actingAsAdmin();
 

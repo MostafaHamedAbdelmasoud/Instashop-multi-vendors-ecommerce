@@ -6,6 +6,7 @@ use Modules\Contracts\CrudRepository;
 use Modules\Accounts\Entities\Address;
 use Modules\Accounts\Entities\ShippingCompany;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
+use Modules\Accounts\Entities\ShippingCompanyPrice;
 use Modules\Accounts\Http\Filters\ShippingCompanyOwnerFilter;
 
 /**
@@ -115,7 +116,23 @@ class ShippingCompanyOwnerRepository implements CrudRepository
      */
     public function createShippingCompany(ShippingCompanyOwner $shippingCompanyOwner, array $data)
     {
-        return $shippingCompanyOwner->ShippingCompanies()->create($data);
+        $shippingCompany = $shippingCompanyOwner->ShippingCompanies()->create($data);
+
+        $this->createShippingCompanyPrice($shippingCompany, $data);
+
+        return $shippingCompany ;
+    }
+
+    /**
+     * @param ShippingCompanyOwner $shippingCompanyOwner
+     * @param array $data
+     *
+     */
+    public function createShippingCompanyPrice(ShippingCompany $shippingCompany, array $data)
+    {
+//        $shippingCompany = $shippingCompanyOwner->ShippingCompanies()->ShippingCompanyPrices()->create($data);
+        $shippingCompany->ShippingCompanyPrices()->create($data);
+//        dd($shippingCompany->ShippingCompanyPrices());
     }
 
     /**
@@ -127,7 +144,18 @@ class ShippingCompanyOwnerRepository implements CrudRepository
     {
         $shippingCompany->update($data);
 
+        $this->updateShippingCompanyPrice($shippingCompany->ShippingCompanyPrices()->first(), $data);
+
         return $shippingCompany;
+    }
+
+    /**
+     * @param ShippingCompanyPrice $shippingCompanyPrice
+     * @param array $data
+     */
+    public function updateShippingCompanyPrice(ShippingCompanyPrice $shippingCompanyPrice, array $data)
+    {
+        $shippingCompanyPrice->update($data);
     }
 
     /**

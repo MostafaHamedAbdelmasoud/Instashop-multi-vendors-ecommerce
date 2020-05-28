@@ -2,11 +2,12 @@
 
 namespace Modules\Accounts\Tests\Feature\Dashboard;
 
-use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Tests\TestCase;
+use Modules\Countries\Entities\City;
+use Modules\Accounts\Entities\ShippingCompany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Astrotomic\Translatable\Validation\RuleFactory;
-use Modules\Accounts\Entities\ShippingCompany;
+use Modules\Accounts\Entities\ShippingCompanyOwner;
 
 class ShippingCompanyTest extends TestCase
 {
@@ -37,12 +38,16 @@ class ShippingCompanyTest extends TestCase
 
         $shippingCompanyOwner = factory(ShippingCompanyOwner::class)->create();
 
+        $city = factory(City::class)->create();
+
         $shippingCompaniesCount = $shippingCompanyOwner->ShippingCompanies()->count();
 
         $response = $this->post(
             route('dashboard.shipping_company_owners.shipping_companies.store', $shippingCompanyOwner),
             [
                 'name' => 'Test',
+                'city_id' => $city->id,
+                'price' => 120,
             ]
         );
 
@@ -51,7 +56,9 @@ class ShippingCompanyTest extends TestCase
         $this->assertEquals($shippingCompanyOwner->ShippingCompanies()->count(), $shippingCompaniesCount + 1);
         $this->assertEquals($shippingCompanyOwner->ShippingCompanies->last()->name, 'Test');
     }
+
 //
+
     /** @test */
     public function it_can_display_shipping_company_owner_edit_form()
     {
@@ -80,7 +87,7 @@ class ShippingCompanyTest extends TestCase
         $response = $this->put(
             route('dashboard.shipping_company_owners.shipping_companies.update', [$shippingCompanyOwner, $shippingCompany]),
             [
-                'name' => 'Test'
+                'name' => 'Test',
             ]
         );
 

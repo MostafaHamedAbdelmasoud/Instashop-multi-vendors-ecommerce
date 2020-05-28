@@ -16,22 +16,11 @@ use Modules\Accounts\Entities\ShippingCompany;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(ShippingCompany::class, function (Faker $faker) {
+$factory->define(\Modules\Accounts\Entities\ShippingCompanyPrice::class, function (Faker $faker) {
     $h = new helpers();
-//    $owner = \Modules\Accounts\Entities\ShippingCompanyOwner::first();
-    return [
-        'owner_id' => $h->random_or_create(\Modules\Accounts\Entities\ShippingCompanyOwner::class)->id,
-//        'owner_id' => $owner->id,
-        'name:ar' => 'متجر 1',
-        'name:en' => 'store 1 '
 
+    return [
+        'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 100),
+        'city_id' => $h->random_or_create(\Modules\Countries\Entities\City::class)->id,
     ];
 });
-
-$factory->afterCreating(ShippingCompany::class, function (ShippingCompany $shippingCompany) {
-    factory(\Modules\Accounts\Entities\ShippingCompanyPrice::class)->create([
-        'shipping_company_id' => $shippingCompany->id,
-    ]);
-});
-
-

@@ -18,7 +18,7 @@ class CreateShippingCompanyPricesTable extends Migration
             $table->unsignedBigInteger('shipping_company_id');
             $table->unsignedBigInteger('city_id');
             $table->decimal('price');
-            $table->string('locale')->index();
+            $table->timestamps();
             $table->foreign('shipping_company_id')
                 ->references('id')->on('shipping_companies')
                 ->onDelete('cascade');
