@@ -21,9 +21,7 @@ $factory->define(ShippingCompany::class, function (Faker $faker) {
 //    $owner = \Modules\Accounts\Entities\ShippingCompanyOwner::first();
     return [
         'owner_id' => $h->random_or_create(\Modules\Accounts\Entities\ShippingCompanyOwner::class)->id,
-//        'owner_id' => $owner->id,
-        'name:ar' => 'متجر 1',
-        'name:en' => 'store 1 '
+
 
     ];
 });
