@@ -44,7 +44,8 @@ it's a multi-vendors ecommerce website built from scratch with laravel, and it i
                 <li>composer</li>
       </ul>
 
-** you must copy .env.example contents to new file .env ans setup database. **
+> you must copy .env.example contents to new file .env ans setup database. 
+
 
 ## installation:
 
@@ -61,7 +62,7 @@ php artisan serve
 
 ```
 
-** now go to (http:127.0.0.1:8000) **
+> now go to (http//:127.0.0.1:8000) 
 
 
 
