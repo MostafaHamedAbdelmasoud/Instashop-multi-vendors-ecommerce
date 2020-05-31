@@ -12,9 +12,13 @@ it's a multi-vendors ecommerce website built from scratch with laravel, and it i
 ### davejamesmiller/laravel-breadcrumbs
 ### maged-karim/laravel-scaffolding
 
+<ul>
+    <li>Laravel Passport</li>
+    <li> Repository Patternt</li>
+    
+</ul>
 
-### Laravel Passport
-### Repository Pattern
+###
 ### Resourses Policies
 ### Requests
 ### Filters
