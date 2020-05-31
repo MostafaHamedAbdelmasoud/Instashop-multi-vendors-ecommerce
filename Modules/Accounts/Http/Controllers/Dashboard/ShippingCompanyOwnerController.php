@@ -9,9 +9,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Modules\Accounts\Http\Requests\ShippingCompanyOwnerRequest;
 use Modules\Accounts\Repositories\ShippingCompanyOwnerRepository;
 
+/**
+ * Class ShippingCompanyOwnerController
+ * @package Modules\Accounts\Http\Controllers\Dashboard
+ */
 class ShippingCompanyOwnerController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
+
     /**
      * The repository instance.
      *
@@ -75,7 +80,9 @@ class ShippingCompanyOwnerController extends Controller
     {
         $shippingCompanyOwner = $this->repository->find($shippingCompanyOwner);
 
-        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner'));
+        $shippingCompanies = $shippingCompanyOwner->ShippingCompanies()->with(['ShippingCompanyPrices'])->paginate();
+
+        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner', 'shippingCompanies','address'));
     }
 
     /**
@@ -90,11 +97,15 @@ class ShippingCompanyOwnerController extends Controller
         return view('accounts::shipping_company_owners.edit', compact('shippingCompanyOwner'));
     }
 
+
     /**
      * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
+     * @param ShippingCompanyOwnerRequest $request
+     * @param ShippingCompanyOwner $shippingCompanyOwner
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(ShippingCompanyOwnerRequest $request, ShippingCompanyOwner $shippingCompanyOwner)
     {

@@ -24,8 +24,8 @@ class ShippingCompanyOwnerPolicy
     /**
      * Determine whether the user can view the customer.
      *
-     * @param  \Modules\Accounts\Entities\User  $user
-     * @param  \Modules\Accounts\Entities\ShippingCompanyOwner  $customer
+     * @param \Modules\Accounts\Entities\User $user
+     * @param ShippingCompanyOwner $shippingCompanyOwner
      * @return mixed
      */
     public function view(User $user, ShippingCompanyOwner $shippingCompanyOwner)

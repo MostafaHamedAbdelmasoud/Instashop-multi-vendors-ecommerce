@@ -2,9 +2,9 @@
 
 namespace Modules\Dashboard\Http\Controllers;
 
-use Elnooronline\LaravelLocales\Facades\Locales;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
+use Elnooronline\LaravelLocales\Facades\Locales;
 
 class LocaleController extends Controller
 {

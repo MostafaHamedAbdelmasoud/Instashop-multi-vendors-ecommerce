@@ -58,7 +58,7 @@
                             </div>
                             <!-- /.col -->
 
-                             
+
                         </div>
                         <!-- /.row -->
                         <div class="mt-4">
@@ -70,5 +70,65 @@
             </div>
         </div>
 
+
+        <div class="row">
+            <div class="col-md-4">
+                {{ BsForm::resource('accounts::stores')
+                    ->post(route('dashboard.store_owners.stores.store', $storeOwner)) }}
+                @component('dashboard::layouts.components.box')
+                    @slot('title', trans('accounts::stores.actions.create'))
+
+                    @include('accounts::stores.partials.form')
+
+                    @slot('footer')
+                        {{ BsForm::submit()->label(trans('accounts::stores.actions.save')) }}
+                    @endslot
+                @endcomponent
+                {{ BsForm::close() }}
+            </div>
+            <div class="col-md-8">
+                @component('dashboard::layouts.components.table-box')
+
+                    @slot('title', trans('accounts::stores.actions.list'))
+
+                    <thead>
+                    <tr>
+                        <th>@lang('accounts::stores.attributes.name')</th>
+                        <th>@lang('accounts::stores.attributes.domain')</th>
+                        <th>@lang('accounts::stores.attributes.rate')</th>
+                        <th style="width: 160px">...</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($stores as $store)
+                        <tr>
+                            <td>{{ $store->name }}</td>
+                            <td>{{ $store->domain }}</td>
+                            <td>
+                                {{ $store->calculateRate() }}
+                                <i class="fas fa-star text-yellow"></i>
+                            </td>
+                            <td style="width: 160px">
+                                @include('accounts::stores.partials.actions.edit')
+                                @include('accounts::stores.partials.actions.delete')
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="100" class="text-center">@lang('accounts::stores.empty')</td>
+                        </tr>
+                    @endforelse
+
+                    @if($stores->hasPages())
+                        @slot('footer')
+                            {{ $stores->links() }}
+                        @endslot
+                    @endif
+                @endcomponent
+            </div>
+        </div>
+
     @endcomponent
+
+
 @endsection

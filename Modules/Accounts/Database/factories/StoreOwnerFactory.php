@@ -27,3 +27,9 @@ $factory->define(StoreOwner::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->afterCreating(StoreOwner::class, function (StoreOwner $storeOwner) {
+    factory(\Modules\Accounts\Entities\Store::class)->create([
+        'owner_id' => $storeOwner->id,
+    ]);
+});

@@ -75,7 +75,9 @@ class StoreOwnerController extends Controller
     {
         $storeOwner = $this->repository->find($storeOwner);
 
-        return view('accounts::store_owners.show', compact('storeOwner'));
+        $stores = $storeOwner->stores()->paginate();
+//        dd($stores);
+        return view('accounts::store_owners.show', compact('storeOwner','stores'));
     }
 
     /**

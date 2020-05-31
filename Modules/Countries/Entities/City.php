@@ -5,6 +5,7 @@ namespace Modules\Countries\Entities;
 use App\Http\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
+use Modules\Accounts\Entities\ShippingCompanyPrice;
 
 class City extends Model
 {
@@ -39,5 +40,10 @@ class City extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function shippingCompanyPrices()
+    {
+        return $this->hasMany(ShippingCompanyPrice::class);
     }
 }
