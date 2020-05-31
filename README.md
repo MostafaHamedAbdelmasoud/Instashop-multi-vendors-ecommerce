@@ -15,8 +15,7 @@ it's a multi-vendors ecommerce website built from scratch with laravel, and it i
 <table>
     <thead>
         <th></th>
-        </thead>
-    
+     </thead>
     <tbody>
         <tr>
             <td>Laravel Passport</td>
