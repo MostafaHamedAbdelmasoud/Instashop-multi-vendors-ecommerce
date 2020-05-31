@@ -47,7 +47,7 @@ class ShippingCompanyTest extends TestCase
             [
                 'name' => 'Test',
                 'city_id' => $city->id,
-                'price' => 120,
+                'price' => 120.1,
             ]
         );
 
@@ -57,7 +57,6 @@ class ShippingCompanyTest extends TestCase
         $this->assertEquals($shippingCompanyOwner->ShippingCompanies->last()->name, 'Test');
     }
 
-//
 
     /** @test */
     public function it_can_display_shipping_company_owner_edit_form()
@@ -84,10 +83,14 @@ class ShippingCompanyTest extends TestCase
 
         $shippingCompany = $shippingCompanyOwner->ShippingCompanies()->first();
 
+        $city = factory(City::class)->create();
+
         $response = $this->put(
             route('dashboard.shipping_company_owners.shipping_companies.update', [$shippingCompanyOwner, $shippingCompany]),
             [
                 'name' => 'Test',
+                'price' => 12.25,
+                'city_id' => $city->id,
             ]
         );
 

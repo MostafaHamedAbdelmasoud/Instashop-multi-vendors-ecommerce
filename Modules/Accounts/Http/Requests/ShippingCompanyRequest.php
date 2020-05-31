@@ -41,12 +41,12 @@ class ShippingCompanyRequest extends FormRequest
     {
         return RuleFactory::make([
             'name' => [
-//                      'required',
+                      'required',
                 'unique:shipping_companies',
                 'string',
                 'max:255', ],
-//            'price' => ['required', 'numeric', 'between:0,10000'],
-//            'city_id' => ['required', 'exists:cities,id'],
+            'price' => ['required', 'numeric', 'between:0,10000'],
+            'city_id' => ['required', 'exists:cities,id'],
         ]);
     }
 
@@ -59,12 +59,12 @@ class ShippingCompanyRequest extends FormRequest
     {
         return RuleFactory::make([
             'name' => [
-//                'required',
+                'required',
                 'unique:shipping_companies',
                 'string',
                 'max:255', ],
-//            'price' => ['required', 'numeric', 'between:0,10000'],
-//            'city_id' => ['required', 'exists:cities,id'],
+            'price' => ['required', 'numeric', 'between:0,10000'],
+            'city_id' => ['required', 'exists:cities,id'],
 
         ]);
     }

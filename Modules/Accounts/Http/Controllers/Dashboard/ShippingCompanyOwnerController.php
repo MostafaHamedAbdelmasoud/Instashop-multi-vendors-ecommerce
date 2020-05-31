@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Modules\Accounts\Http\Requests\ShippingCompanyOwnerRequest;
 use Modules\Accounts\Repositories\ShippingCompanyOwnerRepository;
 
+/**
+ * Class ShippingCompanyOwnerController
+ * @package Modules\Accounts\Http\Controllers\Dashboard
+ */
 class ShippingCompanyOwnerController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
@@ -78,21 +82,6 @@ class ShippingCompanyOwnerController extends Controller
 
         $shippingCompanies = $shippingCompanyOwner->ShippingCompanies()->with(['ShippingCompanyPrices'])->paginate();
 
-
-//        dd($shippingCompanies->first()->ShippingCompanyPrices()->first()->City()->first()->name);
-
-//        $shippingCompaniesPrices = $shippingCompanyOwner->ShippingCompanies()->ShippingCompanyPrices()->paginate();
-//        $shippingCompaniesPrices = $shippingCompanies->with('shippingCompanyPrices')->paginate();
-//        foreach ($shippingCompanies as  $shippingCompany) {
-        ////            dd($shippingCompany->ShippingCompanyPrices()->first()->price);
-//            foreach ($shippingCompany->ShippingCompanyPrices() as  $shippingCompanyPrice) {
-//                dump( $shippingCompanyPrice->price);
-//            }
-//        }
-//        $shippingCompanyPrice = $shippingCompanies->first()->ShippingCompanyPrices()->paginate();
-//        dd(($shippingCompanies->first()->ShippingCompanyPrices()->get()));
-//        $cities = $shippingCompanies->first()->ShippingCompanyPrices()->with('City')->paginate();
-//        dd($cities->first()->name);
         return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner', 'shippingCompanies','address'));
     }
 
@@ -108,11 +97,15 @@ class ShippingCompanyOwnerController extends Controller
         return view('accounts::shipping_company_owners.edit', compact('shippingCompanyOwner'));
     }
 
+
     /**
      * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
+     * @param ShippingCompanyOwnerRequest $request
+     * @param ShippingCompanyOwner $shippingCompanyOwner
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update(ShippingCompanyOwnerRequest $request, ShippingCompanyOwner $shippingCompanyOwner)
     {

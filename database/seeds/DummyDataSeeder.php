@@ -15,5 +15,6 @@ class DummyDataSeeder extends Seeder
         $this->call(CountriesTableSeeder::class);
         $this->call(AddressesTableSeeder::class);
         $this->call(\Modules\Accounts\Database\Seeders\ShippingCompaniesTableSeeder::class);
+        $this->call(\Modules\Accounts\Database\Seeders\StoresTableSeeder::class);
     }
 }

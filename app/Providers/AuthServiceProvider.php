@@ -22,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         \Modules\Countries\Entities\City::class => \Modules\Countries\Policies\CityPolicy::class,
         \Modules\Accounts\Entities\Address::class => \Modules\Accounts\Policies\AddressPolicy::class,
         \Modules\Accounts\Entities\ShippingCompany::class => \Modules\Accounts\Policies\ShippingCompanyPolicy::class,
+        \Modules\Accounts\Entities\Store::class => \Modules\Accounts\Policies\StorePolicy::class,
     ];
 
     /**

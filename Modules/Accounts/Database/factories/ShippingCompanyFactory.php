@@ -18,10 +18,11 @@ use Modules\Accounts\Entities\ShippingCompany;
 */
 $factory->define(ShippingCompany::class, function (Faker $faker) {
     $h = new helpers();
-//    $owner = \Modules\Accounts\Entities\ShippingCompanyOwner::first();
+
     return [
         'owner_id' => $h->random_or_create(\Modules\Accounts\Entities\ShippingCompanyOwner::class)->id,
-
+        'name:ar' => $faker->company,
+        'name:en' => $faker->company,
 
     ];
 });
@@ -31,5 +32,3 @@ $factory->afterCreating(ShippingCompany::class, function (ShippingCompany $shipp
         'shipping_company_id' => $shippingCompany->id,
     ]);
 });
-
-

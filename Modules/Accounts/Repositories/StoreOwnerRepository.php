@@ -2,10 +2,15 @@
 
 namespace Modules\Accounts\Repositories;
 
+use Modules\Accounts\Entities\Store;
 use Modules\Contracts\CrudRepository;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Accounts\Http\Filters\StoreOwnerFilter;
 
+/**
+ * Class StoreOwnerRepository
+ * @package Modules\Accounts\Repositories
+ */
 class StoreOwnerRepository implements CrudRepository
 {
     /**
@@ -101,6 +106,35 @@ class StoreOwnerRepository implements CrudRepository
     public function delete($model)
     {
         $this->find($model)->delete();
+    }
+
+
+    /**
+     * @param StoreOwner $storeOwner
+     * @param array $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function createStore(StoreOwner $storeOwner, array $data)
+    {
+        return $storeOwner->stores()->create($data);
+    }
+
+    /**
+     * @param Store $store
+     * @param array $data
+     * @return Store
+     */
+    public function updateStore(Store $store, array $data)
+    {
+        $store->update($data);
+
+        return $store;
+    }
+
+
+    public function deleteStore(Store $store)
+    {
+        return $store->delete();
     }
 
     /**

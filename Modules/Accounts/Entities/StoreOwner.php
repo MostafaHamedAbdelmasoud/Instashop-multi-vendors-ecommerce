@@ -5,6 +5,10 @@ namespace Modules\Accounts\Entities;
 use Parental\HasParent;
 use Modules\Accounts\Entities\Relations\CustomerRelations;
 
+/**
+ * Class StoreOwner
+ * @package Modules\Accounts\Entities
+ */
 class StoreOwner extends User
 {
     use HasParent, CustomerRelations;
@@ -26,6 +30,16 @@ class StoreOwner extends User
      */
     public function getForeignKey()
     {
-        return 'user_id';
+        return 'owner_id';
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stores()
+    {
+        return $this->hasMany(Store::class);
+    }
+
 }

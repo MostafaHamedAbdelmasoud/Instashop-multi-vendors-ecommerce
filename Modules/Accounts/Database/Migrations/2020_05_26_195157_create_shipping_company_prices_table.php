@@ -35,6 +35,6 @@ class CreateShippingCompanyPricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping_company_translations');
+        Schema::dropIfExists('shipping_company_prices');
     }
 }

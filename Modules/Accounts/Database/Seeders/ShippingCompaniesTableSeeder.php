@@ -2,6 +2,8 @@
 
 namespace Modules\Accounts\Database\Seeders;
 
+namespace Modules\Accounts\Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Accounts\Entities\ShippingCompany;
@@ -40,17 +42,17 @@ class ShippingCompaniesTableSeeder extends Seeder
     {
         return [
             [
-                'name:ar' => 'متجر1',
-                'name:en' => 'store1',
+                'name:ar' => 'شركة نقل 1',
+                'name:en' => 'store 1',
 
             ],
             [
-                'name:ar' => 'متجر1',
-                'name:en' => 'store2',
+                'name:ar' => 'شركة نقل 2',
+                'name:en' => 'store 2',
             ],
             [
-                'name:ar' => 'متجر3',
-                'name:en' => 'store3',
+                'name:ar' => 'شركة نقل 3',
+                'name:en' => 'store 3',
             ],
 
         ];

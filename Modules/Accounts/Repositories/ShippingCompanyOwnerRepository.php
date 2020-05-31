@@ -130,9 +130,7 @@ class ShippingCompanyOwnerRepository implements CrudRepository
      */
     public function createShippingCompanyPrice(ShippingCompany $shippingCompany, array $data)
     {
-//        $shippingCompany = $shippingCompanyOwner->ShippingCompanies()->ShippingCompanyPrices()->create($data);
         $shippingCompany->ShippingCompanyPrices()->create($data);
-//        dd($shippingCompany->ShippingCompanyPrices());
     }
 
     /**
