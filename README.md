@@ -3,6 +3,9 @@
 
 it's a multi-vendors ecommerce website built from scratch with laravel, and it is built with:
 
+![](db_design.png)
+
+
 <table>
     <thead>
         <th>packages</th>
