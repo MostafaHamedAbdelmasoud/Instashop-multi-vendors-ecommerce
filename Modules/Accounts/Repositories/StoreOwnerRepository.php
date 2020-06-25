@@ -2,7 +2,7 @@
 
 namespace Modules\Accounts\Repositories;
 
-use Modules\Accounts\Entities\Store;
+use Modules\Stores\Entities\Store;
 use Modules\Contracts\CrudRepository;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Accounts\Http\Filters\StoreOwnerFilter;

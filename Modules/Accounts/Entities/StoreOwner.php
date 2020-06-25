@@ -3,15 +3,15 @@
 namespace Modules\Accounts\Entities;
 
 use Parental\HasParent;
+use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\Relations\CustomerRelations;
 
 /**
- * Class StoreOwner
- * @package Modules\Accounts\Entities
+ * Class StoreOwner.
  */
 class StoreOwner extends User
 {
-    use HasParent, CustomerRelations;
+    use HasParent;
 
     /**
      * Get the class name for polymorphic relations.
@@ -33,7 +33,6 @@ class StoreOwner extends User
         return 'owner_id';
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -41,5 +40,4 @@ class StoreOwner extends User
     {
         return $this->hasMany(Store::class);
     }
-
 }

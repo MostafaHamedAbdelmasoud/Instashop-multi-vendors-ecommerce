@@ -12,9 +12,9 @@
 
     <!-- Admin Lte -->
     @if(Locales::getDir() == 'rtl')
-        <link rel="stylesheet" href="{{ asset(mix('/css/adminlte.rtl.css')) }}">
+        <link rel="stylesheet" href="{{ asset('/css/adminlte.rtl.css') }}">
     @else
-        <link rel="stylesheet" href="{{ asset(mix('/css/adminlte.css')) }}">
+        <link rel="stylesheet" href="{{ asset('/css/adminlte.css') }}">
     @endif
 
     @stack('styles')
@@ -26,6 +26,9 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="{{url('/')}}">{{trans('dashboard::dashboard.visit website')}}</a>
             </li>
         </ul>
         <!-- SEARCH FORM -->
@@ -223,7 +226,7 @@
 <!-- ./wrapper -->
 
 <!-- Scripts -->
-<script src="{{ asset(mix('/js/adminlte.js')) }}"></script>
+<script src="{{ asset(('/js/adminlte.js')) }}"></script>
 
 @stack('scripts')
 </body>

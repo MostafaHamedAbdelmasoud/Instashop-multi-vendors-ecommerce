@@ -1,5 +1,8 @@
 {
     "Accounts": true,
     "Dashboard": true,
-    "Countries": true
+    "Countries": true,
+    "Stores": true,
+    "Front": true,
+    "Front": true
 }

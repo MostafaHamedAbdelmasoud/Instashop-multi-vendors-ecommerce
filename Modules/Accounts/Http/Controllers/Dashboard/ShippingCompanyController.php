@@ -82,6 +82,7 @@ class ShippingCompanyController extends Controller
      */
     public function update(ShippingCompanyRequest $request, ShippingCompanyOwner $shippingCompanyOwner, ShippingCompany $shippingCompany)
     {
+
         $this->repository->updateShippingCompany($shippingCompany, $request->all());
 
         flash(trans('accounts::shipping_companies.messages.updated'));

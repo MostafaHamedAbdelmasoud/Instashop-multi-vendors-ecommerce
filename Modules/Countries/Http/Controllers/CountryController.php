@@ -114,6 +114,8 @@ class CountryController extends Controller
      */
     public function update(CountryRequest $request, Country $country)
     {
+        dd($request);
+
         $country = $this->repository->update($country, $request->all());
 
         flash(trans('countries::countries.messages.updated'));

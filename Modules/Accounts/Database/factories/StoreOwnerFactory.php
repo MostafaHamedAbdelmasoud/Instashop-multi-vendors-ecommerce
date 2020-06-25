@@ -29,7 +29,7 @@ $factory->define(StoreOwner::class, function (Faker $faker) {
 });
 
 $factory->afterCreating(StoreOwner::class, function (StoreOwner $storeOwner) {
-    factory(\Modules\Accounts\Entities\Store::class)->create([
+    factory(\Modules\Stores\Entities\Store::class)->create([
         'owner_id' => $storeOwner->id,
     ]);
 });

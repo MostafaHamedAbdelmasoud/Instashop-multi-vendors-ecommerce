@@ -1,0 +1,182 @@
+/**************** Color Primary Main ****************/
+
+/* Background */
+.headerhome__top .navbar .navbar-nav .nav-item.active .nav-link,
+.headerhome__top .navbar .navbar-nav .nav-item .nav-link.active,
+.headerhome__top .navbar .navbar-nav .nav-item.dropdown.show .nav-link,
+.headerhome__top .navbar .navbar-nav .nav-item .nav-link:hove,
+.footercontact__box:hover .footercontact__box--icon,
+.active .numbersteps,
+.numbersteps--center [class^="col"]:hover .numberstep,
+.boxmyorders__boxfull .boxmyorders__boxblock:hover,
+.boxmyorders__boxbox .boxmyorders__boxblock:hover,
+.boxmyorders__boxfull .boxmyorders__boxblock--type.colorgreen,
+.boxmyorders__boxbox .boxmyorders__boxblock--type.colorgreen,
+.quantity-button:hover,
+.nav-tabs.customtabs .nav-link:after,
+.nav-tabs.customtabs2 .nav-item.show .nav-link,
+.nav-tabs.customtabs2 .nav-link.active,
+.nav-tabs.customtabs2 .nav-link:hover,
+.sliderhome .slick-next:hover:before,
+.sliderhome .slick-prev:hover:before,
+.sliderhome .slick-dots li.slick-active button,
+.bg-primary50:before,
+.title-border2:before,
+.headermenus .styledropdown .dropdown-menu::-webkit-scrollbar-thumb,
+.slick-dots li.slick-active button,
+.title-border.primary:after,
+.customaccordion .card .card-header a,
+.styledropdown .dropdown-menu,
+.pace .pace-activity{
+    background-color: #77e08f;
+}
+.boxmyorders__boxblock--hover > a:hover{
+    background-color: #77e08f !important;
+}
+
+/* Border */
+.quantity-button:hover,
+.slick-dots li.slick-active button,
+.sliderslicknav .slick-current img,
+.sliderslicknav img:hover,
+.nav-tabs.customtabs .nav-item.show .nav-link,
+.nav-tabs.customtabs .nav-link.active,
+.nav-tabs.customtabs .nav-link:hover{
+    border-color: #77e08f;
+}
+.footercontact__box:hover .footercontact__box--icon,
+.active .numbersteps,
+.numbersteps--center [class^="col"]:hover .numbersteps,
+.custom-control-sizes .custom-control-input:checked~.custom-control-label p,
+.custom-control-sizes .custom-control-input:checked~.custom-control-label img{
+    border-color: #77e08f !important;
+}
+
+/* Text Color */
+.headertop a:hover,
+.headerbottom a:hover,
+.headerbottom .dropdown.show > a,
+.headerbottom__search button:hover,
+.headermenus .navbar .navbar-nav .nav-item.active .nav-link,
+.headermenus .navbar .navbar-nav .nav-item .nav-link.active,
+.headermenus .navbar .navbar-nav .nav-item.dropdown.show .nav-link,
+.headermenus .navbar .navbar-nav .nav-item .nav-link:hover,
+.headerbottom__menus .navbar-toggler,
+.headermenus .styledropdown .dropdown-menu li a:hover,
+.headerhome__top .navbar .navbar-toggler,
+.footercenter [class^="col"]:hover h3,
+.profilelinks li .profilelinks__collapse,
+.profilelinks li .profilelinks__collapse:hover,
+.numbersteps--center [class^="col"]:hover h3,
+.boxmyorders__gridjave.active,.boxmyorders__gridjave2.active,
+.nav-tabs.customtabs .nav-item.show .nav-link,
+.nav-tabs.customtabs .nav-link.active,
+.nav-tabs.customtabs .nav-link:hover,
+a:hover,
+.nav-tabs.customtabs .nav-item.show .nav-link,
+.nav-tabs.customtabs .nav-link.active,
+.nav-tabs.customtabs .nav-link:hover,
+.customaccordion .card .card-header a.collapsed:hover,
+.sharesocial.color-primary li a{
+    color: #77e08f;
+}
+
+/**************** Color Secondary Main ****************/
+
+/* Background */
+.headerhome__top .navbar .navbar-nav .nav-item.active .nav-link:hover,
+.headerhome__top .navbar .navbar-nav .nav-item .nav-link.active:hover,
+.boxmyorders__boxfull .boxmyorders__boxblock--type.colorgray,
+.boxmyorders__boxbox .boxmyorders__boxblock--type.colorgray,
+.sliderhome.sliderhome--second .slick-next:hover:before,
+.sliderhome.sliderhome--second .slick-prev:hover:before,
+.sliderhome.sliderhome--second .slick-dots li.slick-active button,
+.boxpackage__box:hover .btn-primary:hover{
+    background-color: #2b3d50;
+}
+
+/* Border */
+.boxmyorders__boxfull .boxmyorders__boxblock:hover .btn,
+.boxmyorders__boxbox .boxmyorders__boxblock:hover .btn,
+.boxpackage__box:hover .btn-primary:hover{
+    border-color: #2b3d50;
+}
+
+/* Text Color */
+.headerhome__top .navbar .navbar-nav .nav-item .nav-link,
+.headerhome__top .navbar .navbar-toggler.collapsed,
+.boxmyorders__boxfull .boxmyorders__boxblock,
+.boxmyorders__boxbox .boxmyorders__boxblock,
+.boxmyorders__boxfull .boxmyorders__boxblock--content h3 a,
+.boxmyorders__boxbox .boxmyorders__boxblock--content h3 a,
+.quantity .form-control{
+    color: #2b3d50;
+}
+.custom-control-sizes .custom-control-input:checked~.custom-control-label p{
+    color: #2b3d50 !important;
+}
+
+
+/**************** Colors Boostrap ****************/
+
+/* Color Primay */
+.btn-primary,.btn-primary.disabled,.btn-primary:disabled,.btn-outline-primary:hover,.btn-outline-primary:not(:disabled):not(.disabled):active,.btn-outline-primary:not(:disabled):not(.disabled).active,.show>.btn-outline-primary.dropdown-toggle,.badge-primary,.color-primary .slick-prev:before,.color-primary .slick-next:before,.custom-checkbox .custom-control-input:checked~.custom-control-label::before,.custom-radio .custom-control-input:checked~.custom-control-label::before,.closefafa,.scroll-to-top,.sharesocial.bg-primary li a,.custom-control-input:checked~.custom-control-label::before{
+    background-color: #77e08f; 
+}
+.btn-primary,.btn-primary.disabled,.btn-primary:disabled,.btn-outline-primary,.btn-outline-primary:hover,.btn-outline-primary:not(:disabled):not(.disabled):active,.btn-outline-primary:not(:disabled):not(.disabled).active,.show>.btn-outline-primary.dropdown-toggle,.custom-checkbox .custom-control-input:checked~.custom-control-label::before,.custom-radio .custom-control-input:checked~.custom-control-label::before,.form-control:focus,.sharesocial.border.border-primary li a,.singlecontentbg blockquote,.custom-control-input:checked~.custom-control-label::before,.custom-control-input:focus:not(:checked)~.custom-control-label::before,.custom-select:focus{
+    border-color: #77e08f;  
+}
+.form-control.border-light:focus,.form-control.border-dark:focus,.form-control.border-secondary:focus{
+    border-color: #77e08f !important; 
+}
+.bg-primary,.bg-colored.primary:before{background-color: #77e08f !important;}
+.border-primary{border-color: #77e08f !important;}
+.text-primary{color: #77e08f !important;}
+/* Color Primay Hover */
+.btn-primary:hover,.btn-primary:not(:disabled):not(.disabled):active,.btn-primary:not(:disabled):not(.disabled).active,.show>.btn-primary.dropdown-toggle,a.badge-primary:hover,a.badge-primary:focus,.color-primary .slick-prev:hover:before,.color-primary .slick-next:hover:before,.closefafa:hover,.scroll-to-top:hover{
+    background-color: #67c17b;
+}
+.btn-link:hover{color: #67c17b;}
+a.text-primary:hover,a.text-primary:focus{color: #67c17b !important;}
+a.bg-primary:hover,a.bg-primary:focus,button.bg-primary:hover,button.bg-primary:focus,.hoverbg-primary:hover{
+    background-color: #67c17b !important;
+}
+.hoverbg-primary:hover,.hoverbg-secondary:hover{color: #fff !important;}
+.btn-primary:hover,.btn-primary:not(:disabled):not(.disabled):active,.btn-primary:not(:disabled):not(.disabled).active,.show > .btn-primary.dropdown-toggle{
+    border-color: #67c17b;
+}
+.btn-primary:focus,.btn-primary.focus,.btn-primary:not(:disabled):not(.disabled):active:focus,.btn-primary:not(:disabled):not(.disabled).active:focus,.show>.btn-primary.dropdown-toggle:focus,.btn-outline-primary:not(:disabled):not(.disabled):active:focus,.btn-outline-primary:not(:disabled):not(.disabled).active:focus,.show>.btn-outline-primary.dropdown-toggle:focus,.btn-outline-primary:focus,.btn-outline-primary.focus,a.badge-primary:focus,a.badge-primary.focus,.form-control:focus,textarea:focus,input[type="text"]:focus,input[type="password"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="time"]:focus,input[type="week"]:focus,input[type="number"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="color"]:focus,.uneditable-input:focus,.custom-control-input:focus~.custom-control-indicator,.custom-checkbox .custom-control-input:focus~.custom-control-label::before,.custom-radio .custom-control-input:focus~.custom-control-label::before,.custom-control-input:focus~.custom-control-label::before,.custom-select:focus{
+    box-shadow: 0 0 0 0.2rem rgba(119, 224, 143, 0.35);
+}
+.btn-outline-primary,.btn-outline-primary.disabled,.btn-outline-primary:disabled,.btn-link{
+    color: #77e08f;
+}
+/* Color Secondary */
+.btn-secondary,.btn-secondary.disabled,.btn-secondary:disabled,.btn-outline-secondary:hover,.btn-outline-secondary:not(:disabled):not(.disabled):active,.btn-outline-secondary:not(:disabled):not(.disabled).active,.show>.btn-outline-secondary.dropdown-toggle,.badge-secondary,.color-secondary .slick-prev:before,.color-secondary .slick-next:before,.sharesocial.bg-secondary li a{
+    background-color: #2b3d50;
+}
+.btn-secondary,.btn-secondary.disabled,.btn-secondary:disabled,.btn-outline-secondary,.btn-outline-secondary:hover,.btn-outline-secondary:not(:disabled):not(.disabled):active,.btn-outline-secondary:not(:disabled):not(.disabled).active,.show>.btn-outline-secondary.dropdown-toggle,.sharesocial.border.border-secondary li a,.focus-secondary .custom-checkbox .custom-control-input:checked~.custom-control-label::before,.focus-secondary .custom-radio .custom-control-input:checked~.custom-control-label::before,.focus-secondary .form-control:focus{
+    border-color: #2b3d50;
+}
+.bg-secondary,.bg-colored.secondary:before{background-color: #2b3d50 !important;}
+.border-secondary{border-color: #2b3d50 !important;}
+.text-secondary{color: #2b3d50 !important;}
+/* Color Secondary Hover */
+.btn-secondary:hover,.btn-secondary:not(:disabled):not(.disabled):active,.btn-secondary:not(:disabled):not(.disabled).active,.show>.btn-secondary.dropdown-toggle,a.badge-secondary:hover,a.badge-secondary:focus,.color-secondary .slick-prev:hover:before,.color-secondary .slick-next:hover:before{
+    background-color: #212e3d;
+}
+a.bg-secondary:hover,a.bg-secondary:focus,button.bg-secondary:hover,button.bg-secondary:focus,.hoverbg-secondary:hover{
+    background-color: #212e3d !important;
+}
+.btn-secondary:hover,.btn-secondary:not(:disabled):not(.disabled):active,.btn-secondary:not(:disabled):not(.disabled).active,.show > .btn-secondary.dropdown-toggle{
+    border-color: #212e3d;
+}
+a.text-secondary:hover,a.text-secondary:focus{
+    color: #212e3d !important;
+}
+.btn-secondary:focus,.btn-secondary.focus,.btn-secondary:not(:disabled):not(.disabled):active:focus,.btn-secondary:not(:disabled):not(.disabled).active:focus,.show>.btn-secondary.dropdown-toggle:focus,.btn-outline-secondary:not(:disabled):not(.disabled):active:focus,.btn-outline-secondary:not(:disabled):not(.disabled).active:focus,.show>.btn-outline-secondary.dropdown-toggle:focus,.btn-outline-secondary:focus,.btn-outline-secondary.focus,a.badge-secondary:focus,a.badge-secondary.focus,.focus-secondary .form-control:focus,.focus-secondary textarea:focus,.focus-secondary input[type="text"]:focus,.focus-secondary input[type="password"]:focus,.focus-secondary input[type="datetime"]:focus,.focus-secondary input[type="datetime-local"]:focus,.focus-secondary input[type="date"]:focus,.focus-secondary input[type="month"]:focus,.focus-secondary input[type="time"]:focus,.focus-secondary input[type="week"]:focus,.focus-secondary input[type="number"]:focus,.focus-secondary input[type="email"]:focus,.focus-secondary input[type="url"]:focus,.focus-secondary input[type="search"]:focus,.focus-secondary input[type="tel"]:focus,.focus-secondary input[type="color"]:focus,.focus-secondary .uneditable-input:focus,.focus-secondary .custom-control-input:focus~.custom-control-indicator,.focus-secondary .custom-checkbox .custom-control-input:focus~.custom-control-label::before,.focus-secondary .custom-radio .custom-control-input:focus~.custom-control-label::before{
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+.btn-outline-secondary,.btn-outline-secondary.disabled,.btn-outline-secondary:disabled{
+    color: #2b3d50;
+}

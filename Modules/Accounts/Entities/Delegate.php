@@ -7,7 +7,7 @@ use Modules\Accounts\Entities\Relations\CustomerRelations;
 
 class Delegate extends User
 {
-    use HasParent, CustomerRelations;
+    use HasParent;
 
     /**
      * Get the class name for polymorphic relations.

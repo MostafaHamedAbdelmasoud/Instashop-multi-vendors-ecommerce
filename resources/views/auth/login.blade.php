@@ -7,7 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{{ asset(mix('/css/auth.css')) }}">
+    <link rel="stylesheet" href="{{ url(asset('/css/auth.css')) }}">
 </head>
 <body class="hold-transition login-page">
 
@@ -87,6 +87,6 @@
         <!-- /.login-card-body -->
     </div>
 </div>
-<script src="{{ asset(mix('/js/auth.js')) }}"></script>
+<script src="{{ url(asset('/js/auth.js')) }}"></script>
 </body>
 </html>

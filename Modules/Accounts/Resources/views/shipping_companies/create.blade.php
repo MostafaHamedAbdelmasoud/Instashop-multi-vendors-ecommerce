@@ -4,7 +4,7 @@
         @slot('title', trans('accounts::shipping_companies.plural'))
         @slot('breadcrumbs', ['dashboard.shipping_companies.create'])
 
-        {{ BsForm::resource('accounts::shipping_companies')->post(route('dashboard.shipping_companies.store'), ['files' => true]) }}
+        {{ BsForm::resource('accounts::shipping_companies')->post(route('dashboard.shipping_companies.store')) }}
         @component('dashboard::layouts.components.box')
             @slot('title', trans('accounts::shipping_companies.actions.create'))
 

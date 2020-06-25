@@ -1,0 +1,25 @@
+{
+    "name": "elnooronline/stores",
+    "description": "",
+    "authors": [
+        {
+            "name": "Elnooronline",
+            "email": "info@elnooronline.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Stores\\Providers\\StoresServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Stores\\": ""
+        }
+    }
+}
