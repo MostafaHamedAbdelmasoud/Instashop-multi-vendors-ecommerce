@@ -82,7 +82,7 @@ class ShippingCompanyOwnerController extends Controller
 
         $shippingCompanies = $shippingCompanyOwner->ShippingCompanies()->with(['ShippingCompanyPrices'])->paginate();
 
-        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner', 'shippingCompanies','address'));
+        return view('accounts::shipping_company_owners.show', compact('shippingCompanyOwner', 'shippingCompanies'));
     }
 
     /**

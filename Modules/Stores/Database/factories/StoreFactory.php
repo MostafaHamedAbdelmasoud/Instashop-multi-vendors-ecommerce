@@ -4,7 +4,6 @@
 
 use Faker\Generator as Faker;
 use Modules\Accounts\Entities\Helpers\helpers;
-use Modules\Stores\Entities\Store;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,7 @@ use Modules\Stores\Entities\Store;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(Store::class, function (Faker $faker) {
+$factory->define(\Modules\Stores\Entities\Store::class, function (Faker $faker) {
     $h = new helpers();
 
     return [
@@ -32,11 +31,11 @@ $factory->define(Store::class, function (Faker $faker) {
         'meta_description:en' => $faker->text($maxNbChars = 200),
         'keywords:en' => $faker->word,
         'keywords:ar' => $faker->word,
-        'owner_id' => $h->random_or_create(\Modules\Accounts\Entities\ShippingCompanyOwner::class)->id,
+        'owner_id' => $h->random_or_create(\Modules\Accounts\Entities\StoreOwner::class)->id,
     ];
 });
 
-$factory->afterCreating(Store::class, function (Store $store) {
+$factory->afterCreating(\Modules\Stores\Entities\Store::class, function (\Modules\Stores\Entities\Store $store) {
     factory(\Modules\Stores\Entities\Category::class)->create([
         'store_id' => $store->id,
     ]);

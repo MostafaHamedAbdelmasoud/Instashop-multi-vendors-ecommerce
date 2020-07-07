@@ -25,6 +25,7 @@ return [
         'name' => 'Name ',
         'plan' => 'Plan ',
         'rate' => 'Rate ',
+        'avatar' => 'Avatar ',
         'is_verified' => 'Is Verified ',
         'domain' => 'Domain',
         'description' => 'Description',

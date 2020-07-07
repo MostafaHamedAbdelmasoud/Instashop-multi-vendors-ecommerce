@@ -2,11 +2,11 @@
 
 namespace Modules\Countries\Tests\Feature;
 
-use Tests\TestCase;
+use Astrotomic\Translatable\Validation\RuleFactory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Countries\Entities\City;
 use Modules\Countries\Entities\Country;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Astrotomic\Translatable\Validation\RuleFactory;
+use Tests\TestCase;
 
 class CityTest extends TestCase
 {

@@ -42,7 +42,7 @@ class StoreRequest extends FormRequest
         return RuleFactory::make(
             [
                 '%name%' => ['required', 'string'],
-                '%is_verified%' => ['boolean'],
+                'is_verified' => ['boolean'],
                 'plan' => ['required', 'string', 'max:255'],
                 'domain' => ['required', 'string', 'unique:stores,domain', 'max:255'],
                 '%description%' => ['required'],

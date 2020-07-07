@@ -17,7 +17,7 @@ class CreateSToreTranslationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('store_id');
             $table->string('locale')->index();
-            $table->string('name')->unique();
+            $table->string('name')->nullable();
             $table->unique(['store_id', 'locale']);
             $table->text('description');
             $table->text('meta_description');

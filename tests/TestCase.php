@@ -4,6 +4,7 @@ namespace Tests;
 
 use Modules\Accounts\Entities\Admin;
 use Modules\Accounts\Entities\Customer;
+use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Accounts\Entities\Supervisor;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -70,5 +71,20 @@ abstract class TestCase extends BaseTestCase
         $this->be($supervisor, $driver);
 
         return $supervisor;
+    }
+
+    /**
+     * Set the currently logged in customer for the application.
+     *
+     * @param null $driver
+     * @return \Modules\Accounts\Entities\Customer
+     */
+    public function actingAsShippingCompanyOwner($driver = null)
+    {
+        $shippingCompanyOwner = factory(ShippingCompanyOwner::class)->create();
+
+        $this->be($shippingCompanyOwner, $driver);
+
+        return $shippingCompanyOwner;
     }
 }

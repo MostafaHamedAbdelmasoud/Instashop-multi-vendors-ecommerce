@@ -25,6 +25,7 @@ return [
         'name' => 'اسم المتجر',
         'plan' => 'الخطة ',
         'rate' => 'التقييم ',
+        'avatar' => 'الصورة',
         'is_verified' => 'متجر افتراضي',
         'domain' => 'الدومين',
         'description' => 'الوصف',

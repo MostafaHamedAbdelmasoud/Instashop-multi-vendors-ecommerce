@@ -3,11 +3,11 @@
 namespace Modules\Stores\Entities;
 
 use App\Http\Filters\Filterable;
+use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Stores\Entities\Helpers\StoreHelper;
 use Modules\Support\Traits\Selectable;
-use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Translatable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
@@ -16,12 +16,12 @@ use Spatie\MediaLibrary\Models\Media;
  * Class Store
  * @package Modules\Stores\Entities
  */
-class Store extends Model implements  HasMedia
+class Store extends Model implements HasMedia
 {
     use Translatable,
         Filterable,
         Selectable,
-        HasMediaTrait ,
+        HasMediaTrait,
         StoreHelper;
 
     /**
@@ -49,7 +49,9 @@ class Store extends Model implements  HasMedia
     protected $with = [
         'translations',
         'StoreOwner',
+        'media'
     ];
+
 
     /**
      * The attributes that are mass assignable.
@@ -87,7 +89,7 @@ class Store extends Model implements  HasMedia
      */
     public function calculateRate()
     {
-        return $this->getAttribute('rate') /10;
+        return $this->getAttribute('rate') / 10;
     }
 
     /**
@@ -95,11 +97,11 @@ class Store extends Model implements  HasMedia
      *
      * @return void
      */
-    public function registerMediaCollections(Media $media=null)
+    public function registerMediaCollections(Media $media = null)
     {
         $this
             ->addMediaCollection('stores')
-            ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->name).'?d=mm')
+            ->useFallbackUrl('https://www.gravatar.com/avatar/' . md5($this->name) . '?d=mm')
             ->singleFile();
     }
 }

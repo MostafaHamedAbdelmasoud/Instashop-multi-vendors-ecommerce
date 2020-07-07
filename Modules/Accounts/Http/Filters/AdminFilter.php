@@ -74,7 +74,6 @@ class AdminFilter extends BaseFilters
         if ($value) {
             return $this->builder->where('phone', 'like', "%$value%");
         }
-
         return $this->builder;
     }
 }
