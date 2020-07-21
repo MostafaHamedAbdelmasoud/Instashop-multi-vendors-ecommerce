@@ -15,8 +15,10 @@
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
         "laravel/framework": "^7.0",
+        "laravel/passport": "^7.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "munafio/chatify": "^1.0",
         "nwidart/laravel-modules": "^7.0",
         "spatie/laravel-medialibrary": "^7.6",
         "wikimedia/composer-merge-plugin": "^1.4"

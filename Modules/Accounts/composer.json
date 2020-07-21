@@ -9,7 +9,8 @@
     ],
     "require": {
         "laravel/framework": "^7.0",
-        "laravel/passport": "^7.3"
+        "laravel/passport": "^7.3",
+        "munafio/chatify": "^1.0"
     },
     "extra": {
         "laravel": {

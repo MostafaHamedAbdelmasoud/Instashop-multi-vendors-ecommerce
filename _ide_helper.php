@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.18.0 on 2020-07-07 13:38:45.
+ * Generated for Laravel 7.21.0 on 2020-07-21 21:47:54.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -869,6 +869,18 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Get the current application fallback locale.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getFallbackLocale()
+        {
+                        /** @var \Illuminate\Foundation\Application $instance */
+                        return $instance->getFallbackLocale();
+        }
+        
+        /**
          * Set the current application locale.
          *
          * @param string $locale
@@ -879,6 +891,19 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Foundation\Application $instance */
                         $instance->setLocale($locale);
+        }
+        
+        /**
+         * Set the current application fallback locale.
+         *
+         * @param string $fallbackLocale
+         * @return void 
+         * @static 
+         */ 
+        public static function setFallbackLocale($fallbackLocale)
+        {
+                        /** @var \Illuminate\Foundation\Application $instance */
+                        $instance->setFallbackLocale($fallbackLocale);
         }
         
         /**
@@ -5478,7 +5503,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Assert if a event was dispatched a number of times.
+         * Assert if an event was dispatched a number of times.
          *
          * @param string $event
          * @param int $times
@@ -6975,7 +7000,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Unset the given channel instance.
          *
-         * @param string|null $name
+         * @param string|null $driver
          * @return \Illuminate\Log\LogManager 
          * @static 
          */ 
@@ -18010,6 +18035,261 @@ namespace Collective\Html {
  
 }
 
+namespace Chatify\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class ChatifyMessenger {
+        
+        /**
+         * This method returns the allowed image extensions
+         * to attach with the message.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getAllowedImages()
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->getAllowedImages();
+        }
+        
+        /**
+         * This method returns the allowed file extensions
+         * to attach with the message.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getAllowedFiles()
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->getAllowedFiles();
+        }
+        
+        /**
+         * Returns an array contains messenger's colors
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getMessengerColors()
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->getMessengerColors();
+        }
+        
+        /**
+         * Pusher connection
+         *
+         * @static 
+         */ 
+        public static function pusher()
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->pusher();
+        }
+        
+        /**
+         * Trigger an event using Pusher
+         *
+         * @param string $channel
+         * @param string $event
+         * @param array $data
+         * @return void 
+         * @static 
+         */ 
+        public static function push($channel, $event, $data)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        $instance->push($channel, $event, $data);
+        }
+        
+        /**
+         * Authintication for pusher
+         *
+         * @param string $channelName
+         * @param string $socket_id
+         * @param array $data
+         * @return void 
+         * @static 
+         */ 
+        public static function pusherAuth($channelName, $socket_id, $data = [])
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        $instance->pusherAuth($channelName, $socket_id, $data);
+        }
+        
+        /**
+         * Fetch message by id and return the message card
+         * view as a response.
+         *
+         * @param int $id
+         * @return array 
+         * @static 
+         */ 
+        public static function fetchMessage($id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->fetchMessage($id);
+        }
+        
+        /**
+         * Return a message card with the given data.
+         *
+         * @param array $data
+         * @param string $viewType
+         * @return void 
+         * @static 
+         */ 
+        public static function messageCard($data, $viewType = null)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        $instance->messageCard($data, $viewType);
+        }
+        
+        /**
+         * Default fetch messages query between a Sender and Receiver.
+         *
+         * @param int $user_id
+         * @return \Chatify\Collection 
+         * @static 
+         */ 
+        public static function fetchMessagesQuery($user_id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->fetchMessagesQuery($user_id);
+        }
+        
+        /**
+         * create a new message to database
+         *
+         * @param array $data
+         * @return void 
+         * @static 
+         */ 
+        public static function newMessage($data)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        $instance->newMessage($data);
+        }
+        
+        /**
+         * Make messages between the sender [Auth user] and
+         * the receiver [User id] as seen.
+         *
+         * @param int $user_id
+         * @return bool 
+         * @static 
+         */ 
+        public static function makeSeen($user_id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->makeSeen($user_id);
+        }
+        
+        /**
+         * Get last message for a specific user
+         *
+         * @param int $user_id
+         * @return \Chatify\Collection 
+         * @static 
+         */ 
+        public static function getLastMessageQuery($user_id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->getLastMessageQuery($user_id);
+        }
+        
+        /**
+         * Count Unseen messages
+         *
+         * @param int $user_id
+         * @return \Chatify\Collection 
+         * @static 
+         */ 
+        public static function countUnseenMessages($user_id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->countUnseenMessages($user_id);
+        }
+        
+        /**
+         * Get user list's item data [Contact Itme]
+         * (e.g. User data, Last message, Unseen Counter.
+         * 
+         * ..)
+         *
+         * @param int $messenger_id
+         * @param \Chatify\Collection $user
+         * @return void 
+         * @static 
+         */ 
+        public static function getContactItem($messenger_id, $user)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        $instance->getContactItem($messenger_id, $user);
+        }
+        
+        /**
+         * Check if a user in the favorite list
+         *
+         * @param int $user_id
+         * @return boolean 
+         * @static 
+         */ 
+        public static function inFavorite($user_id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->inFavorite($user_id);
+        }
+        
+        /**
+         * Make user in favorite list
+         *
+         * @param int $user_id
+         * @param int $star
+         * @return boolean 
+         * @static 
+         */ 
+        public static function makeInFavorite($user_id, $action)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->makeInFavorite($user_id, $action);
+        }
+        
+        /**
+         * Get shared photos of the conversation
+         *
+         * @param int $user_id
+         * @return array 
+         * @static 
+         */ 
+        public static function getSharedPhotos($user_id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->getSharedPhotos($user_id);
+        }
+        
+        /**
+         * Delete Conversation
+         *
+         * @param int $user_id
+         * @return boolean 
+         * @static 
+         */ 
+        public static function deleteConversation($user_id)
+        {
+                        /** @var \Chatify\ChatifyMessenger $instance */
+                        return $instance->deleteConversation($user_id);
+        }
+         
+    }
+ 
+}
+
 namespace Nwidart\Modules\Facades { 
 
     /**
@@ -20952,6 +21232,8 @@ namespace  {
             /**
              * Remove all existing orders and optionally add a new order.
              *
+             * @param string|null $column
+             * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -21568,6 +21850,8 @@ namespace  {
     class Form extends \Collective\Html\FormFacade {}
 
     class Html extends \Collective\Html\HtmlFacade {}
+
+    class Chatify extends \Chatify\Facades\ChatifyMessenger {}
 
     class Module extends \Nwidart\Modules\Facades\Module {}
  
