@@ -21,7 +21,6 @@ class CreateSubscriptionsTable extends Migration
             $table->timestamp('end_at')->nullable();
             $table->decimal('paid_amount');
             $table->timestamps();
-
         });
     }
 

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class AddDarkModeToUsers extends Migration
 {
@@ -15,9 +15,9 @@ class AddDarkModeToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // if not exist, add the new column
-            if (!Schema::hasColumn('users', 'dark_mode')) {
+            if (! Schema::hasColumn('users', 'dark_mode')) {
                 $table->boolean('dark_mode')->default(0)->after('email');
-            }  
+            }
         });
     }
 

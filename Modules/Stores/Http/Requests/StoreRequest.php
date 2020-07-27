@@ -2,8 +2,8 @@
 
 namespace Modules\Stores\Http\Requests;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
 class StoreRequest extends FormRequest
 {
@@ -15,7 +15,6 @@ class StoreRequest extends FormRequest
     public function authorize()
     {
         return true;
-
     }
 
     /**
@@ -48,7 +47,8 @@ class StoreRequest extends FormRequest
                 '%description%' => ['required'],
                 '%meta_description%' => ['required'],
                 '%keywords%' => ['required'],
-            ]);
+            ]
+        );
     }
 
     /**
@@ -67,7 +67,8 @@ class StoreRequest extends FormRequest
                 '%description%' => ['required', 'string'],
                 '%meta_description%' => ['required', 'string'],
                 '%keywords%' => ['required', 'string'],
-            ]);
+            ]
+        );
     }
 
     /**

@@ -4,9 +4,9 @@ namespace Tests;
 
 use Modules\Accounts\Entities\Admin;
 use Modules\Accounts\Entities\Customer;
-use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Accounts\Entities\Supervisor;
+use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase

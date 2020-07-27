@@ -36,7 +36,7 @@ $factory->define(\Modules\Stores\Entities\Store::class, function (Faker $faker) 
 });
 
 $factory->afterCreating(\Modules\Stores\Entities\Store::class, function (\Modules\Stores\Entities\Store $store) {
-    factory(\Modules\Stores\Entities\Category::class)->create([
+    factory(\Modules\Categories\Entities\Category::class)->create([
         'store_id' => $store->id,
     ]);
 });

@@ -2,12 +2,12 @@
 
 namespace Modules\Accounts\Tests\Feature\Dashboard;
 
-use Modules\Accounts\Entities\ShippingCompany;
 use Tests\TestCase;
-use Modules\Accounts\Entities\ShippingCompanyPrice;
+use Modules\Accounts\Entities\ShippingCompany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
+use Modules\Accounts\Entities\ShippingCompanyPrice;
 
 class ShippingCompanyPriceTest extends TestCase
 {

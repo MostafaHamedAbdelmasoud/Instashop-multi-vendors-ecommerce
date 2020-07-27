@@ -8,8 +8,7 @@ use Modules\Accounts\Entities\StoreOwner;
 use Modules\Accounts\Http\Filters\StoreOwnerFilter;
 
 /**
- * Class StoreOwnerRepository
- * @package Modules\Accounts\Repositories
+ * Class StoreOwnerRepository.
  */
 class StoreOwnerRepository implements CrudRepository
 {
@@ -108,7 +107,6 @@ class StoreOwnerRepository implements CrudRepository
         $this->find($model)->delete();
     }
 
-
     /**
      * @param StoreOwner $storeOwner
      * @param array $data
@@ -130,7 +128,6 @@ class StoreOwnerRepository implements CrudRepository
 
         return $store;
     }
-
 
     public function deleteStore(Store $store)
     {

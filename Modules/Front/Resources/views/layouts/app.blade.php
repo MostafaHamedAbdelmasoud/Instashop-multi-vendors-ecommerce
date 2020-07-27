@@ -36,10 +36,10 @@
                                 <a class="nav-link" href="#">تجربة المنصة</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">تسجيل دخول</a>
+                                <a class="nav-link" href="{{route('login')}}">تسجيل دخول</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">تسجيل</a>
+                                <a class="nav-link" href="{{route('register')}}">تسجيل</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">EN</a>

@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Stores\Database\Seeders;
+namespace Modules\Categories\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Stores\Entities\Category;
+use Modules\Categories\Entities\Category;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -34,7 +34,7 @@ class CategoriesTableSeeder extends Seeder
         return [
             [
                 'name:ar' => ' فئة 1',
-                'name:en' => 'category 1'
+                'name:en' => 'category 1',
             ],
         ];
     }

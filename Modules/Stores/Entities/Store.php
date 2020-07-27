@@ -3,18 +3,17 @@
 namespace Modules\Stores\Entities;
 
 use App\Http\Filters\Filterable;
-use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Accounts\Entities\StoreOwner;
-use Modules\Stores\Entities\Helpers\StoreHelper;
+use Spatie\MediaLibrary\Models\Media;
 use Modules\Support\Traits\Selectable;
+use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
+use Modules\Accounts\Entities\StoreOwner;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Modules\Stores\Entities\Helpers\StoreHelper;
 
 /**
- * Class Store
- * @package Modules\Stores\Entities
+ * Class Store.
  */
 class Store extends Model implements HasMedia
 {
@@ -49,7 +48,7 @@ class Store extends Model implements HasMedia
     protected $with = [
         'translations',
         'StoreOwner',
-        'media'
+        'media',
     ];
 
 
@@ -83,6 +82,7 @@ class Store extends Model implements HasMedia
     {
         return $this->belongsTo(StoreOwner::class, 'owner_id', 'id');
     }
+
 
     /**
      * @return float|int

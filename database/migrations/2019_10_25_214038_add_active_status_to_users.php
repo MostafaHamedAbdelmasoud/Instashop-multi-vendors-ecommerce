@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class AddActiveStatusToUsers extends Migration
 {
@@ -15,9 +15,9 @@ class AddActiveStatusToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // if not exist, add the new column
-            if (!Schema::hasColumn('users', 'active_status')) {
+            if (! Schema::hasColumn('users', 'active_status')) {
                 $table->boolean('active_status')->default(0)->after('email');
-            } 
+            }
         });
     }
 

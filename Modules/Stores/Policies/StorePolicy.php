@@ -2,19 +2,17 @@
 
 namespace Modules\Stores\Policies;
 
-use Modules\Accounts\Entities\StoreOwner;
-use Modules\Accounts\Entities\User;
 use Modules\Stores\Entities\Store;
+use Modules\Accounts\Entities\User;
+use Modules\Accounts\Entities\StoreOwner;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
- * Class StorePolicy
- * @package Modules\Stores\Policies
+ * Class StorePolicy.
  */
 class StorePolicy
 {
     use HandlesAuthorization;
-
 
     /**
      * @param User $user
@@ -25,14 +23,13 @@ class StorePolicy
         return $user->isAdmin();
     }
 
-
     /**
      * Determine whether the user can view the store.
      * @param User $user
      * @param StoreOwner $storeOwner
      * @return bool
      */
-    public function view(User $user , Store $store )
+    public function view(User $user, Store $store)
     {
         return $user->isAdmin() || $user->is($store->StoreOwner) ;
     }

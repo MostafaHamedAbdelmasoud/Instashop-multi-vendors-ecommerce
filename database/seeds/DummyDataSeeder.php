@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Modules\Accounts\Database\Seeders\ShippingCompaniesTableSeeder;
+use Modules\Categories\Database\Seeders\CategoriesTableSeeder;
+use Modules\Stores\Database\Seeders\StoresTableSeeder;
 
 class DummyDataSeeder extends Seeder
 {
@@ -14,8 +17,8 @@ class DummyDataSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         $this->call(AddressesTableSeeder::class);
-        $this->call(\Modules\Accounts\Database\Seeders\ShippingCompaniesTableSeeder::class);
-        $this->call(\Modules\Stores\Database\Seeders\StoresTableSeeder::class);
-        $this->call(\Modules\Stores\Database\Seeders\CategoriesTableSeeder::class);
+        $this->call(ShippingCompaniesTableSeeder::class);
+        $this->call(StoresTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
     }
 }

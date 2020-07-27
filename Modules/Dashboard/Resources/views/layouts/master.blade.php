@@ -10,6 +10,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
     <!-- Admin Lte -->
     @if(Locales::getDir() == 'rtl')
         <link rel="stylesheet" href="{{ asset('/css/adminlte.rtl.css') }}">

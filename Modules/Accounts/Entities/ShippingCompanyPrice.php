@@ -32,7 +32,7 @@ class ShippingCompanyPrice extends Model
     public $fillable = [
         'shipping_company_id',
         'city_id',
-        'price'
+        'price',
     ];
 
     /**

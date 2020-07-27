@@ -50,43 +50,12 @@
                         @include('stores::stores.partials.actions.delete')
                     @endslot
                 @endcomponent
-{{--                {{ BsForm::resource('stores::cities')--}}
-{{--                ->post(route('dashboard.stores.store', $store)) }}--}}
-{{--                @component('dashboard::layouts.components.box')--}}
-{{--                    @slot('title', trans('stores::stores.actions.create'))--}}
-{{--                    @include('dashboard::errors')--}}
-{{--                    @bsMultilangualFormTabs--}}
-{{--                    {{ BsForm::text('name')->maxlength(255) }}--}}
-{{--                    @endBsMultilangualFormTabs--}}
-
-{{--                    @slot('footer')--}}
-{{--                        {{ BsForm::submit(trans('stores::cities.actions.save')) }}--}}
-{{--                    @endslot--}}
-{{--                @endcomponent--}}
-{{--                {{ BsForm::close() }}--}}
-            </div>
-            <div class="col-md-6">
-{{--                @component('dashboard::layouts.components.table-box')--}}
-{{--                    @slot('bodyClass', 'p-0')--}}
-{{--                    @slot('title', trans('stores::cities.plural'))--}}
-{{--                    <tr>--}}
-{{--                        <th width="100">#</th>--}}
-{{--                        <th>@lang('stores::cities.attributes.name')</th>--}}
-{{--                        <th>...</th>--}}
-{{--                    </tr>--}}
-{{--                    @foreach($cities as $city)--}}
-{{--                        <tr>--}}
-{{--                            <td>{{ $city->id }}</td>--}}
-{{--                            <td>{{ $city->name }}</td>--}}
-{{--                            <td>--}}
-{{--                                @include('stores::cities.partials.actions.edit')--}}
-{{--                                @include('stores::cities.partials.actions.delete')--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
-{{--                @endcomponent--}}
             </div>
         </div>
+
+
+
+
 
     @endcomponent
 @endsection

@@ -2,14 +2,14 @@
 
 namespace Modules\Stores\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Accounts\Entities\StoreOwner;
 use Modules\Stores\Entities\Store;
+use Modules\Accounts\Entities\StoreOwner;
 use Modules\Stores\Http\Requests\StoreRequest;
 use Modules\Stores\Repositories\StoreRepository;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
  * Class StoreController.
@@ -94,7 +94,6 @@ class StoreController extends Controller
      */
     public function edit(StoreOwner $storeOwner, Store $store)
     {
-
         return view('stores::stores.edit', compact('storeOwner', 'store'));
     }
 
@@ -120,15 +119,15 @@ class StoreController extends Controller
      *
      * @param \Modules\Stores\Entities\StoreOwner $storeOwner
      * @param \Modules\Stores\Entities\Store $store
-     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(StoreOwner $storeOwner, Store $store)
     {
-        $this->repository->deleteStore($store);
+        $this->repository->delete($store);
 
-        flash(trans('accounts::addresses.messages.deleted'));
+        flash(trans('stores::stores.messages.deleted'));
 
-        return redirect()->route('dashboard.customers.show', $storeOwner);
+        return redirect()->route('dashboard.stores.index');
     }
 }

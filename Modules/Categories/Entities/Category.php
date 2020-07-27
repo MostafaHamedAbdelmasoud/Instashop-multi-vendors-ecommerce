@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Stores\Entities;
+namespace Modules\Categories\Entities;
 
 use App\Http\Filters\Filterable;
 use Modules\Stores\Entities\Store;
@@ -30,6 +30,7 @@ class Category extends Model
     protected $with = [
         'translations',
         'Store',
+        'subCategories',
     ];
 
     /**
@@ -44,13 +45,28 @@ class Category extends Model
     ];
 
 
+    /**
+     * specify dates attributes in model.
+     * @var string[]
+     */
+    protected $dates = ['published_at'];
+
+    /**
+     * it defines foreign key in relations.
+     *
+     * @return string
+     */
+    public function getForeignKey()
+    {
+        return 'category_id';
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function Store()
+    public function store()
     {
-        return $this->belongsTo(Store::class, 'store_id', 'id');
+        return $this->belongsTo(Store::class);
     }
 
     /**
@@ -58,6 +74,16 @@ class Category extends Model
      */
     public function subCategories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasOne(Category::class, 'id', 'parent_id');
+    }
+
+    /**
+     * get published_at date attributes in model with M/d/y foramt.
+     *
+     * @return mixed
+     */
+    public function getPublishedDate()
+    {
+        return $this->published_at->format('m/d/Y');
     }
 }

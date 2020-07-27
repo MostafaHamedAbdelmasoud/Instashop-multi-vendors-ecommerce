@@ -57,7 +57,6 @@ class ShippingCompanyTest extends TestCase
         $this->assertEquals($shippingCompanyOwner->ShippingCompanies->last()->name, 'Test');
     }
 
-
     /** @test */
     public function it_can_display_shipping_company_owner_edit_form()
     {

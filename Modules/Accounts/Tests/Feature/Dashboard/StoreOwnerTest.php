@@ -13,6 +13,8 @@ class StoreOwnerTest extends TestCase
     /** @test */
     public function it_can_display_list_of_store_owners()
     {
+        $this->withoutExceptionHandling();
+
         $this->actingAsAdmin();
 
         $storeOwner = factory(StoreOwner::class)->create();
@@ -41,6 +43,8 @@ class StoreOwnerTest extends TestCase
     /** @test */
     public function it_can_display_store_owner_create_form()
     {
+        $this->withoutExceptionHandling();
+
         $this->actingAsAdmin();
 
         $response = $this->get(route('dashboard.store_owners.create'));

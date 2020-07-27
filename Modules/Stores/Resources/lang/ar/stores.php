@@ -3,7 +3,7 @@
 return [
     'plural' => 'المتاجر',
     'singular' => 'المتجر',
-    'empty' => 'لا توجد عناوين',
+    'empty' => 'لا توجد متاجر',
     'select' => 'اختر المتجر',
     'perPage' => 'عدد النتائج في الصفحة',
     'actions' => [
@@ -31,6 +31,10 @@ return [
         'description' => 'الوصف',
         'meta_description' => 'وصف مختصر',
         'keywords' => 'الكلمات الافتتاحية ',
+        'category' => 'الفئة ',
+        'categories'=> [
+            'name' => 'إسم الفئة',
+        ],
     ],
     'dialogs' => [
         'delete' => [

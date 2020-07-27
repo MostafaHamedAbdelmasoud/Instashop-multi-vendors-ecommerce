@@ -2,9 +2,9 @@
 
 namespace Modules\Accounts\Entities;
 
-use Chatify\Http\Models\Message;
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
+use Chatify\Http\Models\Message;
 use Modules\Support\Traits\Selectable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
@@ -148,5 +148,4 @@ class User extends Authenticatable implements HasMedia
             ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm')
             ->singleFile();
     }
-
 }

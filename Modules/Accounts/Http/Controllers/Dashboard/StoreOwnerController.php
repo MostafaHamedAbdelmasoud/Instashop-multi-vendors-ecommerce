@@ -77,7 +77,7 @@ class StoreOwnerController extends Controller
 
         $stores = $storeOwner->stores()->paginate();
 //        dd($stores);
-        return view('accounts::store_owners.show', compact('storeOwner','stores'));
+        return view('accounts::store_owners.show', compact('storeOwner', 'stores'));
     }
 
     /**

@@ -8,4 +8,5 @@
 @include('countries::sidebar')
 @include('accounts::sidebar')
 @include('stores::sidebar')
+@include('categories::sidebar')
 

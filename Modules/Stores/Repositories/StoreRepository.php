@@ -105,10 +105,10 @@ class StoreRepository implements CrudRepository
      *
      * @param Store $store
      * @param array $data
-     * @return Store
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return Store
      */
     private function uploadAvatar(Store $store, array $data)
     {

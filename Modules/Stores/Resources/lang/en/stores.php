@@ -31,6 +31,10 @@ return [
         'description' => 'Description',
         'meta_description' => ' Meta Description',
         'keywords' => 'Keywords ',
+        'category' => 'Category ',
+        'categories'=> [
+            'name' => 'Name',
+        ],
     ],
     'dialogs' => [
         'delete' => [

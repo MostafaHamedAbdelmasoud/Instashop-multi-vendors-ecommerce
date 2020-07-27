@@ -10,8 +10,7 @@ use Modules\Accounts\Http\Requests\ShippingCompanyOwnerRequest;
 use Modules\Accounts\Repositories\ShippingCompanyOwnerRepository;
 
 /**
- * Class ShippingCompanyOwnerController
- * @package Modules\Accounts\Http\Controllers\Dashboard
+ * Class ShippingCompanyOwnerController.
  */
 class ShippingCompanyOwnerController extends Controller
 {
@@ -97,15 +96,14 @@ class ShippingCompanyOwnerController extends Controller
         return view('accounts::shipping_company_owners.edit', compact('shippingCompanyOwner'));
     }
 
-
     /**
      * Update the specified resource in storage.
      * @param ShippingCompanyOwnerRequest $request
      * @param ShippingCompanyOwner $shippingCompanyOwner
-     * @return \Illuminate\Http\RedirectResponse
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ShippingCompanyOwnerRequest $request, ShippingCompanyOwner $shippingCompanyOwner)
     {

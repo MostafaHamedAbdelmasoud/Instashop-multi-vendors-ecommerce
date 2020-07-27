@@ -2,5 +2,5 @@
 
 return [
     'home' => 'الرئيسية',
-    'visit website' => 'زيارة الموقع'
+    'visit website' => 'زيارة الموقع',
 ];

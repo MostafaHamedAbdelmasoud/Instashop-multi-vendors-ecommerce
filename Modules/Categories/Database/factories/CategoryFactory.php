@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Modules\Categories\Entities\Category;
 use Modules\Accounts\Entities\Helpers\helpers;
 
 /*
@@ -17,12 +18,23 @@ use Modules\Accounts\Entities\Helpers\helpers;
 |
 */
 
-$factory->define(\Modules\Stores\Entities\Category::class, function (Faker $faker) {
-  $h = new helpers();
+$factory->define(Category::class, function (Faker $faker) {
+    $h = new helpers();
+
     return [
         'published_at' => $faker->dateTimeThisYear($max = 'now', $timezone = null),
         'store_id' => $h->random_or_create(\Modules\Stores\Entities\Store::class)->id,
         'name:en' => $faker->word,
-        'name:ar' => 'قسم 1',
+        'name:ar' => 'قسم '.$faker->randomDigit,
     ];
+});
+
+
+$factory->afterCreating(Category::class, function (Category $category) {
+    if ($category->id >=5) {
+        return;
+    }
+    factory(Category::class)->create([
+        'parent_id' => $category->id,
+    ]);
 });
