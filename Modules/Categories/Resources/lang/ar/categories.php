@@ -23,9 +23,8 @@ return [
     ],
     'attributes' => [
         'name' => 'اسم  القسم',
-        'parent_category' => 'القسم الأب',
-        'store_id' =>'إسم المتجر',
-        'store' =>' المتجر',
+        'parent_id' => 'القسم الأب',
+        'store_id' =>' المتجر',
         'published_at' => 'تاريخ الإنشاء',
     ],
     'dialogs' => [

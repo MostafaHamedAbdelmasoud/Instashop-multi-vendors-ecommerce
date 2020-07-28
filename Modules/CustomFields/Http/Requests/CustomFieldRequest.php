@@ -2,9 +2,13 @@
 
 namespace Modules\CustomFields\Http\Requests;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
+/**
+ * Class CustomFieldRequest
+ * @package Modules\CustomFields\Http\Requests
+ */
 class CustomFieldRequest extends FormRequest
 {
     /**
@@ -43,13 +47,7 @@ class CustomFieldRequest extends FormRequest
                 '%name%' => ['required', 'string'],
                 'store_id' => ['required', 'exists:stores,id'],
                 'category_id' => ['required', 'exists:categories,id'],
-                'code' => ['required', 'string', 'max:30' , 'min:1'],
-                'price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'old_price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'weight' => ['required', 'integer'],
-                'stock' => ['required', 'integer'],
-                '%description%' => ['required', 'max:1500', 'min:2'],
-                '%meta_description%' => ['required', 'max:200', 'min:2'],
+                'type' => ['required', 'string', 'max:30', 'min:1'],
             ]
         );
     }
@@ -65,14 +63,9 @@ class CustomFieldRequest extends FormRequest
             [
                 '%name%' => ['required', 'string'],
                 'store_id' => ['required', 'exists:stores,id,' . $this->route('product')->id],
-                'category_id' => ['required', 'exists:categories,id,'.$this->route('product')->id],
-                'code' => ['required', 'string', 'max:30' , 'min:1'],
-                'price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'old_price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'weight' => ['required', 'integer'],
-                'stock' => ['required', 'integer'],
-                '%description%' => ['required', 'max:1500', 'min:2'],
-                '%meta_description%' => ['required', 'max:200', 'min:2'],
+                'category_id' => ['required', 'exists:categories,id,' . $this->route('product')->id],
+                'type' => ['required', 'string', 'max:30', 'min:1'],
+
             ]
         );
     }
@@ -84,6 +77,7 @@ class CustomFieldRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('products::products.attributes');
+        return trans('custom_fields::custom_fields.attributes');
     }
+
 }

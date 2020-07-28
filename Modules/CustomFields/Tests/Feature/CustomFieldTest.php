@@ -2,12 +2,12 @@
 
 namespace Modules\CustomFields\Tests\Feature;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+use Modules\Stores\Entities\Store;
 use Modules\Categories\Entities\Category;
 use Modules\CustomFields\Entities\CustomField;
-use Modules\Stores\Entities\Store;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
 class CustomFieldTest extends TestCase
 {
@@ -41,7 +41,7 @@ class CustomFieldTest extends TestCase
         $response->assertSee('CustomFieldTestName');
     }
 
-    /** @test */
+    /* @test */
 //    public function it_can_display_custom_field_details()
 //    {
 //        $this->withoutExceptionHandling();

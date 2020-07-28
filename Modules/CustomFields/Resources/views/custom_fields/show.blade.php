@@ -16,85 +16,34 @@
                             <td>{{ $customField->name }}</td>
                         </tr>
 
-                        <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.description')</th>
-                            <td>
-                                {{$customField->description}}
-                            </td>
-                        </tr>
 
                         <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.meta_description')</th>
-                            <td>
-                                {{$customField->meta_description}}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.category')</th>
+                            <th width="200">@lang('custom_fields::custom_fields.attributes.category_id')</th>
                             <td>
                                 <a href="{{ route('dashboard.categories.show', $customField->category) }}"
                                    class="text-decoration-none text-ellipsis">
-                                    {{$customField->getCategoryOfProduct()}}
+                                    {{$customField->getCategoryOfCustomField()}}
                                 </a>
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.store')</th>
+                            <th width="200">@lang('custom_fields::custom_fields.attributes.store_id')</th>
                             <td>
                                 <a href="{{ route('dashboard.stores.show', $customField->store) }}"
                                    class="text-decoration-none text-ellipsis">
-                                    {{$customField->getStoreOfProduct()}}
+                                    {{$customField->getStoreOfCustomField()}}
                                 </a>
                             </td>
                         </tr>
 
-                        <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.code')</th>
-                            <td>
-                                    {{$customField->code}}
-                            </td>
-                        </tr>
 
                         <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.old_price')</th>
+                            <th width="200">@lang('custom_fields::custom_fields.attributes.type')</th>
                             <td>
-                                <del style="del">
-                                    {{$customField->old_price}}
-                                </del>
+                                {{$customField->type}}
                             </td>
                         </tr>
-
-                        <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.price')</th>
-                            <td>
-                                {{$customField->price}}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.weight')</th>
-                            <td>
-
-                                @if($customField -> getWeightOfProduct() >= 1000)
-                                    {{$customField->getWeightOfProduct()/1000}} @lang('custom_fields::custom_fields.units.kilo_gram')
-                                @else
-                                    {{$customField->getWeightOfProduct()}} @lang('custom_fields::custom_fields.units.gram')
-                                @endif
-                            </td>
-                        </tr>
-
-
-                        <tr>
-                            <th width="200">@lang('custom_fields::custom_fields.attributes.stock')</th>
-                            <td>
-                                {{$customField->stock}} @lang('custom_fields::custom_fields.units.piece')
-                            </td>
-                        </tr>
-
-
-
 
 
                         </tbody>

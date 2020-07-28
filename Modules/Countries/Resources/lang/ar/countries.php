@@ -16,6 +16,7 @@ return [
         'delete' => 'حذف الدولة',
         'options' => 'خيارات',
         'save' => 'حفظ',
+        'filter' => 'إبحث',
     ],
     'messages' => [
         'created' => 'تم اضافة الدولة بنجاح.',

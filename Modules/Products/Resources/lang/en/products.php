@@ -23,9 +23,9 @@ return [
     ],
     'attributes' => [
         'name' => 'Name',
-        'category' => ' Category ',
+        'category_id' => ' Category ',
         'code' => 'Code',
-        'store' => 'Store',
+        'store_id' => 'Store',
         'description' => ' Description',
         'meta_description' => ' Meta Description ',
         'price' => ' Price ',

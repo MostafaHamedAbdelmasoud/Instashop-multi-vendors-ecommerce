@@ -33,7 +33,7 @@ class CustomFieldTableSeeder extends Seeder
     {
         return [
             [
-                'name:ar' => ' حقل 1',
+                'name:ar' => 'حقل 1',
                 'name:en' => 'custom field 1',
                 'store_id' => 1,
                 'category_id' => 1,

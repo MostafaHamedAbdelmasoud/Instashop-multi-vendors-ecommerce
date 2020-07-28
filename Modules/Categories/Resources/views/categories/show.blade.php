@@ -17,7 +17,7 @@
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('categories::categories.attributes.parent_category')</th>
+                            <th width="200">@lang('categories::categories.attributes.parent_id')</th>
                             @if(!$category->parent_id)
                                 <td>__</td>
                             @else

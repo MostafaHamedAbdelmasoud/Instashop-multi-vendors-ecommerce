@@ -15,8 +15,8 @@
             <thead>
             <tr>
                 <th>@lang('categories::categories.attributes.name')</th>
-                <th class="d-none d-md-table-cell">@lang('categories::categories.attributes.parent_category')</th>
-                <th class="d-none d-md-table-cell">@lang('categories::categories.attributes.store')</th>
+                <th class="d-none d-md-table-cell">@lang('categories::categories.attributes.parent_id')</th>
+                <th class="d-none d-md-table-cell">@lang('categories::categories.attributes.store_id')</th>
                 <th class="d-none d-md-table-cell">@lang('categories::categories.attributes.published_at')</th>
                 <th style="width: 160px">...</th>
             </tr>

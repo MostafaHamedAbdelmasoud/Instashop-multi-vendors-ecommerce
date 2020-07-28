@@ -72,10 +72,10 @@ class ProductRepository implements CrudRepository
      *
      * @param mixed $model
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function update($model, array $data)
     {
@@ -92,8 +92,8 @@ class ProductRepository implements CrudRepository
      * Delete the given client from storage.
      *
      * @param mixed $model
-     * @return void
      * @throws \Exception
+     * @return void
      */
     public function delete($model)
     {

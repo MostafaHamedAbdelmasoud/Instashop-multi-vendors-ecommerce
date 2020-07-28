@@ -16,6 +16,7 @@ return [
         'delete' => 'Delete Country',
         'options' => 'Options',
         'save' => 'Save',
+        'filter' => 'Filter',
     ],
     'messages' => [
         'created' => 'The country has been created successfully.',

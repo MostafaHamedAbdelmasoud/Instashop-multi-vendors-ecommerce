@@ -2,14 +2,14 @@
 
 namespace Modules\Categories\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Categories\Entities\Category;
 use Modules\Categories\Http\Requests\CategoryRequest;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Modules\Categories\Repositories\CategoryRepository;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
  * Class CategoryController.
@@ -42,9 +42,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate();
-//        $id = $categories->where('id', '=', 1)->first();
-//        dd($id);
+        $categories = $this->repository->all();
 
         return view('categories::categories.index', compact('categories'));
     }
@@ -68,7 +66,6 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $request->merge(['owner_id' => \Auth::user()->id]);
         $category = $this->repository->create($request->all());
 
         flash(trans('categories::categories.messages.created'));
@@ -121,8 +118,8 @@ class CategoryController extends Controller
      *
      * @param \Modules\Categories\Entities\StoreOwner $categoryOwner
      * @param \Modules\Categories\Entities\Store $category
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(StoreOwner $storeOwner, Category $category)
     {

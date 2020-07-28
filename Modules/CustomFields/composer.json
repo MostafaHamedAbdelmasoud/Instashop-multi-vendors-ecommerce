@@ -10,7 +10,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\CustomFields\\Providers\\CustomFieldServiceProvider"
+              "CustomFieldOptionServiceProvider"
             ],
             "aliases": {
 

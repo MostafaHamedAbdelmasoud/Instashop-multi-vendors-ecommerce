@@ -31,7 +31,7 @@
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('products::products.attributes.category')</th>
+                            <th width="200">@lang('products::products.attributes.category_id')</th>
                             <td>
                                 <a href="{{ route('dashboard.categories.show', $product->category) }}"
                                    class="text-decoration-none text-ellipsis">
@@ -41,7 +41,7 @@
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('products::products.attributes.store')</th>
+                            <th width="200">@lang('products::products.attributes.store_id')</th>
                             <td>
                                 <a href="{{ route('dashboard.stores.show', $product->store) }}"
                                    class="text-decoration-none text-ellipsis">

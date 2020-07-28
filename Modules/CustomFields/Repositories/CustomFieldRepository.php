@@ -34,6 +34,7 @@ class CustomFieldRepository implements CrudRepository
      */
     public function all()
     {
+//        dd($this->filter);
         return CustomField::filter($this->filter)->paginate();
     }
 
@@ -45,11 +46,10 @@ class CustomFieldRepository implements CrudRepository
      */
     public function create(array $data)
     {
-        $store = CustomField::create($data);
+//        dd($data);
+        $customField = CustomField::create($data);
 
-        $this->uploadAvatar($store, $data);
-
-        return $store;
+        return $customField;
     }
 
     /**
@@ -79,13 +79,11 @@ class CustomFieldRepository implements CrudRepository
      */
     public function update($model, array $data)
     {
-        $store = $this->find($model);
+        $customField = $this->find($model);
 
-        $this->uploadAvatar($model, $data);
+        $customField->update($data);
 
-        $store->update($data);
-
-        return $store;
+        return $customField;
     }
 
     /**
@@ -98,24 +96,5 @@ class CustomFieldRepository implements CrudRepository
     public function delete($model)
     {
         $this->find($model)->delete();
-    }
-
-    /**
-     * Upload the avatar image.
-     *
-     * @param CustomField $store
-     * @param array $data
-     * @return CustomField
-     *@throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     */
-    private function uploadAvatar(CustomField $store, array $data)
-    {
-        if (isset($data['store'])) {
-            $store->addMedia($data['store'])->toMediaCollection('stores');
-        }
-
-        return $store;
     }
 }

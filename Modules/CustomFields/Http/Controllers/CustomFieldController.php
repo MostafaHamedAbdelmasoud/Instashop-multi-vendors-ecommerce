@@ -4,12 +4,12 @@ namespace Modules\CustomFields\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\CustomFields\Entities\CustomField;
 use Modules\Accounts\Entities\StoreOwner;
-use Modules\CustomFields\Http\Requests\CustomFieldRequest;
-use Modules\CustomFields\Repositories\CustomFieldRepository;
+use Modules\CustomFields\Entities\CustomField;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Modules\CustomFields\Http\Requests\CustomFieldRequest;
+use Modules\CustomFields\Repositories\CustomFieldRepository;
 
 /**
  * Class ProductController.
@@ -32,7 +32,7 @@ class CustomFieldController extends Controller
      */
     public function __construct(CustomFieldRepository $repository)
     {
-        $this->authorizeResource(CustomField::class, 'product');
+        $this->authorizeResource(CustomField::class, 'custom_field');
 
         $this->repository = $repository;
     }
@@ -42,9 +42,9 @@ class CustomFieldController extends Controller
      */
     public function index()
     {
-        $products = CustomField::paginate();
+        $customFields = $this->repository->all();
 
-        return view('products::products.index', compact('products'));
+        return view('custom_fields::custom_fields.index', compact('customFields'));
     }
 
     /**
@@ -54,80 +54,76 @@ class CustomFieldController extends Controller
      */
     public function create()
     {
-        return view('products::products.create');
+        return view('custom_fields::custom_fields.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Modules\CustomFields\Http\Requests\CustomFieldRequest $request
-     * @param \Modules\CustomFields\Entities\StoreOwner $productOwner
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CustomFieldRequest $request)
     {
-        $request->merge(['owner_id' => \Auth::user()->id]);
-        $product = $this->repository->create($request->all());
+        $customField = $this->repository->create($request->all());
 
-        flash(trans('products::products.messages.created'));
+        flash(trans('custom_fields::custom_fields.messages.created'));
 
-        return redirect()->route('dashboard.products.show', $product);
+        return redirect()->route('dashboard.custom_fields.show', $customField);
     }
 
     /**
-     * @param CustomField $product
+     * @param CustomField $customField
      *
      */
-    public function show(CustomField $product)
+    public function show(CustomField $customField)
     {
-        $product = $this->repository->find($product);
+        $customField = $this->repository->find($customField);
 
-        return view('products::products.show', compact('product'));
+        return view('custom_fields::custom_fields.show', compact('customField'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Modules\CustomFields\Http\Requests\CustomFieldRequest $request
-     * @param \Modules\CustomFields\Entities\StoreOwner $productOwner
-     * @param \Modules\CustomFields\Entities\Store $product
+     * @param \Modules\CustomFields\Entities\StoreOwner $customFieldOwner
+     * @param \Modules\CustomFields\Entities\Store $customField
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, CustomField $product)
+    public function update(Request $request, CustomField $customField)
     {
-        $this->repository->update($product, $request->all());
+        $this->repository->update($customField, $request->all());
 
-        flash(trans('products::products.messages.updated'));
+        flash(trans('custom_fields::custom_fields.messages.updated'));
 
-        return redirect()->route('dashboard.products.show', $product);
+        return redirect()->route('dashboard.custom_fields.show', $customField);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param StoreOwner $storeOwner
-     * @param CustomField $product
+     * @param CustomField $customField
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(StoreOwner $storeOwner, CustomField $product)
+    public function edit(StoreOwner $storeOwner, CustomField $customField)
     {
-        return view('products::products.edit', compact('storeOwner', 'product'));
+        return view('custom_fields::custom_fields.edit', compact('storeOwner', 'customField'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \Modules\CustomFields\Entities\StoreOwner $storeOwner
-     * @param \Modules\CustomFields\Entities\Store $product
-     * @throws \Exception
+     * @param \Modules\Accounts\Entities\StoreOwner $storeOwner
+     * @param \Modules\CustomFields\Entities\CustomField $customField
      * @return \Illuminate\Http\RedirectResponse
+     *@throws \Exception
      */
-    public function destroy(StoreOwner $storeOwner, CustomField $product)
+    public function destroy(StoreOwner $storeOwner, CustomField $customField)
     {
-        $this->repository->delete($product);
+        $this->repository->delete($customField);
 
-        flash(trans('products::products.messages.deleted'));
+        flash(trans('custom_fields::custom_fields.messages.deleted'));
 
-        return redirect()->route('dashboard.products.index');
+        return redirect()->route('dashboard.custom_fields.index');
     }
 }

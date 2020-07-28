@@ -23,9 +23,8 @@ return [
     ],
     'attributes' => [
         'name' => 'Category Name',
-        'parent_category' => 'Parent Category',
+        'parent_id' => 'Parent Category',
         'store_id' => 'Store Name',
-        'store' => ' Store',
         'published_at' => 'Published At ',
     ],
     'dialogs' => [

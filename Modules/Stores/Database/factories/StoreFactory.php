@@ -3,8 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use Modules\Accounts\Entities\Helpers\helpers;
 use Modules\Stores\Entities\Store;
+use Modules\Accounts\Entities\Helpers\helpers;
 
 /*
 |--------------------------------------------------------------------------

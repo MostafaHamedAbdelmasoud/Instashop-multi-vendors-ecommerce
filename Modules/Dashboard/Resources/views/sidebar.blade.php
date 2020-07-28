@@ -10,4 +10,5 @@
 @include('categories::sidebar')
 @include('products::sidebar')
 @include('custom_fields::sidebar')
+@include('custom_field_options::sidebar')
 

@@ -13,7 +13,7 @@ class StoreRepository implements CrudRepository
 {
 
     /**
-     * @var \Modules\Accounts\Http\Filters\StoreFilter
+     * @var StoreFilter
      */
     private $filter;
 

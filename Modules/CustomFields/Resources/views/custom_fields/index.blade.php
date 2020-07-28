@@ -15,11 +15,9 @@
             <thead>
             <tr>
                 <th>@lang('custom_fields::custom_fields.attributes.name')</th>
-                <th>@lang('custom_fields::custom_fields.attributes.code')</th>
-                <th class="d-none d-md-table-cell">@lang('custom_fields::custom_fields.attributes.category')</th>
-                <th class="d-none d-md-table-cell">@lang('custom_fields::custom_fields.attributes.store')</th>
-                <th class="d-none d-md-table-cell">@lang('custom_fields::custom_fields.attributes.price')</th>
-                <th class="d-none d-md-table-cell">@lang('custom_fields::custom_fields.attributes.meta_description')</th>
+                <th class="d-none d-md-table-cell">@lang('custom_fields::custom_fields.attributes.category_id')</th>
+                <th class="d-none d-md-table-cell">@lang('custom_fields::custom_fields.attributes.store_id')</th>
+                <th class="d-none d-md-table-cell">@lang('custom_fields::custom_fields.attributes.type')</th>
                 <th style="width: 160px">...</th>
             </tr>
             </thead>
@@ -33,9 +31,6 @@
                         </a>
                     </td>
 
-                    <td>
-                        {{ $customField->code }}
-                    </td>
                     <td class="d-none d-md-table-cell">
                         <a href="{{ route('dashboard.categories.show', $customField->category) }}"
                            class="text-decoration-none text-ellipsis">
@@ -51,13 +46,9 @@
                     </td>
 
                     <td class="d-none d-md-table-cell">
-                        {{$customField->price}}
+                        {{$customField->type}}
                     </td>
 
-                    <td class="d-none d-md-table-cell">
-                        {!! Str::limit($customField->meta_description, 25, ' ...') !!}
-                        {{--                        {{}}--}}
-                    </td>
 
                     <td style="width: 160px">
                         @include('custom_fields::custom_fields.partials.actions.show')

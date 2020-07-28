@@ -26,7 +26,7 @@ trait CustomFieldHelper
      * @param Store $store
      * @return mixed
      */
-    public function getStoreOfProduct()
+    public function getStoreOfCustomField()
     {
         return $this->store->name;
     }
@@ -37,19 +37,9 @@ trait CustomFieldHelper
      * @param Store $store
      * @return mixed
      */
-    public function getCategoryOfProduct()
+    public function getCategoryOfCustomField()
     {
         return $this->category->name;
     }
 
-    /**
-     * get weight of product.
-     *
-     * @param Store $store
-     * @return mixed
-     */
-    public function getWeightOfProduct()
-    {
-        return $this->weight;
-    }
 }

@@ -3,16 +3,15 @@
 namespace Modules\CustomFields\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Modules\Categories\Entities\Category;
-use Modules\CustomFields\Http\Filters\SelectCategoryFilter;
-use Modules\CustomFields\Transformers\SelectCategoryResource;
 use Modules\Stores\Entities\Store;
+use Modules\Categories\Entities\Category;
 use Modules\CustomFields\Transformers\SelectResource;
 use Modules\CustomFields\Http\Filters\SelectStoreFilter;
+use Modules\CustomFields\Http\Filters\SelectCategoryFilter;
+use Modules\CustomFields\Transformers\SelectCategoryResource;
 
 /**
- * Class SelectController
- * @package Modules\CustomFields\Http\Controllers
+ * Class SelectController.
  */
 class SelectController extends Controller
 {

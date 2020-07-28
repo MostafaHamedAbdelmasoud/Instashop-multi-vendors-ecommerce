@@ -3,12 +3,12 @@
 namespace Modules\Products\Entities;
 
 use App\Http\Filters\Filterable;
-use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Categories\Entities\Category;
-use Modules\Products\Entities\Helpers\ProductHelper;
 use Modules\Stores\Entities\Store;
 use Modules\Support\Traits\Selectable;
+use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
+use Modules\Categories\Entities\Category;
+use Modules\Products\Entities\Helpers\ProductHelper;
 
 /**
  * Class Category.

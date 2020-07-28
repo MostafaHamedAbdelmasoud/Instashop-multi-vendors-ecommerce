@@ -24,8 +24,6 @@ class CustomField extends Model
      */
     public $translatedAttributes = [
         'name',
-        'description',
-        'meta_description',
     ];
 
     /**
@@ -47,12 +45,18 @@ class CustomField extends Model
     public $fillable = [
         'store_id',
         'category_id',
-        'code',
-        'old_price',
-        'price',
-        'weight',
-        'stock',
+        'type',
     ];
+
+    /**
+     * Get the number of models to return per page.
+     *
+     * @return int
+     */
+    public function getPerPage()
+    {
+        return request('perPage', parent::getPerPage());
+    }
 
     /**
      * it defines foreign key in relations.

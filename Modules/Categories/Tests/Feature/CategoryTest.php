@@ -2,11 +2,11 @@
 
 namespace Modules\Categories\Tests\Feature;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
 use Tests\TestCase;
 use Modules\Stores\Entities\Store;
 use Modules\Categories\Entities\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
 class CategoryTest extends TestCase
 {

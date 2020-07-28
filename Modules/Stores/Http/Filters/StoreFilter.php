@@ -24,7 +24,7 @@ class StoreFilter extends BaseFilters
     protected function name($value)
     {
         if ($value) {
-            return $this->builder->whereTranslation('name', 'like', "%$value%");
+            return $this->builder->whereTranslationLike('name', "%$value%");
         }
 
         return $this->builder;

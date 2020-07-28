@@ -23,15 +23,9 @@ return [
     ],
     'attributes' => [
         'name' => 'اسم  الحقل',
-        'category' => 'القسم  ',
-        'code' => 'الكود',
-        'store' =>' المتجر',
-        'description' =>' الوصف',
-        'meta_description' =>' وصف ملخص',
-        'price' =>' السعر ',
-        'old_price' =>' السعر القديم',
-        'weight' =>' الوزن',
-        'stock' =>' الكمية',
+        'category_id' => 'القسم  ',
+        'store_id' => 'المتجر',
+        'type' => 'النوع',
     ],
     'dialogs' => [
         'delete' => [
@@ -40,10 +34,5 @@ return [
             'confirm' => 'حذف',
             'cancel' => 'إلغاء',
         ],
-    ],
-    'units' => [
-        'gram' => 'جرام',
-        'kilo_gram' => 'كيلو جرام',
-        'piece' => 'قطعة',
-    ],
+    ]
 ];

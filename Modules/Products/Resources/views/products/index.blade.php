@@ -16,8 +16,8 @@
             <tr>
                 <th>@lang('products::products.attributes.name')</th>
                 <th>@lang('products::products.attributes.code')</th>
-                <th class="d-none d-md-table-cell">@lang('products::products.attributes.category')</th>
-                <th class="d-none d-md-table-cell">@lang('products::products.attributes.store')</th>
+                <th class="d-none d-md-table-cell">@lang('products::products.attributes.category_id')</th>
+                <th class="d-none d-md-table-cell">@lang('products::products.attributes.store_id')</th>
                 <th class="d-none d-md-table-cell">@lang('products::products.attributes.price')</th>
                 <th class="d-none d-md-table-cell">@lang('products::products.attributes.meta_description')</th>
                 <th style="width: 160px">...</th>
@@ -56,7 +56,6 @@
 
                     <td class="d-none d-md-table-cell">
                         {!! Str::limit($product->meta_description, 25, ' ...') !!}
-                        {{--                        {{}}--}}
                     </td>
 
                     <td style="width: 160px">

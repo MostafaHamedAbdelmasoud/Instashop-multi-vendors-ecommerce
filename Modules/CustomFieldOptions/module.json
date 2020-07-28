@@ -1,0 +1,13 @@
+{
+    "name": "CustomFieldOptions",
+    "alias": "custom_field_options",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\CustomFieldOptions\\Providers\\CustomFieldOptionsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

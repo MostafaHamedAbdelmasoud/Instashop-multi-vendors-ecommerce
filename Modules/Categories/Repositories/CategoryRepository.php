@@ -34,20 +34,18 @@ class CategoryRepository implements CrudRepository
      */
     public function all()
     {
-        return \Modules\Categories\Entities\Category::filter($this->filter)->paginate();
+        return Category::filter($this->filter)->paginate();
     }
 
     /**
      * Save the created model to storage.
      *
      * @param array $data
-     * @return \Modules\Categories\Entities\Category
+     * @return Category
      */
     public function create(array $data)
     {
-        $store = \Modules\Categories\Entities\Category::create($data);
-
-        $this->uploadAvatar($store, $data);
+        $store = Category::create($data);
 
         return $store;
     }
@@ -60,11 +58,11 @@ class CategoryRepository implements CrudRepository
      */
     public function find($model)
     {
-        if ($model instanceof \Modules\Categories\Entities\Category) {
+        if ($model instanceof Category) {
             return $model;
         }
 
-        return \Modules\Categories\Entities\Category::findOrFail($model);
+        return Category::findOrFail($model);
     }
 
     /**
@@ -80,8 +78,6 @@ class CategoryRepository implements CrudRepository
     public function update($model, array $data)
     {
         $store = $this->find($model);
-
-        $this->uploadAvatar($model, $data);
 
         $store->update($data);
 
@@ -100,22 +96,4 @@ class CategoryRepository implements CrudRepository
         $this->find($model)->delete();
     }
 
-    /**
-     * Upload the avatar image.
-     *
-     * @param \Modules\Categories\Entities\Category $store
-     * @param array $data
-     *@throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @return \Modules\Categories\Entities\Category
-     */
-    private function uploadAvatar(\Modules\Categories\Entities\Category $store, array $data)
-    {
-        if (isset($data['store'])) {
-            $store->addMedia($data['store'])->toMediaCollection('stores');
-        }
-
-        return $store;
-    }
 }

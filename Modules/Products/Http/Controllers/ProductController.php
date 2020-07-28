@@ -2,12 +2,12 @@
 
 namespace Modules\Products\Http\Controllers;
 
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Products\Entities\Product;
 use Modules\Accounts\Entities\StoreOwner;
+use Illuminate\Contracts\Foundation\Application;
 use Modules\Products\Http\Requests\ProductRequest;
 use Modules\Products\Repositories\ProductRepository;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -44,8 +44,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate();
-
+        $products = $this->repository->all();
+        
         return view('products::products.index', compact('products'));
     }
 
@@ -68,7 +68,6 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $request->merge(['owner_id' => \Auth::user()->id]);
         $product = $this->repository->create($request->all());
 
         flash(trans('products::products.messages.created'));

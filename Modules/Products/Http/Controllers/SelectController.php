@@ -3,16 +3,15 @@
 namespace Modules\Products\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Modules\Categories\Entities\Category;
-use Modules\Products\Http\Filters\SelectCategoryFilter;
-use Modules\Products\Transformers\SelectCategoryResource;
 use Modules\Stores\Entities\Store;
+use Modules\Categories\Entities\Category;
 use Modules\Products\Transformers\SelectResource;
 use Modules\Products\Http\Filters\SelectStoreFilter;
+use Modules\Products\Http\Filters\SelectCategoryFilter;
+use Modules\Products\Transformers\SelectCategoryResource;
 
 /**
- * Class SelectController
- * @package Modules\Products\Http\Controllers
+ * Class SelectController.
  */
 class SelectController extends Controller
 {

@@ -2,8 +2,8 @@
 
 namespace Modules\Products\Http\Requests;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
 class ProductRequest extends FormRequest
 {

@@ -23,9 +23,9 @@ return [
     ],
     'attributes' => [
         'name' => 'اسم  المنتج',
-        'category' => 'القسم  ',
+        'category_id' => 'القسم  ',
         'code' => 'الكود',
-        'store' =>' المتجر',
+        'store_id' =>' المتجر',
         'description' =>' الوصف',
         'meta_description' =>' وصف ملخص',
         'price' =>' السعر ',

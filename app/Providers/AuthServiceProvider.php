@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Modules\CustomFieldOptions\Entities\CustomFieldOption;
 use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
 use Modules\Accounts\Entities\Admin;
@@ -50,5 +51,6 @@ class AuthServiceProvider extends ServiceProvider
         Category::class => \Modules\Categories\Policies\CategoryPolicy::class,
         Product::class => \Modules\Products\Policies\ProductPolicy::class,
         CustomField::class => \Modules\CustomFields\Policies\CustomFieldPolicy::class,
+        CustomFieldOption::class => \Modules\CustomFieldOptions\Policies\CustomFieldOptionPolicy::class,
     ];
 }

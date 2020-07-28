@@ -6,5 +6,6 @@
     "Front": true,
     "Categories": true,
     "Products": true,
-    "CustomFields": true
+    "CustomFields": true,
+    "CustomFieldOptions": true
 }

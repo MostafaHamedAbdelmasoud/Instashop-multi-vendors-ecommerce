@@ -23,15 +23,9 @@ return [
     ],
     'attributes' => [
         'name' => 'Name',
-        'category' => ' Category ',
-        'code' => 'Code',
-        'store' => 'Store',
-        'description' => ' Description',
-        'meta_description' => ' Meta Description ',
-        'price' => ' Price ',
-        'old_price' => ' Old Price ',
-        'weight' => ' Weight',
-        'stock' => ' Stock',
+        'category_id' => ' Category ',
+        'store_id' => 'Store',
+        'type' => 'Type',
     ],
     'dialogs' => [
         'delete' => [
@@ -40,10 +34,5 @@ return [
             'confirm' => 'Delete',
             'cancel' => 'Cancel',
         ],
-    ],
-    'units' => [
-        'gram' => 'Gram',
-        'kilo_gram' => 'Kilo Gram',
-        'piece' => 'Piece',
-    ],
+    ]
 ];
