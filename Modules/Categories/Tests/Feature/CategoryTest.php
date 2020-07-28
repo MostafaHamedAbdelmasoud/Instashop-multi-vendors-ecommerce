@@ -2,10 +2,10 @@
 
 namespace Modules\Categories\Tests\Feature;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\Categories\Entities\Store;
 use Tests\TestCase;
+use Modules\Categories\Entities\Store;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
 class CategoryTest extends TestCase
 {

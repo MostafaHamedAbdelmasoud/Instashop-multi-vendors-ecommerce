@@ -2,19 +2,21 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Modules\Accounts\Entities\Address;
+use Modules\Stores\Entities\Store;
+use Modules\Accounts\Entities\User;
 use Modules\Accounts\Entities\Admin;
+use Modules\Countries\Entities\City;
+use Modules\Accounts\Entities\Address;
+use Modules\Products\Entities\Product;
 use Modules\Accounts\Entities\Delegate;
-use Modules\Accounts\Entities\ShippingCompany;
-use Modules\Accounts\Entities\ShippingCompanyOwner;
+use Modules\Countries\Entities\Country;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Accounts\Entities\Supervisor;
-use Modules\Accounts\Entities\User;
 use Modules\Categories\Entities\Category;
-use Modules\Countries\Entities\City;
-use Modules\Countries\Entities\Country;
-use Modules\Stores\Entities\Store;
+use Modules\Accounts\Entities\ShippingCompany;
+use Modules\CustomFields\Entities\CustomField;
+use Modules\Accounts\Entities\ShippingCompanyOwner;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -46,5 +48,7 @@ class AuthServiceProvider extends ServiceProvider
         ShippingCompany::class => \Modules\Accounts\Policies\ShippingCompanyPolicy::class,
         Store::class => \Modules\Stores\Policies\StorePolicy::class,
         Category::class => \Modules\Categories\Policies\CategoryPolicy::class,
+        Product::class => \Modules\Products\Policies\ProductPolicy::class,
+        CustomField::class => \Modules\CustomFields\Policies\CustomFieldPolicy::class,
     ];
 }

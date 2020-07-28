@@ -32,7 +32,6 @@ class SelectStoreFilter extends BaseFilters
         return $this->builder;
     }
 
-
     /**
      * Sorting results by the given id.
      *

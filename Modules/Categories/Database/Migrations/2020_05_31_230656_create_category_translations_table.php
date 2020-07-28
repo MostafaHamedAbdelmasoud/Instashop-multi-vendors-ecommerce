@@ -18,7 +18,7 @@ class CreateCategoryTranslationsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('locale')->index();
             $table->string('name');
-            $table->unique(['category_id', 'locale']);
+//            $table->unique(['category_id', 'locale']);
             $table->timestamps();
             $table->foreign('category_id')
                 ->references('id')->on('categories')

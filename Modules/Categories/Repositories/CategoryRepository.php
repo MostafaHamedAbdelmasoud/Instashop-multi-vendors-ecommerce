@@ -2,8 +2,8 @@
 
 namespace Modules\Categories\Repositories;
 
-use Modules\Categories\Entities\Category;
 use Modules\Contracts\CrudRepository;
+use Modules\Categories\Entities\Category;
 use Modules\Categories\Http\Filters\CategoryFilter;
 
 /**
@@ -34,7 +34,7 @@ class CategoryRepository implements CrudRepository
      */
     public function all()
     {
-        return Category::filter($this->filter)->paginate();
+        return \Modules\Categories\Entities\Category::filter($this->filter)->paginate();
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryRepository implements CrudRepository
      */
     public function create(array $data)
     {
-        $store = Category::create($data);
+        $store = \Modules\Categories\Entities\Category::create($data);
 
         $this->uploadAvatar($store, $data);
 
@@ -60,11 +60,11 @@ class CategoryRepository implements CrudRepository
      */
     public function find($model)
     {
-        if ($model instanceof Category) {
+        if ($model instanceof \Modules\Categories\Entities\Category) {
             return $model;
         }
 
-        return Category::findOrFail($model);
+        return \Modules\Categories\Entities\Category::findOrFail($model);
     }
 
     /**
@@ -103,14 +103,14 @@ class CategoryRepository implements CrudRepository
     /**
      * Upload the avatar image.
      *
-     * @param Category $store
+     * @param \Modules\Categories\Entities\Category $store
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     *@throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @return Category
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @return \Modules\Categories\Entities\Category
      */
-    private function uploadAvatar(Category $store, array $data)
+    private function uploadAvatar(\Modules\Categories\Entities\Category $store, array $data)
     {
         if (isset($data['store'])) {
             $store->addMedia($data['store'])->toMediaCollection('stores');

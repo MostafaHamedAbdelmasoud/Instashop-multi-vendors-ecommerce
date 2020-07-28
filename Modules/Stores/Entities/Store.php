@@ -83,7 +83,6 @@ class Store extends Model implements HasMedia
         return $this->belongsTo(StoreOwner::class, 'owner_id', 'id');
     }
 
-
     /**
      * @return float|int
      */

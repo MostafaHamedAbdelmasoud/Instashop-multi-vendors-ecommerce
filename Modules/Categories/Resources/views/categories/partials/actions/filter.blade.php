@@ -6,7 +6,7 @@
 </button>
 
 <div id="popover-content" class="d-none">
-    {{ BsForm::resource('categories::categories')->get(null) }}
+    {{ BsForm::resource('categories::categories')->get(url()->current()) }}
         {{ BsForm::text('name')->value(request('name')) }}
         {{ BsForm::number('perPage')
                 ->value(request('perPage', 15))

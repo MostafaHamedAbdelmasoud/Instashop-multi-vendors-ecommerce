@@ -4,5 +4,7 @@
     "Countries": true,
     "Stores": true,
     "Front": true,
-    "Categories": true
+    "Categories": true,
+    "Products": true,
+    "CustomFields": true
 }

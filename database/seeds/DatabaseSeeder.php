@@ -29,12 +29,15 @@ class DatabaseSeeder extends Seeder
         $this->command->warn('Password : password');
 
         $this->command->warn('Do not consider seed dummy data while in production mode!');
-        $seedDummyData = $this->command->confirm('Are you want to seed dummy data?', false);
-
-        if ($seedDummyData) {
-            $this->call([
-                DummyDataSeeder::class,
-            ]);
-        }
+//        $seedDummyData = $this->command->confirm('Are you want to seed dummy data?', false);
+//
+//        if ($seedDummyData) {
+//            $this->call([
+//                DummyDataSeeder::class,
+//            ]);
+//        }
+        $this->call([
+            DummyDataSeeder::class,
+        ]);
     }
 }

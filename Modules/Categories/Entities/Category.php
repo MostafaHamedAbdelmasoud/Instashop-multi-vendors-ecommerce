@@ -7,6 +7,7 @@ use Modules\Stores\Entities\Store;
 use Modules\Support\Traits\Selectable;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Category.
@@ -51,15 +52,15 @@ class Category extends Model
      */
     protected $dates = ['published_at'];
 
-    /**
-     * it defines foreign key in relations.
-     *
-     * @return string
-     */
-    public function getForeignKey()
-    {
-        return 'category_id';
-    }
+//    /**
+//     * it defines foreign key in relations.
+//     *
+//     * @return string
+//     */
+//    public function getForeignKey()
+//    {
+//        return 'category_id';
+//    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
@@ -70,11 +71,19 @@ class Category extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function subCategories()
     {
         return $this->hasOne(Category::class, 'id', 'parent_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 
     /**

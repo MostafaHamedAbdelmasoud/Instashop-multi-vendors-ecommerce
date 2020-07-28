@@ -18,4 +18,3 @@ use Illuminate\Http\Request;
 //});
 
 Route::get('/select/stores', 'SelectController@index')->name('stores.select');
-

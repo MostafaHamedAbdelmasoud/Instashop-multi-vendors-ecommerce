@@ -2,10 +2,10 @@
 
 namespace Modules\Stores\Tests\Feature;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\Stores\Entities\Store;
 use Tests\TestCase;
+use Modules\Stores\Entities\Store;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
 class StoreTest extends TestCase
 {
@@ -83,7 +83,6 @@ class StoreTest extends TestCase
         $response->assertSee(trans('stores::stores.actions.create'));
     }
 
-
     /** @test */
     public function it_can_display_store_edit_form()
     {
@@ -97,6 +96,7 @@ class StoreTest extends TestCase
 
         $response->assertSee(trans('stores::stores.actions.edit'));
     }
+
 //
 
     /** @test */

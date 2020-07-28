@@ -2,9 +2,9 @@
 
 namespace Modules\Categories\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Accounts\Entities\User;
 use Modules\Categories\Entities\Category;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
  * Class StorePolicy.
@@ -25,13 +25,12 @@ class CategoryPolicy
     /**
      * Determine whether the user can view the store.
      * @param User $user
-     * @param Category $category
+     * @param \Modules\Categories\Entities\Category $category
      * @return bool
      */
     public function view(User $user, Category $category)
     {
-        return true;
-//        return $user->isAdmin() || $user->is($category->store->StoreOwner);
+        return $user->isAdmin() || $user->is($category->store->StoreOwner);
     }
 
     /**
@@ -49,10 +48,10 @@ class CategoryPolicy
      * Determine whether the user can update the address.
      *
      * @param \Modules\Accounts\Entities\User $user
-     * @param Category $category
+     * @param \Modules\Categories\Entities\Category $category
      * @return mixed
      */
-    public function update(User $user, Category $category)
+    public function update(User $user, \Modules\Categories\Entities\Category $category)
     {
         return $user->isAdmin() || $user->is($category->store->storeOwner);
     }
@@ -61,13 +60,11 @@ class CategoryPolicy
      * Determine whether the user can delete the address.
      *
      * @param \Modules\Accounts\Entities\User $user
-     * @param Category $category
+     * @param \Modules\Categories\Entities\Category $category
      * @return mixed
      */
-    public function delete(User $user, Category $category)
+    public function delete(User $user, \Modules\Categories\Entities\Category $category)
     {
-        return true;
-
-//        return $user->isAdmin() || $user->is($category->store->StoreOwner);
+        return $user->isAdmin() || $user->is($category->store->StoreOwner);
     }
 }

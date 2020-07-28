@@ -4,9 +4,10 @@
     @slot('icon', 'fas fa-tachometer-alt')
     @slot('routeActive', 'dashboard.home')
 @endcomponent
-
 @include('countries::sidebar')
 @include('accounts::sidebar')
 @include('stores::sidebar')
 @include('categories::sidebar')
+@include('products::sidebar')
+@include('custom_fields::sidebar')
 

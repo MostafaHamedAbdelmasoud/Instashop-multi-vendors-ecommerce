@@ -4,8 +4,8 @@ namespace Modules\Categories\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Modules\Stores\Entities\Store;
-use Modules\Categories\Http\Filters\SelectStoreFilter;
 use Modules\Categories\Transformers\SelectResource;
+use Modules\Categories\Http\Filters\SelectStoreFilter;
 
 class SelectController extends Controller
 {
@@ -21,6 +21,4 @@ class SelectController extends Controller
 
         return SelectResource::collection($stores);
     }
-
-
 }
