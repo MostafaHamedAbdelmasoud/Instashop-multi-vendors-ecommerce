@@ -18,7 +18,7 @@ class CreateStoresTable extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->integer('rate')->nullable();
             $table->boolean('is_verified')->default(0);
-            $table->string('plan');
+            $table->string('plan')->default('free_plan');
             $table->string('domain')->unique();
             $table->timestamps();
             $table->foreign('owner_id')

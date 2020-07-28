@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('store_id');
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->useCurrent();
             $table->timestamps();
             $table->foreign('store_id')
                 ->references('id')->on('stores')

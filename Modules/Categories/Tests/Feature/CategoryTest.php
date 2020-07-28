@@ -2,148 +2,178 @@
 
 namespace Modules\Categories\Tests\Feature;
 
-use Tests\TestCase;
-use Modules\Categories\Entities\Store;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Astrotomic\Translatable\Validation\RuleFactory;
+use Tests\TestCase;
+use Modules\Stores\Entities\Store;
+use Modules\Categories\Entities\Category;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CategoryTest extends TestCase
 {
     use RefreshDatabase;
 
-//    /** @test */
-//    public function it_can_list_stores()
-//    {
-//        $this->withoutExceptionHandling();
+    /** @test */
+    public function it_can_list_categories()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAsAdmin();
+
+        $store = factory(Store::class)->create([
+            'owner_id' => 1,
+            'domain' => 'facebook',
+        ]);
+
+        factory(Category::class)->create([
+            'name' => 'CategoryTestName',
+            'store_id' => $store->id,
+        ]);
+
+        $response = $this->get(route('dashboard.categories.index'));
+
+        $response->assertSuccessful();
+
+        $response->assertSee('CategoryTestName');
+    }
+
+    /** @test */
+    public function it_can_display_category_details()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAsAdmin();
+
+        $category = factory(Category::class)->create();
+
+        $response = $this->get(route('dashboard.categories.show', $category));
+
+        $response->assertSuccessful();
+
+        $response->assertSee(e($category->name));
+    }
+
+    /** @test */
+    public function it_can_create_a_new_category()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAsAdmin();
+
+        $this->assertEquals(0, Category::count());
+
+        $store = factory(Store::class)->create([
+            'owner_id' => 1,
+            'domain' => 'facebook',
+        ]);
+
+
+        $response = $this->post(
+            route('dashboard.categories.store'),
+            RuleFactory::make(
+                [
+                    '%name%' => 'categoryName',
+                    'store_id' =>$store->id,
+                ]
+            )
+        );
+
+        $response->assertRedirect();
+
+        $this->assertEquals(1, Category::count());
+    }
+
+    /** @test */
+    public function it_can_display_category_create_form()
+    {
+        $this->actingAsAdmin();
+
+        $response = $this->get(route('dashboard.categories.create'));
+
+        $response->assertSuccessful();
+
+        $response->assertSee(trans('categories::categories.actions.create'));
+    }
+
+    /** @test */
+    public function it_can_display_category_edit_form()
+    {
+        $this->actingAsAdmin();
+
+        $store = factory(Store::class)->create([
+            'owner_id' => 1,
+            'domain' => 'facebook',
+        ]);
+
+        $category = factory(Category::class)->create([
+            'name' => 'CategoryTestName',
+            'store_id' => $store->id,
+        ]);
+
+        $response = $this->get(route('dashboard.categories.edit', $category));
+
+        $response->assertSuccessful();
+
+        $response->assertSee(trans('categories::categories.actions.edit'));
+    }
+
 //
-//        $this->actingAsAdmin();
-//
-//        factory(\Modules\Categories\Entities\Store::class)->create(['name' => 'StoreTestName']);
-//
-//        $response = $this->get(route('dashboard.stores.index'));
-//
-//        $response->assertSuccessful();
-//
-//        $response->assertSee('StoreTestName');
-//    }
-//
-//    /** @test */
-//    public function it_can_display_store_details()
-//    {
-//        $this->withoutExceptionHandling();
-//
-//        $this->actingAsAdmin();
-//
-//        $store = factory(Store::class)->create();
-//
-//        $response = $this->get(route('dashboard.stores.show', $store));
-//
-//        $response->assertSuccessful();
-//
-//        $response->assertSee(e($store->name));
-//    }
-//
-//    /** @test */
-//    public function it_can_create_a_new_store()
-//    {
-//        $this->withoutExceptionHandling();
-//
-//        $this->actingAsAdmin();
-//
-//        $this->assertEquals(0, Store::count());
-//
-//        $response = $this->post(
-//            route('dashboard.stores.store'),
-//            RuleFactory::make(
-//                [
-//                    '%name%' => 'storeNamehe',
-//                    'plan' => 'plan1',
-//                    'domain' => 'helloDomaind.com',
-//                    '%description%' => 'it is desc helloDomaind.com',
-//                    '%meta_description%' => 'it is meta_desc helloDomaind.com',
-//                    '%keywords%' => 'it is keywords helloDomaind.com',
-//                ]
-//            )
-//        );
-//
-//        $response->assertRedirect();
-//
-//        $this->assertEquals(1, Store::count());
-//    }
-//
-//    /** @test */
-//    public function it_can_display_store_create_form()
-//    {
-//        $this->actingAsAdmin();
-//
-//        $response = $this->get(route('dashboard.stores.create'));
-//
-//        $response->assertSuccessful();
-//
-//        $response->assertSee(trans('stores::stores.actions.create'));
-//    }
-//
-//
-//    /** @test */
-//    public function it_can_display_store_edit_form()
-//    {
-//        $this->actingAsAdmin();
-//
-//        $store = factory(Store::class)->create();
-//
-//        $response = $this->get(route('dashboard.stores.edit', $store));
-//
-//        $response->assertSuccessful();
-//
-//        $response->assertSee(trans('stores::stores.actions.edit'));
-//    }
-////
-//
-//    /** @test */
-//    public function it_can_update_store()
-//    {
-//        $this->actingAsAdmin();
-//
-//        $this->assertEquals(0, Store::count());
-//
-//        $store = factory(Store::class)->create();
-//
-//        $response = $this->put(
-//            route('dashboard.stores.update', $store),
-//            RuleFactory::make(
-//                [
-//                    '%name%' => 'Egypt',
-//                    'plan' => 'basic',
-//                    'domain' => 'souq.com',
-//                    '%description%' => 'it is description',
-//                    '%meta_description%' => 'it is meta description',
-//                    '%keywords%' => 'souq e-commerce',
-//                ]
-//            )
-//        );
-//
-//        $store->refresh();
-//
-//        $response->assertRedirect();
-//
-//        $this->assertEquals($store->name, 'Egypt');
-//    }
-//
-//    /** @test */
-//    public function it_can_delete_store()
-//    {
-//        $this->withoutExceptionHandling();
-//
-//        $this->actingAsAdmin();
-//
-//        $store = factory(Store::class)->create();
-////        dd(Store::first());
-//        $this->assertEquals(Store::count(), 2);
-//
-//        $response = $this->delete(route('dashboard.stores.destroy', $store));
-//
-//        $response->assertRedirect();
-//
-//        $this->assertEquals(Store::count(), 1);
-//    }
+
+    /** @test */
+    public function it_can_update_category()
+    {
+        $this->actingAsAdmin();
+
+        $this->assertEquals(0, Category::count());
+
+        $store = factory(Store::class)->create([
+            'owner_id' => 1,
+            'domain' => 'facebook',
+        ]);
+
+        $category = factory(Category::class)->create([
+            'name' => 'CategoryTestName',
+            'store_id' => $store->id,
+        ]);
+
+        $response = $this->put(
+            route('dashboard.categories.update', $category),
+            RuleFactory::make(
+                [
+                    '%name%' => 'CategoryName2',
+                ]
+            )
+        );
+
+        $category->refresh();
+
+        $response->assertRedirect();
+
+        $this->assertEquals($category->name, 'CategoryName2');
+    }
+
+    /** @test */
+    public function it_can_delete_category()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAsAdmin();
+
+        $store = factory(Store::class)->create([
+            'owner_id' => 1,
+            'domain' => 'facebook',
+        ]);
+
+        $category = factory(Category::class)->create([
+            'name' => 'CategoryTestName',
+            'store_id' => $store->id,
+        ]);
+
+        $this->assertEquals(Category::count(), 1);
+
+        $response = $this->delete(route('dashboard.categories.destroy', $category));
+
+        $response->assertRedirect();
+
+        $this->assertEquals(Category::count(), 0);
+    }
 }

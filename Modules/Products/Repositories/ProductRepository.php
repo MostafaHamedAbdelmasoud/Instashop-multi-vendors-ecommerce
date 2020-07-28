@@ -72,10 +72,10 @@ class ProductRepository implements CrudRepository
      *
      * @param mixed $model
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return \Illuminate\Database\Eloquent\Model
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @return \Illuminate\Database\Eloquent\Model
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      */
     public function update($model, array $data)
     {
@@ -92,8 +92,8 @@ class ProductRepository implements CrudRepository
      * Delete the given client from storage.
      *
      * @param mixed $model
-     * @throws \Exception
      * @return void
+     * @throws \Exception
      */
     public function delete($model)
     {
@@ -103,19 +103,16 @@ class ProductRepository implements CrudRepository
     /**
      * Upload the avatar image.
      *
-     * @param Product $store
+     * @param Product $product
      * @param array $data
      * @return Product
-     *@throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      */
-    private function uploadAvatar(Product $store, array $data)
+    private function uploadAvatar(Product $product, array $data)
     {
         if (isset($data['store'])) {
-            $store->addMedia($data['store'])->toMediaCollection('stores');
+            $product->addMedia($data['store'])->toMediaCollection('stores');
         }
 
-        return $store;
+        return $product;
     }
 }

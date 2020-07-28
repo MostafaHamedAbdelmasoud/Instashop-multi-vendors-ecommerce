@@ -4,6 +4,7 @@
 
 use Faker\Generator as Faker;
 use Modules\Accounts\Entities\Helpers\helpers;
+use Modules\Stores\Entities\Store;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use Modules\Accounts\Entities\Helpers\helpers;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(\Modules\Stores\Entities\Store::class, function (Faker $faker) {
+$factory->define(Store::class, function (Faker $faker) {
     $h = new helpers();
 
     return [

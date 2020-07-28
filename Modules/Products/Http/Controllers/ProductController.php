@@ -2,7 +2,9 @@
 
 namespace Modules\Products\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Products\Entities\Product;
 use Modules\Accounts\Entities\StoreOwner;
@@ -21,14 +23,14 @@ class ProductController extends Controller
     /**
      * The repository instance.
      *
-     * @var \Modules\Products\Repositories\ProductRepository
+     * @var ProductRepository
      */
     private $repository;
 
     /**
      * StoreOwnerController constructor.
      *
-     * @param \Modules\Products\Repositories\ProductRepository $repository
+     * @param ProductRepository $repository
      */
     public function __construct(ProductRepository $repository)
     {
@@ -38,7 +40,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -50,7 +52,7 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -107,7 +109,7 @@ class ProductController extends Controller
      *
      * @param StoreOwner $storeOwner
      * @param Product $product
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(StoreOwner $storeOwner, Product $product)
     {

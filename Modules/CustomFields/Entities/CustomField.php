@@ -61,7 +61,7 @@ class CustomField extends Model
      */
     public function getForeignKey()
     {
-        return 'product_id';
+        return 'custom_field_id';
     }
 
     /**

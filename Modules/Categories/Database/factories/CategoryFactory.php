@@ -32,9 +32,9 @@ $factory->define(Category::class, function (Faker $faker) {
 
 
 
-
-$factory->afterCreating(Category::class, function (Category $category) {
-    factory(\Modules\Products\Entities\Product::class)->create([
-        'category_id' => $category->id,
-    ]);
-});
+//
+//$factory->afterCreating(Category::class, function (Category $category) {
+//    factory(\Modules\Products\Entities\Product::class)->create([
+//        'category_id' => $category->id,
+//    ]);
+//});
