@@ -6,21 +6,21 @@
 
 
 <select2
-    name="category_id"
-    label="@lang('categories::categories.singular')"
-    placeholder="@lang('categories::categories.select')"
-    remote-url="{{ route('categories.select') }}"
-    value="{{ $customField->category_id ?? old('category_id') }}"
+    name="product_id"
+    label="@lang('products::products.singular')"
+    placeholder="@lang('products::products.select')"
+    remote-url="{{ route('products.select') }}"
+    value="{{ $customField->product_id ?? old('product_id') }}"
 ></select2>
 
 <select2
-    name="store_id"
-    label="@lang('stores::stores.singular')"
-    placeholder="@lang('stores::stores.select')"
-    remote-url="{{ route('stores.select') }}"
-    value="{{ $customField->store_id ?? old('store_id') }}"
+    name="custom_field_id"
+    label="@lang('custom_fields::custom_fields.singular')"
+    placeholder="@lang('custom_fields::custom_fields.select')"
+    remote-url="{{ route('custom_fields.select') }}"
+    value="{{ $customField->custom_field_id ?? old('custom_field_id') }}"
 ></select2>
 
-{{ BsForm::text('type') }}
+{{ BsForm::text('additional_price') }}
 
 

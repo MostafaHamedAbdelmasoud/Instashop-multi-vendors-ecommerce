@@ -3,7 +3,7 @@
     @slot('url', 'custom_field_options')
     @slot('name', trans('custom_field_options::custom_field_options.plural'))
     @slot('isActive', request()->routeIs('custom_field_options*'))
-    @slot('icon', 'fas fa-edit')
+    @slot('icon', 'fas fa-house-user')
     @slot('tree', [
         [
             'name' => trans('custom_field_options::custom_field_options.actions.list'),

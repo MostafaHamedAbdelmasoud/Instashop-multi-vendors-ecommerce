@@ -22,7 +22,7 @@ return [
         'deleted' => 'تم حذف خصائص الحقل بنجاح .',
     ],
     'attributes' => [
-        'name' => 'اسم  خصائص الحقل',
+        'name' => 'اسم  الخاصية',
         'product_id' => 'المنتج',
         'custom_field_id' => 'الحقل',
         'additional_price' => 'القيمة الإضافية',

@@ -18,30 +18,30 @@
 
 
                         <tr>
-                            <th width="200">@lang('custom_field_options::custom_field_options.attributes.category_id')</th>
+                            <th width="200">@lang('custom_field_options::custom_field_options.attributes.custom_field_id')</th>
                             <td>
-                                <a href="{{ route('dashboard.categories.show', $customFieldOption->category) }}"
+                                <a href="{{ route('dashboard.custom_fields.show', $customFieldOption->customField) }}"
                                    class="text-decoration-none text-ellipsis">
-                                    {{$customFieldOption->getCategoryOfCustomField()}}
+                                    {{$customFieldOption->getCustomFieldName()}}
                                 </a>
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('custom_field_options::custom_field_options.attributes.store_id')</th>
+                            <th width="200">@lang('custom_field_options::custom_field_options.attributes.product_id')</th>
                             <td>
-                                <a href="{{ route('dashboard.stores.show', $customFieldOption->store) }}"
+                                <a href="{{ route('dashboard.products.show', $customFieldOption->product) }}"
                                    class="text-decoration-none text-ellipsis">
-                                    {{$customFieldOption->getStoreOfCustomField()}}
+                                    {{$customFieldOption->getCustomFieldOptionProductName()}}
                                 </a>
                             </td>
                         </tr>
 
 
                         <tr>
-                            <th width="200">@lang('custom_field_options::custom_field_options.attributes.type')</th>
+                            <th width="200">@lang('custom_field_options::custom_field_options.attributes.additional_price')</th>
                             <td>
-                                {{$customFieldOption->type}}
+                                {{$customFieldOption->additional_price}}
                             </td>
                         </tr>
 

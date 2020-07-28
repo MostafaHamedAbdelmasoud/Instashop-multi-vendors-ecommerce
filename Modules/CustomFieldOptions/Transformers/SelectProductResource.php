@@ -5,7 +5,7 @@ namespace Modules\CustomFieldOptions\Transformers;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \Modules\CustomFieldOptions\Entities\Country */
-class SelectResource extends JsonResource
+class SelectProductResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +18,6 @@ class SelectResource extends JsonResource
         return [
             'id' => $this->id,
             'text' => $this->name,
-            'image' => $this->getFirstMediaUrl('stores'),
         ];
     }
 }

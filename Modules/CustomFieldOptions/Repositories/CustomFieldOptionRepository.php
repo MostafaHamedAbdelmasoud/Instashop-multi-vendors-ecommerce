@@ -34,7 +34,6 @@ class CustomFieldOptionRepository implements CrudRepository
      */
     public function all()
     {
-//        dd($this->filter);
         return CustomFieldOption::filter($this->filter)->paginate();
     }
 

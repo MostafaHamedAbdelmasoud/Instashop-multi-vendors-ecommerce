@@ -10,12 +10,12 @@ Breadcrumbs::for('dashboard.custom_field_options.create', function ($breadcrumb)
     $breadcrumb->push(trans('custom_field_options::custom_field_options.actions.create'), route('dashboard.custom_field_options.create'));
 });
 
-Breadcrumbs::for('dashboard.custom_field_options.show', function ($breadcrumb, $customField) {
+Breadcrumbs::for('dashboard.custom_field_options.show', function ($breadcrumb, $customFieldOption) {
     $breadcrumb->parent('dashboard.custom_field_options.index');
-    $breadcrumb->push($customField->name, route('dashboard.custom_field_options.show', $customField));
+    $breadcrumb->push($customFieldOption->name, route('dashboard.custom_field_options.show', $customFieldOption));
 });
 
-Breadcrumbs::for('dashboard.custom_field_options.edit', function ($breadcrumb, $customField) {
-    $breadcrumb->parent('dashboard.custom_field_options.show', $customField);
-    $breadcrumb->push(trans('custom_field_options::custom_field_options.actions.edit'), route('dashboard.custom_field_options.edit', $customField));
+Breadcrumbs::for('dashboard.custom_field_options.edit', function ($breadcrumb, $customFieldOption) {
+    $breadcrumb->parent('dashboard.custom_field_options.show', $customFieldOption);
+    $breadcrumb->push(trans('custom_field_options::custom_field_options.actions.edit'), route('dashboard.custom_field_options.edit', $customFieldOption));
 });

@@ -2,7 +2,6 @@
 
 namespace Modules\CustomFieldOptions\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Accounts\Entities\StoreOwner;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -32,7 +31,7 @@ class CustomFieldOptionController extends Controller
      */
     public function __construct(CustomFieldOptionRepository $repository)
     {
-        $this->authorizeResource(CustomFieldOption::class, 'custom_field');
+        $this->authorizeResource(CustomFieldOption::class, 'custom_field_option');
 
         $this->repository = $repository;
     }
@@ -59,9 +58,7 @@ class CustomFieldOptionController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param \Modules\CustomFieldOptions\Http\Requests\CustomFieldOptionRequest $request
-     * @param \Modules\CustomFieldOptions\Entities\StoreOwner $customFieldOptionOwner
+     * @param CustomFieldOptionRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CustomFieldOptionRequest $request)
@@ -87,15 +84,14 @@ class CustomFieldOptionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     *
-     * @param Request $request
+     * @param CustomFieldOptionRequest $request
      * @param CustomFieldOption $customFieldOption
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, CustomFieldOption $customFieldOption)
+    public function update(CustomFieldOptionRequest $request, CustomFieldOption $customFieldOption)
     {
         $this->repository->update($customFieldOption, $request->all());
 

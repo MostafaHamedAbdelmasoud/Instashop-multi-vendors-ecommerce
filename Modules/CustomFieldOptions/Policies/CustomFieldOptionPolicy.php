@@ -25,12 +25,12 @@ class CustomFieldOptionPolicy
     /**
      * Determine whether the user can view the store.
      * @param User $user
-     * @param CustomFieldOption $customField
+     * @param CustomFieldOption $customFieldOption
      * @return bool
      */
-    public function view(User $user, CustomFieldOption $customField)
+    public function view(User $user, CustomFieldOption $customFieldOption)
     {
-        return $user->isAdmin() || $user->is($customField->store->StoreOwner);
+        return $user->isAdmin() || $user->is($customFieldOption->product->store->StoreOwner);
     }
 
     /**
@@ -48,23 +48,23 @@ class CustomFieldOptionPolicy
      * Determine whether the user can update the address.
      *
      * @param \Modules\Accounts\Entities\User $user
-     * @param CustomFieldOption $customField
+     * @param CustomFieldOption $customFieldOption
      * @return mixed
      */
-    public function update(User $user, CustomFieldOption $customField)
+    public function update(User $user, CustomFieldOption $customFieldOption)
     {
-        return $user->isAdmin() || $user->is($customField->store->StoreOwner);
+        return $user->isAdmin() || $user->is($customFieldOption->product->store->StoreOwner);
     }
 
     /**
      * Determine whether the user can delete the address.
      *
      * @param \Modules\Accounts\Entities\User $user
-     * @param CustomFieldOption $customField
+     * @param CustomFieldOption $customFieldOption
      * @return mixed
      */
-    public function delete(User $user, CustomFieldOption $customField)
+    public function delete(User $user, CustomFieldOption $customFieldOption)
     {
-        return $user->isAdmin() || $user->is($customField->store->StoreOwner);
+        return $user->isAdmin() || $user->is($customFieldOption->product->store->StoreOwner);
     }
 }

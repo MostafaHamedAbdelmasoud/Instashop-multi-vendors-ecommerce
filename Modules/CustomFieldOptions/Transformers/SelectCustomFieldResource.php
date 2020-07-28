@@ -1,11 +1,10 @@
 <?php
 
-namespace Modules\Countries\Transformers;
+namespace Modules\CustomFieldOptions\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \Modules\Countries\Entities\City */
-class SelectCityResource extends JsonResource
+class SelectCustomFieldResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +16,7 @@ class SelectCityResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'text' => $this->country->name.' - '.$this->name,
-            'image' => $this->country->getFirstMediaUrl('flags'),
+            'text' => $this->name,
         ];
     }
 }

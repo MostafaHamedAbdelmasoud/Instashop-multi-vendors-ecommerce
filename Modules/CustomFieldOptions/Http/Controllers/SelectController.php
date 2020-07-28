@@ -3,12 +3,12 @@
 namespace Modules\CustomFieldOptions\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Modules\Stores\Entities\Store;
-use Modules\Categories\Entities\Category;
-use Modules\CustomFieldOptions\Transformers\SelectResource;
-use Modules\CustomFieldOptions\Http\Filters\SelectStoreFilter;
-use Modules\CustomFieldOptions\Http\Filters\SelectCategoryFilter;
-use Modules\CustomFieldOptions\Transformers\SelectCategoryResource;
+use Modules\Products\Entities\Product;
+use Modules\CustomFields\Entities\CustomField;
+use Modules\CustomFieldOptions\Http\Filters\SelectProductFilter;
+use Modules\CustomFieldOptions\Transformers\SelectProductResource;
+use Modules\CustomFieldOptions\Http\Filters\SelectCustomFieldFilter;
+use Modules\CustomFieldOptions\Transformers\SelectCustomFieldResource;
 
 /**
  * Class SelectController.
@@ -18,26 +18,26 @@ class SelectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  \Modules\CustomFieldOptions\Http\Filters\SelectStoreFilter  $filter
+     * @param  \Modules\CustomFieldOptions\Http\Filters\SelectProductFilter  $filter
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(SelectStoreFilter $filter)
+    public function select_product(SelectProductFilter $filter)
     {
-        $stores = Store::filter($filter)->paginate();
+        $products = Product::filter($filter)->paginate();
 
-        return SelectResource::collection($stores);
+        return SelectProductResource::collection($products);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @param  \Modules\CustomFieldOptions\Http\Filters\SelectStoreFilter  $filter
+     * @param  \Modules\CustomFieldOptions\Http\Filters\SelectProductFilter  $filter
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function select_category(SelectCategoryFilter $filter)
+    public function select_custom_field(SelectCustomFieldFilter $filter)
     {
-        $category= Category::filter($filter)->paginate();
+        $customField= CustomField::filter($filter)->paginate();
 
-        return SelectCategoryResource::collection($category);
+        return SelectCustomFieldResource::collection($customField);
     }
 }

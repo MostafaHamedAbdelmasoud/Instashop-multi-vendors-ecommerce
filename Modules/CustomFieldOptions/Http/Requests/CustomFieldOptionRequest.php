@@ -6,8 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Astrotomic\Translatable\Validation\RuleFactory;
 
 /**
- * Class CustomFieldRequest
- * @package Modules\CustomFieldOptions\Http\Requests
+ * Class CustomFieldOptionRequest.
  */
 class CustomFieldOptionRequest extends FormRequest
 {
@@ -45,9 +44,9 @@ class CustomFieldOptionRequest extends FormRequest
         return RuleFactory::make(
             [
                 '%name%' => ['required', 'string'],
-                'store_id' => ['required', 'exists:stores,id'],
-                'category_id' => ['required', 'exists:categories,id'],
-                'type' => ['required', 'string', 'max:30', 'min:1'],
+                'product_id' => ['required', 'exists:products,id'],
+                'custom_field_id' => ['required', 'exists:custom_fields,id'],
+                'additional_price' => ['required', 'numeric', 'max:1e7', 'min:1'],
             ]
         );
     }
@@ -62,10 +61,9 @@ class CustomFieldOptionRequest extends FormRequest
         return RuleFactory::make(
             [
                 '%name%' => ['required', 'string'],
-                'store_id' => ['required', 'exists:stores,id,' . $this->route('product')->id],
-                'category_id' => ['required', 'exists:categories,id,' . $this->route('product')->id],
-                'type' => ['required', 'string', 'max:30', 'min:1'],
-
+                'product_id' => ['required', 'exists:products,id,' . $this->route('custom_field_option')->id],
+                'custom_field_id' => ['required', 'exists:custom_fields,id,' . $this->route('custom_field_option')->id],
+                'additional_price' => ['required', 'numeric', 'max:1e7', 'min:1'],
             ]
         );
     }
@@ -77,7 +75,6 @@ class CustomFieldOptionRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('custom_fields::custom_fields.attributes');
+        return trans('custom_field_options::custom_field_options.attributes');
     }
-
 }

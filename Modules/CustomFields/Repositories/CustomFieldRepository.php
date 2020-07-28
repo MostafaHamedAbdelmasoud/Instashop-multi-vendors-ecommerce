@@ -34,7 +34,6 @@ class CustomFieldRepository implements CrudRepository
      */
     public function all()
     {
-//        dd($this->filter);
         return CustomField::filter($this->filter)->paginate();
     }
 
@@ -46,7 +45,6 @@ class CustomFieldRepository implements CrudRepository
      */
     public function create(array $data)
     {
-//        dd($data);
         $customField = CustomField::create($data);
 
         return $customField;

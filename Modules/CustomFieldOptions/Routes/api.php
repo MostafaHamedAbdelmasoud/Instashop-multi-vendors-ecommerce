@@ -17,5 +17,5 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::get('/select/stores', 'SelectController@index')->name('stores.select');
-Route::get('/select/categories', 'SelectController@select_category')->name('categories.select');
+Route::get('/select/products', 'SelectController@select_product')->name('products.select');
+Route::get('/select/custom_fields', 'SelectController@select_custom_field')->name('custom_fields.select');

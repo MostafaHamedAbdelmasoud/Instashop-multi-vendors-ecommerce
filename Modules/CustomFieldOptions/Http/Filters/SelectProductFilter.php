@@ -5,7 +5,7 @@ namespace Modules\CustomFieldOptions\Http\Filters;
 use Illuminate\Support\Arr;
 use App\Http\Filters\BaseFilters;
 
-class SelectStoreFilter extends BaseFilters
+class SelectProductFilter extends BaseFilters
 {
     /**
      * Registered filters to operate upon.
