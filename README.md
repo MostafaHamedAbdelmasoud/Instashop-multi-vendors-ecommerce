@@ -7,6 +7,44 @@ it's a multi-vendors ecommerce website built from scratch with laravel, and it i
 
 
 
+    
+ 
+
+<table>
+    <thead>
+        <th>home</th>
+        <th>dashboard arabic</th>
+    </thead>
+    <tbody>
+          <tr> 
+              <td>
+                <img src="/visual/home.png"/>
+              </td> 
+              <td> 
+                <img src="/visual/dashboard-ar.png"/>
+              </td> 
+             </td> 
+        </tr>
+    </tbody>
+    </table>
+    <table>
+    <thead>
+        <th>dashboard english</th>
+        <th>chat</th>
+    </thead>
+    <tbody>
+          <tr> 
+               <td>
+                <img src="/visual/dashboard-en.png"/>
+             </td> 
+              <td>  
+                  <img src="/visual/chat.png"/>
+              </td>
+        <tr>  
+    </tbody>
+    </table>
+
+
 <table>
     <thead>
         <th>packages</th>
