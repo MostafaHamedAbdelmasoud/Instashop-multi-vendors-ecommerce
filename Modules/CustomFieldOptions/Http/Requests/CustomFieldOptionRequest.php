@@ -61,8 +61,8 @@ class CustomFieldOptionRequest extends FormRequest
         return RuleFactory::make(
             [
                 '%name%' => ['required', 'string'],
-                'product_id' => ['required', 'exists:products,id,' . $this->route('custom_field_option')->id],
-                'custom_field_id' => ['required', 'exists:custom_fields,id,' . $this->route('custom_field_option')->id],
+                'product_id' => ['required', 'exists:products,id'],
+                'custom_field_id' => ['required', 'exists:custom_fields,id'],
                 'additional_price' => ['required', 'numeric', 'max:1e7', 'min:1'],
             ]
         );

@@ -2,19 +2,21 @@
 
 namespace Modules\CustomFieldOptions\Tests\Feature;
 
+use Modules\CustomFields\Entities\CustomField;
+use Modules\Products\Entities\Product;
 use Tests\TestCase;
 use Modules\Stores\Entities\Store;
 use Modules\Categories\Entities\Category;
-use Modules\CustomFieldOptions\Entities\CustomFieldOptions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Astrotomic\Translatable\Validation\RuleFactory;
+use Modules\CustomFieldOptions\Entities\CustomFieldOption;
 
-class CustomFieldTest extends TestCase
+class CustomFieldOptionTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_can_list_custom_fields()
+    public function it_can_list_custom_field_options()
     {
         $this->withoutExceptionHandling();
 
@@ -27,14 +29,25 @@ class CustomFieldTest extends TestCase
 
         $category = factory(Category::class)->create(['store_id' => 1]);
 
-        factory(CustomFieldOptions::class)->create([
-            'name' => 'CustomFieldTestName',
-            'type' => 'Writing',
-            'category_id' => $category->id,
-            'store_id' => $store->id,
+        $product = factory(Product::class)->create([
+            'category_id' => 1,
+            'store_id' => 1,
         ]);
 
-        $response = $this->get(route('dashboard.custom_fields.index'));
+        $custom_field = factory(CustomField::class)->create([
+            'category_id' => 1,
+            'name' => 'cutom_test',
+            'store_id' => 1,
+        ]);
+
+
+        factory(CustomFieldOption::class)->create([
+            'name' => 'CustomFieldTestName',
+            'product_id' => $product->id,
+            'custom_field_id' => $custom_field->id,
+        ]);
+
+        $response = $this->get(route('dashboard.custom_field_options.index'));
 
         $response->assertSuccessful();
 
@@ -42,21 +55,44 @@ class CustomFieldTest extends TestCase
     }
 
     /* @test */
-//    public function it_can_display_custom_field_details()
-//    {
-//        $this->withoutExceptionHandling();
-//
-//        $this->actingAsAdmin();
-//
-//        $custom_field = factory(CustomField::class)->create();
-//
-//        $response = $this->get(route('dashboard.custom_fields.show', $custom_field));
-//
-//        $response->assertSuccessful();
-//
-//        $response->assertSee(e($custom_field->name));
-//    }
-//
+    public function it_can_display_custom_field_option_details()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAsAdmin();
+
+        $store = factory(Store::class)->create([
+            'owner_id' => 1,
+            'domain' => 'facebook',
+        ]);
+
+        $category = factory(Category::class)->create(['store_id' => 1]);
+
+        $product = factory(Product::class)->create([
+            'category_id' => 1,
+            'store_id' => 1,
+        ]);
+
+        $custom_field = factory(CustomField::class)->create([
+            'category_id' => 1,
+            'name' => 'cutom_test',
+            'store_id' => 1,
+        ]);
+
+
+         $custom_field_option =factory(CustomFieldOption::class)->create([
+            'name' => 'CustomFieldTestName',
+            'product_id' => $product->id,
+            'custom_field_id' => $custom_field->id,
+        ]);
+
+        $response = $this->get(route('dashboard.custom_field_options.show', $custom_field_option));
+
+        $response->assertSuccessful();
+
+        $response->assertSee(e($custom_field_option->name));
+    }
+
 //    /** @test */
 //    public function it_can_create_a_new_custom_field()
 //    {
@@ -74,7 +110,7 @@ class CustomFieldTest extends TestCase
 //        $category = factory(Category::class)->create(['store_id' => 1]);
 //
 //        $response = $this->post(
-//            route('dashboard.custom_fields.store'),
+//            route('dashboard.custom_field_options.store'),
 //            RuleFactory::make(
 //                [
 //                    '%name%' => 'custom_fieldName',
@@ -101,11 +137,11 @@ class CustomFieldTest extends TestCase
 //    {
 //        $this->actingAsAdmin();
 //
-//        $response = $this->get(route('dashboard.custom_fields.create'));
+//        $response = $this->get(route('dashboard.custom_field_options.create'));
 //
 //        $response->assertSuccessful();
 //
-//        $response->assertSee(trans('custom_fields::custom_fields.actions.create'));
+//        $response->assertSee(trans('custom_field_options::custom_field_options.actions.create'));
 //    }
 //
 //    /** @test */
@@ -115,11 +151,11 @@ class CustomFieldTest extends TestCase
 //
 //        $custom_field = factory(CustomField::class)->create();
 //
-//        $response = $this->get(route('dashboard.custom_fields.edit', $custom_field));
+//        $response = $this->get(route('dashboard.custom_field_options.edit', $custom_field));
 //
 //        $response->assertSuccessful();
 //
-//        $response->assertSee(trans('custom_fields::custom_fields.actions.edit'));
+//        $response->assertSee(trans('custom_field_options::custom_field_options.actions.edit'));
 //    }
 //
 //    /** @test */
@@ -132,7 +168,7 @@ class CustomFieldTest extends TestCase
 //        $custom_field = factory(CustomField::class)->create();
 //
 //        $response = $this->put(
-//            route('dashboard.custom_fields.update', $custom_field),
+//            route('dashboard.custom_field_options.update', $custom_field),
 //            RuleFactory::make(
 //                [
 //                    '%name%' => 'customFieldName2',
@@ -167,7 +203,7 @@ class CustomFieldTest extends TestCase
 //
 //        $this->assertEquals(CustomField::count(), 1);
 //
-//        $response = $this->delete(route('dashboard.custom_fields.destroy', $custom_field));
+//        $response = $this->delete(route('dashboard.custom_field_options.destroy', $custom_field));
 //
 //        $response->assertRedirect();
 //

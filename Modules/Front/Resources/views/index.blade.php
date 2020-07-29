@@ -12,10 +12,10 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <h1 class="font-18 font-lg-30 font-xl-40 title-icons primary mb-0">
-                            <span>طور عملك وزود مبيعاتك الأن ! </span>
+                            <span>طور عملك و زود مبيعاتك الأن ! </span>
                         </h1>
                         <p class="font-15 font-lg-21 mb-44">
-                            جميع الأدوات التي تحتاجها لبناء متجر الإلكتروني احترافي
+                            جميع الأشياء التي تريدها لبناء متجر الإلكتروني احترافي خاص بك
                         </p>
                         <a href="#" class="btn btn-primary btn-mw200 rounded-pill btn-lg">أنشئ متجر مجانا</a>
                     </div>

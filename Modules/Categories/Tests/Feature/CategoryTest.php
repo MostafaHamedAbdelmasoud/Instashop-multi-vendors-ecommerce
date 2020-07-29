@@ -19,15 +19,9 @@ class CategoryTest extends TestCase
 
         $this->actingAsAdmin();
 
-        $store = factory(Store::class)->create([
-            'owner_id' => 1,
-            'domain' => 'facebook',
-        ]);
+        $store = factory(Store::class)->create(['owner_id' => 1, 'domain' => 'facebook', ]);
 
-        factory(Category::class)->create([
-            'name' => 'CategoryTestName',
-            'store_id' => $store->id,
-        ]);
+        factory(Category::class)->create(['name' => 'CategoryTestName','store_id' => $store->id,]);
 
         $response = $this->get(route('dashboard.categories.index'));
 
