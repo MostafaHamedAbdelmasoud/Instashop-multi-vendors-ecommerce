@@ -2,11 +2,11 @@
 
 namespace Modules\CustomFieldOptions\Tests\Feature;
 
-use Modules\CustomFields\Entities\CustomField;
-use Modules\Products\Entities\Product;
 use Tests\TestCase;
 use Modules\Stores\Entities\Store;
+use Modules\Products\Entities\Product;
 use Modules\Categories\Entities\Category;
+use Modules\CustomFields\Entities\CustomField;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Modules\CustomFieldOptions\Entities\CustomFieldOption;
@@ -80,7 +80,7 @@ class CustomFieldOptionTest extends TestCase
         ]);
 
 
-         $custom_field_option =factory(CustomFieldOption::class)->create([
+        $custom_field_option =factory(CustomFieldOption::class)->create([
             'name' => 'CustomFieldTestName',
             'product_id' => $product->id,
             'custom_field_id' => $custom_field->id,

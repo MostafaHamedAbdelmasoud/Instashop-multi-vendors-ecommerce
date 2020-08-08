@@ -2,14 +2,14 @@
 
 namespace Modules\Categories\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Categories\Entities\Category;
 use Modules\Categories\Http\Requests\CategoryRequest;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Modules\Categories\Repositories\CategoryRepository;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
  * Class CategoryController.
@@ -92,7 +92,7 @@ class CategoryController extends Controller
      * @param \Modules\Categories\Entities\Store $category
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         $this->repository->update($category, $request->all());
 
@@ -118,8 +118,8 @@ class CategoryController extends Controller
      *
      * @param \Modules\Categories\Entities\StoreOwner $categoryOwner
      * @param \Modules\Categories\Entities\Store $category
-     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(StoreOwner $storeOwner, Category $category)
     {

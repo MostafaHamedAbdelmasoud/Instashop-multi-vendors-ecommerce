@@ -14,7 +14,7 @@ class AddressTest extends TestCase
     /** @test */
     public function it_can_display_list_of_customer_addresses()
     {
-        $this->withoutExceptionHandling();
+//        $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 

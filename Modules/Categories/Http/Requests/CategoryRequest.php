@@ -41,7 +41,7 @@ class CategoryRequest extends FormRequest
         return RuleFactory::make(
             [
                 '%name%' => ['required', 'string'],
-                'store_id' => ['required', 'exists:categories,id'],
+                'store_id' => ['required', 'exists:stores,id'],
             ]
         );
     }
@@ -56,7 +56,7 @@ class CategoryRequest extends FormRequest
         return RuleFactory::make(
             [
                 '%name%' => ['required', 'string'],
-                'store_id' => ['required', 'exists:categories,id,'. $this->route('store')->id],
+                'store_id' => ['required', 'exists:stores,id'],
 
             ]
         );

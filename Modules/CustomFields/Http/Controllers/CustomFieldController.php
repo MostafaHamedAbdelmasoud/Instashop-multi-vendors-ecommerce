@@ -115,8 +115,8 @@ class CustomFieldController extends Controller
      *
      * @param \Modules\Accounts\Entities\StoreOwner $storeOwner
      * @param \Modules\CustomFields\Entities\CustomField $customField
-     * @return \Illuminate\Http\RedirectResponse
      *@throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(StoreOwner $storeOwner, CustomField $customField)
     {

@@ -34,5 +34,5 @@ return [
             'confirm' => 'Delete',
             'cancel' => 'Cancel',
         ],
-    ]
+    ],
 ];

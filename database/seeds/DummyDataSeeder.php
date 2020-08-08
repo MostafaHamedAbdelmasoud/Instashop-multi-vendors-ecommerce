@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Modules\CustomFieldOptions\Database\Seeders\CustomFieldOptionTableSeeder;
 use Modules\Stores\Database\Seeders\StoresTableSeeder;
 use Modules\Products\Database\Seeders\ProductTableSeeder;
 use Modules\Categories\Database\Seeders\CategoriesTableSeeder;
 use Modules\CustomFields\Database\Seeders\CustomFieldTableSeeder;
 use Modules\Accounts\Database\Seeders\ShippingCompaniesTableSeeder;
+use Modules\Subscriptions\Database\Seeders\SubscriptionTableSeeder;
+use Modules\CustomFieldOptions\Database\Seeders\CustomFieldOptionTableSeeder;
 
 class DummyDataSeeder extends Seeder
 {
@@ -26,5 +27,6 @@ class DummyDataSeeder extends Seeder
         $this->call(ProductTableSeeder::class);
         $this->call(CustomFieldTableSeeder::class);
         $this->call(CustomFieldOptionTableSeeder::class);
+        $this->call(SubscriptionTableSeeder::class);
     }
 }

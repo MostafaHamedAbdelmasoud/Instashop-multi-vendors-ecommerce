@@ -3,6 +3,7 @@
     "Dashboard": true,
     "Countries": true,
     "Stores": true,
+    "Subscriptions": true,
     "Front": true,
     "Categories": true,
     "Products": true,

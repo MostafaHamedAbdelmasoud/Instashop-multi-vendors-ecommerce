@@ -41,5 +41,4 @@ trait CustomFieldHelper
     {
         return $this->category->name;
     }
-
 }

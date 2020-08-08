@@ -42,7 +42,7 @@ class StorePolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->is($store->StoreOwner);
+        return $user->isAdmin() || $user->isStoreOwner();
     }
 
     /**

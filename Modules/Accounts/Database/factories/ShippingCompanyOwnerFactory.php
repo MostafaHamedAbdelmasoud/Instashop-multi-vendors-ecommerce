@@ -27,9 +27,3 @@ $factory->define(ShippingCompanyOwner::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
-
-$factory->afterCreating(ShippingCompanyOwner::class, function (ShippingCompanyOwner $shippingCompanyOwner) {
-    factory(\Modules\Accounts\Entities\ShippingCompany::class)->create([
-        'owner_id' => $shippingCompanyOwner->id,
-    ]);
-});

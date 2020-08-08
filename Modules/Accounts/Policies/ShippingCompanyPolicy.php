@@ -21,7 +21,7 @@ class ShippingCompanyPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isShippingCompanyOwner();
     }
 
     /**

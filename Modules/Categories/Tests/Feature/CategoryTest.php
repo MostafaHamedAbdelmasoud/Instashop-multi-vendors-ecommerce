@@ -21,7 +21,7 @@ class CategoryTest extends TestCase
 
         $store = factory(Store::class)->create(['owner_id' => 1, 'domain' => 'facebook', ]);
 
-        factory(Category::class)->create(['name' => 'CategoryTestName','store_id' => $store->id,]);
+        factory(Category::class)->create(['name' => 'CategoryTestName', 'store_id' => $store->id, ]);
 
         $response = $this->get(route('dashboard.categories.index'));
 
@@ -49,8 +49,6 @@ class CategoryTest extends TestCase
     /** @test */
     public function it_can_create_a_new_category()
     {
-        $this->withoutExceptionHandling();
-
         $this->actingAsAdmin();
 
         $this->assertEquals(0, Category::count());
@@ -66,7 +64,7 @@ class CategoryTest extends TestCase
             RuleFactory::make(
                 [
                     '%name%' => 'categoryName',
-                    'store_id' =>$store->id,
+                    'store_id' => $store->id,
                 ]
             )
         );
@@ -110,8 +108,6 @@ class CategoryTest extends TestCase
         $response->assertSee(trans('categories::categories.actions.edit'));
     }
 
-//
-
     /** @test */
     public function it_can_update_category()
     {
@@ -134,6 +130,7 @@ class CategoryTest extends TestCase
             RuleFactory::make(
                 [
                     '%name%' => 'CategoryName2',
+                    'store_id' => $store->id,
                 ]
             )
         );

@@ -6,8 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Astrotomic\Translatable\Validation\RuleFactory;
 
 /**
- * Class CustomFieldRequest
- * @package Modules\CustomFields\Http\Requests
+ * Class CustomFieldRequest.
  */
 class CustomFieldRequest extends FormRequest
 {
@@ -79,5 +78,4 @@ class CustomFieldRequest extends FormRequest
     {
         return trans('custom_fields::custom_fields.attributes');
     }
-
 }

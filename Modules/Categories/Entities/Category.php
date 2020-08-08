@@ -52,16 +52,6 @@ class Category extends Model
      */
     protected $dates = ['published_at'];
 
-//    /**
-//     * it defines foreign key in relations.
-//     *
-//     * @return string
-//     */
-//    public function getForeignKey()
-//    {
-//        return 'category_id';
-//    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */

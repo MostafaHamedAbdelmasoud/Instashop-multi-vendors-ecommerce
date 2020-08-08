@@ -28,5 +28,4 @@ trait CustomFieldOptionHelper
     {
         return $this->product->name;
     }
-
 }

@@ -3,10 +3,10 @@
 namespace Modules\CustomFields\Entities;
 
 use App\Http\Filters\Filterable;
-use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model;
-use Modules\CustomFields\Entities\Helpers\CustomFieldHelper;
 use Modules\Support\Traits\Selectable;
+use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
+use Modules\CustomFields\Entities\Helpers\CustomFieldHelper;
 
 class CustomFieldTranslation extends Model
 {

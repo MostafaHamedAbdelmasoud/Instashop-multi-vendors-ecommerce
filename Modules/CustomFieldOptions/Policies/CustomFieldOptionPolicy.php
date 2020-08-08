@@ -3,8 +3,8 @@
 namespace Modules\CustomFieldOptions\Policies;
 
 use Modules\Accounts\Entities\User;
-use Modules\CustomFieldOptions\Entities\CustomFieldOption;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\CustomFieldOptions\Entities\CustomFieldOption;
 
 /**
  * Class StorePolicy.

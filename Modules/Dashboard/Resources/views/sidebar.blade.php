@@ -7,6 +7,7 @@
 @include('countries::sidebar')
 @include('accounts::sidebar')
 @include('stores::sidebar')
+@include('subscriptions::sidebar')
 @include('categories::sidebar')
 @include('products::sidebar')
 @include('custom_fields::sidebar')

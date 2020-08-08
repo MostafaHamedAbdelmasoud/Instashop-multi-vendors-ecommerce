@@ -95,5 +95,4 @@ class CategoryRepository implements CrudRepository
     {
         $this->find($model)->delete();
     }
-
 }

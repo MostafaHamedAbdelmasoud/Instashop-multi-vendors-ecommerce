@@ -4,10 +4,10 @@
 
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
-use Modules\CustomFieldOptions\Entities\CustomFieldOption;
+use Modules\Products\Entities\Product;
 use Modules\Accounts\Entities\Helpers\helpers;
 use Modules\CustomFields\Entities\CustomField;
-use Modules\Products\Entities\Product;
+use Modules\CustomFieldOptions\Entities\CustomFieldOption;
 
 /*
 |--------------------------------------------------------------------------
