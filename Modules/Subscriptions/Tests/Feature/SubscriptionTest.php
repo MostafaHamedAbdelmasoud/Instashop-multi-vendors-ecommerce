@@ -2,6 +2,7 @@
 
 namespace Modules\Subscriptions\Tests\Feature;
 
+use Carbon\Carbon;
 use Tests\TestCase;
 use Modules\Stores\Entities\Store;
 use Modules\Subscriptions\Entities\Subscription;
@@ -13,41 +14,39 @@ class SubscriptionTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_can_list_categories()
+    public function it_can_list_subscriptions()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        $store = factory(Store::class)->create(['owner_id' => 1, 'domain' => 'facebook', ]);
+        factory(Subscription::class)->create();
 
-        factory(Subscription::class)->create(['name' => 'CategoryTestName', 'store_id' => $store->id, ]);
-
-        $response = $this->get(route('dashboard.categories.index'));
+        $response = $this->get(route('dashboard.subscriptions.index'));
 
         $response->assertSuccessful();
 
-        $response->assertSee('CategoryTestName');
+        $response->assertSee('store');
     }
 
     /** @test */
-    public function it_can_display_category_details()
+    public function it_can_display_subscription_details()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        $category = factory(Subscription::class)->create();
+        $subscription = factory(Subscription::class)->create();
 
-        $response = $this->get(route('dashboard.categories.show', $category));
+        $response = $this->get(route('dashboard.subscriptions.show', $subscription));
 
         $response->assertSuccessful();
 
-        $response->assertSee(e($category->name));
+        $response->assertSee(e($subscription->name));
     }
 
     /** @test */
-    public function it_can_create_a_new_category()
+    public function it_can_create_a_new_subscription()
     {
         $this->withoutExceptionHandling();
 
@@ -55,18 +54,15 @@ class SubscriptionTest extends TestCase
 
         $this->assertEquals(0, Subscription::count());
 
-        $store = factory(Store::class)->create([
-            'owner_id' => 1,
-            'domain' => 'facebook',
-        ]);
-
-
         $response = $this->post(
-            route('dashboard.categories.store'),
+            route('dashboard.subscriptions.store'),
             RuleFactory::make(
                 [
-                    '%name%' => 'categoryName',
-                    'store_id' =>$store->id,
+                    'model_id' => 1,
+                    'model_type' => 'store',
+                    'start_at' => Carbon::now(),
+                    'end_at' => Carbon::now()->addDays(5),
+                    'paid_amount' => 4.2,
                 ]
             )
         );
@@ -77,94 +73,75 @@ class SubscriptionTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_category_create_form()
+    public function it_can_display_subscription_create_form()
     {
         $this->actingAsAdmin();
 
-        $response = $this->get(route('dashboard.categories.create'));
+        $response = $this->get(route('dashboard.subscriptions.create'));
 
         $response->assertSuccessful();
 
-        $response->assertSee(trans('categories::categories.actions.create'));
+        $response->assertSee(trans('subscriptions::subscriptions.actions.create'));
     }
 
     /** @test */
-    public function it_can_display_category_edit_form()
+    public function it_can_display_subscription_edit_form()
     {
         $this->actingAsAdmin();
 
-        $store = factory(Store::class)->create([
-            'owner_id' => 1,
-            'domain' => 'facebook',
-        ]);
+        $subscription = factory(Subscription::class)->create();
 
-        $category = factory(Subscription::class)->create([
-            'name' => 'CategoryTestName',
-            'store_id' => $store->id,
-        ]);
-
-        $response = $this->get(route('dashboard.categories.edit', $category));
+        $response = $this->get(route('dashboard.subscriptions.edit', $subscription));
 
         $response->assertSuccessful();
 
-        $response->assertSee(trans('categories::categories.actions.edit'));
+        $response->assertSee(trans('subscriptions::subscriptions.actions.edit'));
     }
 
 //
 
     /** @test */
-    public function it_can_update_category()
+    public function it_can_update_subscription()
     {
         $this->actingAsAdmin();
 
         $this->assertEquals(0, Subscription::count());
 
-        $store = factory(Store::class)->create([
-            'owner_id' => 1,
-            'domain' => 'facebook',
-        ]);
-
-        $category = factory(Subscription::class)->create([
-            'name' => 'CategoryTestName',
-            'store_id' => $store->id,
-        ]);
+        $subscription = factory(Subscription::class)->create();
 
         $response = $this->put(
-            route('dashboard.categories.update', $category),
+            route('dashboard.subscriptions.update', $subscription),
             RuleFactory::make(
                 [
-                    '%name%' => 'CategoryName2',
+                    'model_id' => 1,
+                    'model_type' => 'store',
+                    'start_at' => Carbon::now(),
+                    'end_at' => Carbon::now()->addDays(5),
+                    'paid_amount' => 4.2,
                 ]
             )
         );
 
-        $category->refresh();
+        $subscription->refresh();
 
         $response->assertRedirect();
 
-        $this->assertEquals($category->name, 'CategoryName2');
+        $this->assertEquals($subscription->model_id, 1);
     }
 
     /** @test */
-    public function it_can_delete_category()
+    public function it_can_delete_subscription()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        $store = factory(Store::class)->create([
-            'owner_id' => 1,
-            'domain' => 'facebook',
-        ]);
 
-        $category = factory(Subscription::class)->create([
-            'name' => 'CategoryTestName',
-            'store_id' => $store->id,
-        ]);
+        $subscription = factory(Subscription::class)->create();
 
         $this->assertEquals(Subscription::count(), 1);
 
-        $response = $this->delete(route('dashboard.categories.destroy', $category));
+        $response = $this->delete(route('dashboard.subscriptions.destroy', $subscription));
 
         $response->assertRedirect();
 

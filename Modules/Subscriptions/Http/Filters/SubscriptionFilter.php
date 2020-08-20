@@ -16,7 +16,7 @@ class SubscriptionFilter extends BaseFilters
     ];
 
     /**
-     * Filter the query by a given name.
+     * Filter the query by a given model_type.
      *
      * @param string|int $value
      * @return \Illuminate\Database\Eloquent\Builder
@@ -24,7 +24,7 @@ class SubscriptionFilter extends BaseFilters
     protected function model_type($value)
     {
         if ($value) {
-            return $this->builder->where('model_type', $value);
+            return $this->builder->whereTranslationLike('model_type', "%$value%");
         }
 
         return $this->builder;

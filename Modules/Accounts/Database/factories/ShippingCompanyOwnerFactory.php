@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Modules\Accounts\Entities\ShippingCompany;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
 
 /*
@@ -26,4 +27,10 @@ $factory->define(ShippingCompanyOwner::class, function (Faker $faker) {
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
+});
+
+$factory->afterCreating(ShippingCompanyOwner::class, function (ShippingCompanyOwner $shippingCompanyOwner) {
+    factory(ShippingCompany::class)->create([
+        'owner_id' =>$shippingCompanyOwner->id,
+    ]);
 });

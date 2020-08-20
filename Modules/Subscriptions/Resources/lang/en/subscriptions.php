@@ -9,7 +9,10 @@ return [
     'actions' => [
         'list' => 'List all',
         'show' => 'Show Subscription',
-        'create' => 'Create a new subscription',
+        'create' => 'Create a new subscription for store',
+        //it's for a shipping company only
+        'create_shipping_company' => 'Create a new subscription for shipping',
+        //
         'new' => 'New',
         'edit' => 'Edit Subscription',
         'delete' => 'Delete Subscription',

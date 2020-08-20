@@ -22,7 +22,7 @@ Route::middleware('dashboard')
                         Route::resource('customers', 'Dashboard\CustomerController');
                         Route::resource('admins', 'Dashboard\AdminController');
                         Route::resource('store_owners', 'Dashboard\StoreOwnerController');
-                        Route::resource('store_owners.stores', 'Dashboard\StoreController');
+                        Route::resource('store_owners.stores', 'Dashboard\StoreOwnerController');
                         Route::resource('supervisors', 'Dashboard\SupervisorController');
                         Route::resource('shipping_company_owners', 'Dashboard\ShippingCompanyOwnerController');
                         Route::resource('delegates', 'Dashboard\DelegateController');

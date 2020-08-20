@@ -13,4 +13,6 @@
 
 Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
     Route::resource('subscriptions', 'SubscriptionController');
+    Route::get('create_shipping_company', 'SubscriptionController@create_shipping_company')->name('create_shipping_company');
+    Route::get('edit_shipping_company/{subscription}/edit', 'SubscriptionController@edit_shipping_company')->name('edit_shipping_company');
 });

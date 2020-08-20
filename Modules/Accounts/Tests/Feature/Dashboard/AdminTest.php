@@ -117,6 +117,8 @@ class AdminTest extends TestCase
     /** @test */
     public function it_can_delete_admin()
     {
+        $this->withOutExceptionHandling();
+
         $this->actingAsAdmin();
 
         $admin = factory(Admin::class)->create();

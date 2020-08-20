@@ -55,11 +55,21 @@ class SubscriptionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|\Illuminate\Http\Response|View
      */
     public function create()
     {
         return view('subscriptions::subscriptions.create');
+    }
+
+    /**
+     * Show the form for creating a new shipping company.
+     *
+     * @return Application|Factory|\Illuminate\Http\Response|View
+     */
+    public function create_shipping_company()
+    {
+        return view('subscriptions::subscriptions.shipping_companies.create');
     }
 
     /**
@@ -69,9 +79,8 @@ class SubscriptionController extends Controller
      * @param \Modules\Subscriptions\Entities\StoreOwner $subscriptionOwner
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(SubscriptionRequest $request)
     {
-        dd($request);
         $subscription = $this->repository->create($request->all());
 
         flash(trans('subscriptions::subscriptions.messages.created'));
@@ -117,6 +126,18 @@ class SubscriptionController extends Controller
     public function edit(Admin $admin, Subscription $subscription)
     {
         return view('subscriptions::subscriptions.edit', compact('admin', 'subscription'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Admin $admin
+     * @param Subscription $subscription
+     * @return Application|Factory|View
+     */
+    public function edit_shipping_company(Admin $admin, Subscription $subscription)
+    {
+        return view('subscriptions::subscriptions.shipping_companies.edit', compact('admin', 'subscription'));
     }
 
     /**

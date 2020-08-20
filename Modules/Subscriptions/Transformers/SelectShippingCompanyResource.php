@@ -17,7 +17,7 @@ class SelectShippingCompanyResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'text' => $this->get_module()->name,
+            'text' => $this->name,
         ];
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Modules\Accounts\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Astrotomic\Translatable\Validation\RuleFactory;
 
@@ -40,9 +39,8 @@ class ShippingCompanyRequest extends FormRequest
     public function createRules()
     {
         return RuleFactory::make([
-            'name' => [
-                      'required',
-                'unique:shipping_companies',
+            '%name%' => [
+                'required',
                 'string',
                 'max:255', ],
             'price' => ['required', 'numeric', 'between:0,10000'],
@@ -58,9 +56,8 @@ class ShippingCompanyRequest extends FormRequest
     public function updateRules()
     {
         return RuleFactory::make([
-            'name' => [
+            '%name%' => [
                 'required',
-                'unique:shipping_companies',
                 'string',
                 'max:255', ],
             'price' => ['required', 'numeric', 'between:0,10000'],

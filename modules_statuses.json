@@ -8,5 +8,8 @@
     "Categories": true,
     "Products": true,
     "CustomFields": true,
-    "CustomFieldOptions": true
+    "CustomFieldOptions": true,
+    "Coupons": true,
+    "Orders": true,
+    "CouponProducts": true
 }

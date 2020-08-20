@@ -7,6 +7,7 @@ use Modules\Countries\Entities\City;
 use Modules\Countries\Entities\Country;
 use Modules\Countries\Http\Filters\SelectFilter;
 use Modules\Countries\Transformers\SelectResource;
+use Modules\Countries\Transformers\SelectCityResource;
 use Modules\Countries\Transformers\SelectTypeResource;
 
 class SelectController extends Controller
@@ -34,6 +35,6 @@ class SelectController extends Controller
     {
         $cities = City::filter($filter)->paginate();
 
-        return SelectTypeResource::collection($cities);
+        return SelectCityResource::collection($cities);
     }
 }

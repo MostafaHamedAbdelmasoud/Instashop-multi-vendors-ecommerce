@@ -5,6 +5,7 @@
 use Faker\Generator as Faker;
 use Modules\Accounts\Entities\Helpers\helpers;
 use Modules\Accounts\Entities\ShippingCompany;
+use Modules\Accounts\Entities\ShippingCompanyPrice;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +22,14 @@ $factory->define(ShippingCompany::class, function (Faker $faker) {
 
     return [
         'owner_id' => $h->random_or_create(\Modules\Accounts\Entities\ShippingCompanyOwner::class)->id,
-        'name:ar' => $faker->company,
-        'name:en' => $faker->company,
+        'name:ar' => 'hello ar '.$faker->company,
+        'name:en' => 'hello en ' .$faker->company,
 
     ];
 });
 
 $factory->afterCreating(ShippingCompany::class, function (ShippingCompany $shippingCompany) {
-    factory(\Modules\Accounts\Entities\ShippingCompanyPrice::class)->create([
+    factory(ShippingCompanyPrice::class)->create([
         'shipping_company_id' => $shippingCompany->id,
     ]);
 });

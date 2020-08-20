@@ -9,7 +9,6 @@
             @slot('title', trans('subscriptions::subscriptions.actions.list'))
             @slot('tools')
                 @include('subscriptions::subscriptions.partials.actions.filter')
-                @include('subscriptions::subscriptions.partials.actions.create')
             @endslot
 
             <thead>

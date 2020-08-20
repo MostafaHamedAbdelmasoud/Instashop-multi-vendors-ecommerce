@@ -39,14 +39,12 @@ class SubscriptionRequest extends FormRequest
      */
     public function createRules()
     {
-        $after_date = Carbon::now();
-
         return RuleFactory::make(
             [
                 'model_type' => ['required', 'string'],
-                'model_id' => ['required', 'integer' , 'exists:stores,id | exists:shipping_companies,id '],
+                'model_id' => ['required', 'integer' ],
                 'start_at' => ['required', 'date'],
-                'end_at' => ['required', 'date', 'after:'.$after_date],
+                'end_at' => ['required', 'date'],
                 'paid_amount' => ['required', 'numeric' , 'max:100000', 'min:1'],
             ]
         );
@@ -59,15 +57,13 @@ class SubscriptionRequest extends FormRequest
      */
     public function updateRules()
     {
-        $after_date = Carbon::now();
-
         return RuleFactory::make(
             [
                 'model_type' => ['required', 'string'],
-                'model_id' => ['required', 'integer' , 'exists:stores,id | exists:shipping_companies,id '],
-                'start_at' => ['required', 'date' , 'before:'.$after_date],
-                'end_at' => ['required', 'date', 'after:'.$after_date],
-                'paid_amount' => ['required', 'numerical' , 'max:100000', 'min:1'],
+                'model_id' => ['required', 'integer'],
+                'start_at' => ['required', 'date'],
+                'end_at' => ['required', 'date'],
+                'paid_amount' => ['required', 'numeric' , 'max:100000', 'min:1'],
             ]
         );
     }
@@ -79,6 +75,6 @@ class SubscriptionRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('categories::categories.attributes');
+        return trans('subscriptions::subscriptions.attributes');
     }
 }

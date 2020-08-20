@@ -2,20 +2,24 @@
 
 namespace App\Providers;
 
+use Modules\Orders\Entities\Order;
 use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
 use Modules\Accounts\Entities\Admin;
 use Modules\Countries\Entities\City;
+use Modules\Coupons\Entities\Coupon;
 use Modules\Accounts\Entities\Address;
 use Modules\Products\Entities\Product;
 use Modules\Accounts\Entities\Delegate;
 use Modules\Countries\Entities\Country;
+use Modules\Orders\Policies\OrderPolicy;
 use Modules\Stores\Policies\StorePolicy;
 use Modules\Accounts\Entities\StoreOwner;
 use Modules\Accounts\Entities\Supervisor;
 use Modules\Accounts\Policies\UserPolicy;
 use Modules\Categories\Entities\Category;
 use Modules\Countries\Policies\CityPolicy;
+use Modules\Coupons\Policies\CouponPolicy;
 use Modules\Accounts\Policies\AddressPolicy;
 use Modules\Products\Policies\ProductPolicy;
 use Modules\Accounts\Policies\DelegatePolicy;
@@ -26,10 +30,12 @@ use Modules\Accounts\Policies\StoreOwnerPolicy;
 use Modules\Accounts\Policies\SupervisorPolicy;
 use Modules\Categories\Policies\CategoryPolicy;
 use Modules\Subscriptions\Entities\Subscription;
+use Modules\CouponProducts\Entities\CouponProduct;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Modules\Accounts\Policies\ShippingCompanyPolicy;
 use Modules\CustomFields\Policies\CustomFieldPolicy;
 use Modules\Subscriptions\Policies\SubscriptionPolicy;
+use Modules\CouponProducts\Policies\CouponProductPolicy;
 use Modules\Accounts\Policies\ShippingCompanyOwnerPolicy;
 use Modules\CustomFieldOptions\Entities\CustomFieldOption;
 use Modules\CustomFieldOptions\Policies\CustomFieldOptionPolicy;
@@ -69,5 +75,8 @@ class AuthServiceProvider extends ServiceProvider
         CustomField::class => CustomFieldPolicy::class,
         CustomFieldOption::class => CustomFieldOptionPolicy::class,
         Subscription::class => SubscriptionPolicy::class,
+        Order::class => OrderPolicy::class,
+        CouponProduct::class => CouponProductPolicy::class,
+        Coupon::class => CouponPolicy::class,
     ];
 }

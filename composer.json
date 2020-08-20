@@ -74,6 +74,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "phs-fresh" : "php artisan migrate:fresh --seed",
         "php-cs:issues": "vendor/bin/php-cs-fixer fix --diff --dry-run",
         "php-cs:fix": "vendor/bin/php-cs-fixer fix",
         "app:clear": "php artisan clear-compiled && php artisan cache:clear && php artisan config:clear && php artisan debugbar:clear && php artisan route:clear && php artisan view:clear",

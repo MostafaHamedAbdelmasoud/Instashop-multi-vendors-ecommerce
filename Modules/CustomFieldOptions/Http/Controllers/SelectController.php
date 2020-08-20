@@ -23,7 +23,7 @@ class SelectController extends Controller
      */
     public function select_product(SelectProductFilter $filter)
     {
-        $products = Product::filter($filter)->paginate();
+        $products = Order::filter($filter)->paginate();
 
         return SelectProductResource::collection($products);
     }

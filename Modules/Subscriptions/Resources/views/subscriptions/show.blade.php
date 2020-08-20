@@ -14,24 +14,23 @@
 
                         <tr>
                             <th width="200">@lang('subscriptions::subscriptions.attributes.model_type')</th>
-                            <td>{{ $subscription->model_type }}</td>
+                            <td>{{ __('subscriptions::subscriptions.additions.'.$subscription->model_type) }}</td>
                         </tr>
 
                         <tr>
                             <th width="200">@lang('subscriptions::subscriptions.additions.model_name')</th>
-                            @if($subscription->get_model_type() == 'shipping_company' )
                             <td>
-                                <a href="{{route('dashboard.shipping_company_owners.show', $subscription->get_model()->ShippingCompanyOwner)}}">
-                                    {{ $subscription->get_model()->name }}
-                                </a>
+                                @if($subscription->get_model_type() == 'shipping_company' )
+                                    <a href="{{route('dashboard.shipping_company_owners.show', $subscription->get_model()->ShippingCompanyOwner)}}">
+                                        {{ $subscription->get_model()->name }}
+                                    </a>
+                                @else
+                                    <a href="{{route('dashboard.stores.show', $subscription->get_model())}}">
+                                        {{ $subscription->get_model()->name }}
+                                    </a>
+                                @endif
                             </td>
-                            @else
-                            <td>
-                                <a href="{{route('dashboard.stores.show', $subscription->get_model())}}">
-                                    {{ $subscription->get_model()->name }}
-                                </a>
-                            </td>
-                            @endif
+
                         </tr>
 
                         <tr>

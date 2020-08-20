@@ -1,0 +1,13 @@
+{
+    "name": "CouponProducts",
+    "alias": "coupon_products",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\CouponProducts\\Providers\\CouponProductServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

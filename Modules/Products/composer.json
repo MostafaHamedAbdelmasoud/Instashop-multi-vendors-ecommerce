@@ -10,7 +10,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\Products\\Providers\\ProductServiceProvider"
+              "OrderServiceProvider"
             ],
             "aliases": {
 

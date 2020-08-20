@@ -3,7 +3,6 @@
 namespace Modules\Accounts\Repositories;
 
 use Modules\Contracts\CrudRepository;
-use Modules\Accounts\Entities\Address;
 use Modules\Accounts\Entities\ShippingCompany;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Modules\Accounts\Entities\ShippingCompanyPrice;
@@ -43,9 +42,9 @@ class ShippingCompanyOwnerRepository implements CrudRepository
      * Save the created model to storage.
      *
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @return \Modules\Accounts\Entities\ShippingCompanyOwner
      */
     public function create(array $data)
@@ -79,9 +78,9 @@ class ShippingCompanyOwnerRepository implements CrudRepository
      *
      * @param mixed $model
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function update($model, array $data)
@@ -120,13 +119,12 @@ class ShippingCompanyOwnerRepository implements CrudRepository
 
         $this->createShippingCompanyPrice($shippingCompany, $data);
 
-        return $shippingCompany ;
+        return $shippingCompany;
     }
 
     /**
-     * @param ShippingCompanyOwner $shippingCompanyOwner
+     * @param ShippingCompany $shippingCompany
      * @param array $data
-     *
      */
     public function createShippingCompanyPrice(ShippingCompany $shippingCompany, array $data)
     {
@@ -186,9 +184,9 @@ class ShippingCompanyOwnerRepository implements CrudRepository
      *
      * @param \Modules\Accounts\Entities\ShippingCompanyOwner $shippingCompanyOwner
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @return \Modules\Accounts\Entities\ShippingCompanyOwner
      */
     private function uploadAvatar(ShippingCompanyOwner $shippingCompanyOwner, array $data)

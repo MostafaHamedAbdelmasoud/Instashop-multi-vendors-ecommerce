@@ -8,7 +8,7 @@
         @component('dashboard::layouts.components.box')
             @slot('title', trans('subscriptions::subscriptions.actions.edit'))
 
-            @include('subscriptions::subscriptions.partials.form')
+            @include('subscriptions::subscriptions.partials.form2')
 
             @slot('footer')
                 {{ BsForm::submit()->label(trans('subscriptions::subscriptions.actions.save')) }}

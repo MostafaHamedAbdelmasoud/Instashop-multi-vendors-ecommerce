@@ -9,7 +9,10 @@
 @include('stores::sidebar')
 @include('subscriptions::sidebar')
 @include('categories::sidebar')
-@include('products::sidebar')
 @include('custom_fields::sidebar')
 @include('custom_field_options::sidebar')
+@include('products::sidebar')
+@include('orders::sidebar')
+@include('coupons::sidebar')
+@include('coupon_products::sidebar')
 
