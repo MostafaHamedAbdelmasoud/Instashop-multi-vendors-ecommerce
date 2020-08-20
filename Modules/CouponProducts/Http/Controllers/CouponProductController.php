@@ -2,8 +2,10 @@
 
 namespace Modules\CouponProducts\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\View\Factory;
 use Modules\Accounts\Entities\Customer;
 use Modules\Accounts\Entities\StoreOwner;
 use Illuminate\Contracts\Foundation\Application;
@@ -60,6 +62,16 @@ class CouponProductController extends Controller
     }
 
     /**
+     * Show the form for creating a new shipping company.
+     *
+     * @return Application|Factory|\Illuminate\Http\Response|View
+     */
+    public function create_coupon_category()
+    {
+        return view('coupon_products::coupon_products.coupon_categories.create');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Modules\CouponProducts\Http\Requests\CouponProductRequest $request
@@ -113,6 +125,16 @@ class CouponProductController extends Controller
     public function edit(Customer $storeOwner, CouponProduct $couponProduct)
     {
         return view('coupon_products::coupon_products.edit', compact('storeOwner', 'couponProduct'));
+    }
+
+    /**
+     * Show the form for edit a new coupon category.
+     *
+     * @return Application|Factory|\Illuminate\Http\Response|View
+     */
+    public function edit_coupon_category()
+    {
+        return view('coupon_products::coupon_products.coupon_categories.edit');
     }
 
     /**

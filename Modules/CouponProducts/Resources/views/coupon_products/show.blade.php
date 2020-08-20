@@ -1,8 +1,8 @@
-@extends('dashboard::layouts.master', ['title' => $coupon->code])
+@extends('dashboard::layouts.master', ['title' => $couponProduct->code])
 @section('content')
     @component('dashboard::layouts.components.page')
-        @slot('title', $coupon->code)
-        @slot('breadcrumbs', ['dashboard.coupons.show', $coupon])
+        @slot('title', $couponProduct->code)
+        @slot('breadcrumbs', ['dashboard.coupon_products.show', $couponProduct])
 
         <div class="row">
             <div class="col-md-12">
@@ -12,54 +12,45 @@
                     <table class="table table-striped table-middle">
                         <tbody>
                         <tr>
-                            <th width="200">@lang('coupons::coupons.attributes.code')</th>
-                            <td>{{ $coupon->code }}</td>
+                            <th width="200">@lang('coupon_products::coupon_products.attributes.coupon_id')</th>
+                            <td>{{ $couponProduct->coupon->code }}</td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('coupons::coupons.attributes.fixed_discount')</th>
+                            <th width="200">@lang('coupon_products::coupon_products.attributes.model_type')</th>
                             <td>
-                                {{$coupon->get_fixed_discount()}}
+                                {{trans('coupon_products::coupon_products.additions.'.$couponProduct->model_type)}}
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('coupons::coupons.attributes.percentage_discount')</th>
+                            <th width="200">@lang('coupon_products::coupon_products.attributes.model_id')</th>
                             <td>
-                                {{$coupon->get_percentage_discount()}}
+                                @if($couponProduct->model_type == 'product')
+
+                                    {{$couponProduct->product->name}}
+                                @else
+
+                                    {{$couponProduct->category->name}}
+                                @endif
+
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('coupons::coupons.attributes.max_usage_per_order')</th>
+                            <th width="200">@lang('coupon_products::coupon_products.attributes.type')</th>
                             <td>
-                                    {{$coupon->max_usage_per_order}}
+                                {{trans('coupon_products::coupon_products.additions.'.$couponProduct->type)}}
                             </td>
                         </tr>
-
-                        <tr>
-                            <th width="200">@lang('coupons::coupons.attributes.max_usage_per_user')</th>
-                            <td>
-                                    {{$coupon->max_usage_per_user}}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th width="200">@lang('coupons::coupons.attributes.min_total')</th>
-                            <td>
-                                    {{$coupon->get_min_total()}}
-                            </td>
-                        </tr>
-
-
 
 
                         </tbody>
                     </table>
 
                     @slot('footer')
-                        @include('coupons::coupons.partials.actions.edit')
-                        @include('coupons::coupons.partials.actions.delete')
+                        @include('coupon_products::coupon_products.partials.actions.edit')
+                        @include('coupon_products::coupon_products.partials.actions.delete')
                     @endslot
                 @endcomponent
             </div>

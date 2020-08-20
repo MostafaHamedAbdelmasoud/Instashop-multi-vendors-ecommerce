@@ -45,9 +45,11 @@ class CouponProductRepository implements CrudRepository
      */
     public function create(array $data)
     {
-        $coupon = CouponProduct::create($data);
+        $data['type'] = $data['type'] ==0 ? 'included' : 'excluded';
 
-        return $coupon;
+        $couponProduct = CouponProduct::create($data);
+
+        return $couponProduct;
     }
 
     /**
@@ -77,11 +79,13 @@ class CouponProductRepository implements CrudRepository
      */
     public function update($model, array $data)
     {
-        $coupon = $this->find($model);
+        $data['type'] = $data['type'] ==0 ? 'included' : 'excluded';
 
-        $coupon->update($data);
+        $couponProduct = $this->find($model);
 
-        return $coupon;
+        $couponProduct->update($data);
+
+        return $couponProduct;
     }
 
     /**

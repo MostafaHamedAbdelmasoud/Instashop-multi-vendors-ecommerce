@@ -13,4 +13,6 @@
 
 Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
     Route::resource('coupon_products', 'CouponProductController');
+    Route::get('coupon_categories', 'CouponProductController@create_coupon_category')->name('create_coupon_category');
+    Route::get('coupon_categories/{coupon_product}/edit', 'CouponProductController@edit_coupon_category')->name('edit_coupon_category');
 });

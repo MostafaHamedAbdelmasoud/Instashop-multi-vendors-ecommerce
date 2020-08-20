@@ -19,4 +19,5 @@ use Illuminate\Http\Request;
 
 Route::get('/select/stores', 'SelectController@index')->name('stores.select');
 Route::get('/select/categories', 'SelectController@select_category')->name('categories.select');
+Route::get('/select/products', 'SelectController@select_product')->name('products.select');
 Route::get('/select/coupons', 'SelectController@select_coupon')->name('coupons.select');

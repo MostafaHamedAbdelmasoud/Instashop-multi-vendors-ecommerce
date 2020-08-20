@@ -9,7 +9,10 @@ return [
     'actions' => [
         'list' => 'List all',
         'show' => 'Show Private Coupon',
-        'create' => 'Create a new private coupon',
+        'create' => 'Create a new for product coupon',
+        // create category
+        'create_coupon_category' => 'Create a new for category coupon',
+        //
         'new' => 'New',
         'edit' => 'Edit Private Coupon',
         'delete' => 'Delete Private Coupon',
@@ -34,5 +37,11 @@ return [
             'confirm' => 'Delete',
             'cancel' => 'Cancel',
         ],
+    ],
+    'additions' =>[
+        'category' => 'Category',
+        'product' => 'Product',
+        'included' => 'Included',
+        'excluded' => 'Excluded',
     ],
 ];

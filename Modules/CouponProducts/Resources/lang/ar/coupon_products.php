@@ -9,7 +9,10 @@ return [
     'actions' => [
         'list' => ' عرض الكل ',
         'show' => 'عرض',
-        'create' => 'إضافة كوبون خاص جديد',
+        'create' => 'إضافة كوبون للمنتج جديد',
+        // create category
+        'create_coupon_category' => 'إضافة كوبون للقسم جديد',
+        //
         'new' => 'إضافة',
         'edit' => 'تعديل  الكوبون الخاص',
         'delete' => 'حذف الكوبون الخاص',
@@ -34,5 +37,11 @@ return [
             'confirm' => 'حذف',
             'cancel' => 'إلغاء',
         ],
+    ],
+    'additions' =>[
+        'category' => 'قسم',
+        'product' => 'منتج',
+        'included' => 'متضمن',
+        'excluded' => 'مستبعد',
     ],
 ];

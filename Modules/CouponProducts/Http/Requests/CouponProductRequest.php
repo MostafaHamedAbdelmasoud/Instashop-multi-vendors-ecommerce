@@ -40,12 +40,10 @@ class CouponProductRequest extends FormRequest
     {
         return RuleFactory::make(
             [
-                'code' => ['required', 'string' , 'max:15'],
-                'fixed_discount' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'percentage_discount' => ['required', 'numeric', 'max:100'],
-                'max_usage_per_order' => ['required', 'max:100', 'min:0'],
-                'max_usage_per_user' => ['required', 'max:100', 'min:0'],
-                'min_total' => ['required', 'numeric', 'max:1e7', 'min:1'],
+                'coupon_id' => ['required',  'exists:coupons,id'],
+                'model_type' => ['required', 'string' , 'max:10'],
+                'model_id' => ['required'],
+                'type' => ['required', 'string', 'max:15'],
             ]
         );
     }
@@ -76,6 +74,6 @@ class CouponProductRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('products::products.attributes');
+        return trans('coupon_products::coupon_products.attributes');
     }
 }

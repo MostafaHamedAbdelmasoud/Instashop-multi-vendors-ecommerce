@@ -16,6 +16,12 @@
             'url' => route('dashboard.coupon_products.create'),
             'can' => ['ability' => 'create', 'model' =>  \Modules\CouponProducts\Entities\CouponProduct::class],
             'isActive' => request()->routeIs('*coupon_products.create'),
+        ],
+        [
+            'name' => trans('coupon_products::coupon_products.actions.create_coupon_category'),
+            'url' => route('dashboard.create_coupon_category'),
+            'can' => ['ability' => 'create', 'model' =>  \Modules\CouponProducts\Entities\CouponProduct::class],
+            'isActive' => request()->routeIs('*dashboard.create_coupon_category'),
         ]
     ])
 @endcomponent

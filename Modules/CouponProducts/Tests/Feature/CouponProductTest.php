@@ -3,6 +3,7 @@
 namespace Modules\CouponProducts\Tests\Feature;
 
 use Tests\TestCase;
+use Modules\Coupons\Entities\Coupon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\CouponProducts\Entities\CouponProduct;
 use Astrotomic\Translatable\Validation\RuleFactory;
@@ -12,42 +13,47 @@ class CouponProductTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_can_list_coupons()
+    public function it_can_list_coupon_products()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        factory(CouponProduct::class)->create([
+        $coupon = factory(Coupon::class)->create([
             'code' => '443',
             'percentage_discount' => 3.4,
         ]);
 
-        $response = $this->get(route('dashboard.coupons.index'));
+        factory(CouponProduct::class)->create([
+            'coupon_id' => $coupon->id,
+            'type' => 'included',
+        ]);
+
+        $response = $this->get(route('dashboard.coupon_products.index'));
 
         $response->assertSuccessful();
 
-        $response->assertSee('443');
+        $response->assertSee('included');
     }
 
     /** @test */
-    public function it_can_display_coupon_details()
+    public function it_can_display_coupon_product_details()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        $coupon = factory(CouponProduct::class)->create();
+        $couponProduct = factory(CouponProduct::class)->create();
 
-        $response = $this->get(route('dashboard.coupons.show', $coupon));
+        $response = $this->get(route('dashboard.coupon_products.show', $couponProduct));
 
         $response->assertSuccessful();
 
-        $response->assertSee(e($coupon->code));
+        $response->assertSee(e($couponProduct->id));
     }
 
     /** @test */
-    public function it_can_create_a_new_coupon()
+    public function it_can_create_a_new_coupon_product()
     {
         $this->withoutExceptionHandling();
 
@@ -55,16 +61,19 @@ class CouponProductTest extends TestCase
 
         $this->assertEquals(0, CouponProduct::count());
 
+        $coupon = factory(Coupon::class)->create([
+            'code' => '443',
+            'percentage_discount' => 3.4,
+        ]);
+
         $response = $this->post(
-            route('dashboard.coupons.store'),
+            route('dashboard.coupon_products.store'),
             RuleFactory::make(
                 [
-                    'code' => 'h112',
-                    'percentage_discount' => 12.21,
-                    'fixed_discount' => 2.21,
-                    'max_usage_per_order' => 2,
-                    'max_usage_per_user' => 2,
-                    'min_total' => 20.2,
+                    'coupon_id' => $coupon->id,
+                    'type' => 'included',
+                    'model_id' => 1,
+                    'model_type' => 'included',
                 ]
             )
         );
@@ -75,51 +84,53 @@ class CouponProductTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_product_create_form()
+    public function it_can_display_coupon_product_create_form()
     {
         $this->actingAsAdmin();
 
-        $response = $this->get(route('dashboard.coupons.create'));
+        $response = $this->get(route('dashboard.coupon_products.create'));
 
         $response->assertSuccessful();
 
-        $response->assertSee(trans('coupons::coupons.actions.create'));
+        $response->assertSee(trans('coupon_products::coupon_products.actions.create'));
     }
 
     /** @test */
-    public function it_can_display_product_edit_form()
+    public function it_can_display_coupon_product_edit_form()
     {
         $this->actingAsAdmin();
 
-        $coupon = factory(CouponProduct::class)->create();
+        $couponProduct = factory(CouponProduct::class)->create();
 
-        $response = $this->get(route('dashboard.coupons.edit', $coupon));
+        $response = $this->get(route('dashboard.coupon_products.edit', $couponProduct));
 
         $response->assertSuccessful();
 
-        $response->assertSee(trans('coupons::coupons.actions.edit'));
+        $response->assertSee(trans('coupon_products::coupon_products.actions.edit'));
     }
 
     /** @test */
-    public function it_can_update_product()
+    public function it_can_update_coupon_product()
     {
         $this->actingAsAdmin();
 
         $this->assertEquals(0, CouponProduct::count());
 
-        $coupon = factory(CouponProduct::class)->create();
+        $coupon = factory(Coupon::class)->create([
+            'code' => '443',
+            'percentage_discount' => 3.4,
+        ]);
+
+        $couponProduct = factory(CouponProduct::class)->create();
 
         $response = $this->put(
-            route('dashboard.coupons.update', $coupon),
+            route('dashboard.coupon_products.update', $couponProduct),
             RuleFactory::make(
                 [
-                    'code' => 'h112',
-                    'percentage_discount' => 12.21,
-                    'fixed_discount' => 2.21,
-                    'max_usage_per_order' => 2,
-                    'max_usage_per_user' => 2,
-                    'min_total' => 20.2,
-
+                    'coupon_id' => $coupon->id,
+                    'type' => 'included',
+                    'model_id' => 1,
+                    'model_type' => 'included',
                 ]
             )
         );
@@ -128,21 +139,21 @@ class CouponProductTest extends TestCase
 
         $response->assertRedirect();
 
-        $this->assertEquals($coupon->code, 'h112');
+        $this->assertEquals($couponProduct->type, 'included');
     }
 
     /** @test */
-    public function it_can_delete_product()
+    public function it_can_delete_coupon_product()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        $coupon = factory(CouponProduct::class)->create();
+        $couponProduct = factory(CouponProduct::class)->create();
 
         $this->assertEquals(CouponProduct::count(), 1);
 
-        $response = $this->delete(route('dashboard.coupons.destroy', $coupon));
+        $response = $this->delete(route('dashboard.coupon_products.destroy', $couponProduct));
 
         $response->assertRedirect();
 
