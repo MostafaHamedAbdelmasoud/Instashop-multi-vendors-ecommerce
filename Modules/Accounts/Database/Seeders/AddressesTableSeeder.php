@@ -21,6 +21,10 @@ class AddressesTableSeeder extends Seeder
                 'user_id' => $usersID,
                 'city_id' => ++$cnt,
             ]);
+            factory(\Modules\Accounts\Entities\Address::class)->create([
+                'user_id' => $usersID,
+                'city_id' => $cnt,
+            ]);
         }
     }
 }

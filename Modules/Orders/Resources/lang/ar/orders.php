@@ -22,9 +22,15 @@ return [
         'deleted' => 'تم حذف الطلب بنجاح .',
     ],
     'attributes' => [
-        'name' => 'اسم  الطلب',
-        'category_id' => 'القسم  ',
-        'code' => 'الكود',
+        'id' => 'الرقم  ',
+        'user_id' => 'اسم  المستخدم',
+        'address_id' => 'العنوان  ',
+        'shipping_company_id' => 'شركة النقل',
+        'coupon_id' => ' الكوبون',
+        'shipping_company_notes' => ' ملاحظات النقل',
+        'subtotal' => ' الإجمالي ',
+        'total' => 'المبلغ المطلوب',
+        'discount' => 'التخفيض ',
     ],
     'dialogs' => [
         'delete' => [
@@ -34,9 +40,7 @@ return [
             'cancel' => 'إلغاء',
         ],
     ],
-    'units' => [
-        'gram' => 'جرام',
-        'kilo_gram' => 'كيلو جرام',
-        'piece' => 'قطعة',
+    'additions' => [
+        'notes' => 'ملاحظات'
     ],
 ];

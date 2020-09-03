@@ -1,17 +1,17 @@
-@extends('dashboard::layouts.master', ['title' => $product->name])
+@extends('dashboard::layouts.master', ['title' => $order->id])
 @section('content')
     @component('dashboard::layouts.components.page')
-        @slot('title', $product->name)
-        @slot('breadcrumbs', ['dashboard.products.edit', $product])
+        @slot('title', $order->id)
+        @slot('breadcrumbs', ['dashboard.orders.edit', $order])
 
-        {{ BsForm::resource('products::products')->putModel($product, route('dashboard.products.update', $product) , ['files'=>true]) }}
+        {{ BsForm::resource('orders::orders')->putModel($order, route('dashboard.orders.update', $order) , ['files'=>true]) }}
         @component('dashboard::layouts.components.box')
-            @slot('title', trans('products::products.actions.edit'))
+            @slot('title', trans('orders::orders.actions.edit'))
 
-            @include('products::products.partials.form')
+            @include('orders::orders.partials.form')
 
             @slot('footer')
-                {{ BsForm::submit()->label(trans('products::products.actions.save')) }}
+                {{ BsForm::submit()->label(trans('orders::orders.actions.save')) }}
             @endslot
         @endcomponent
         {{ BsForm::close() }}

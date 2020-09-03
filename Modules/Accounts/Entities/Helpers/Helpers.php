@@ -28,4 +28,14 @@ class helpers
 
         return $instance->get()->random();
     }
+
+    /**
+     * does not generate cryptographically secure values.
+     * @param int $length
+     * @return bool|string
+     */
+    public static function generateMtRand(int $length)
+    {
+        return substr(md5(uniqid(mt_rand(), true)), -$length, $length);
+    }
 }

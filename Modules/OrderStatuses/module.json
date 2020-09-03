@@ -1,0 +1,13 @@
+{
+    "name": "OrderStatuses",
+    "alias": "order_statuses",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\OrderStatuses\\Providers\\OrderStatusServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

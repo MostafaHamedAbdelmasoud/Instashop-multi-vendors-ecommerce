@@ -2,20 +2,20 @@
 
 namespace Modules\Orders\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Orders\Entities\Order;
-use Modules\Accounts\EntitiesCustomer ;
 use Modules\Accounts\Entities\Customer;
+use Modules\Accounts\EntitiesCustomer;
+use Modules\Orders\Entities\Order;
+use Modules\Orders\Entities\OrderStatusUpdate;
 use Modules\Orders\Http\Requests\OrderRequest;
-use Illuminate\Contracts\Foundation\Application;
 use Modules\Orders\Repositories\OrderRepository;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
- * Class ProductController.
+ * Class OrderController.
  */
 class OrderController extends Controller
 {
@@ -35,7 +35,7 @@ class OrderController extends Controller
      */
     public function __construct(OrderRepository $repository)
     {
-        $this->authorizeResource(Order::class, 'order');
+        $this->authorizeResource(Order ::class, 'order');
 
         $this->repository = $repository;
     }
@@ -64,69 +64,71 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Modules\Orders\Http\Requests\OrderRequest $request
-     * @param \Modules\Orders\Entities\Customer $productOwner
+     * @param \Modules\Orders\Entities\Customer $orderOwner
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(OrderRequest $request)
     {
-        $product = $this->repository->create($request->all());
+        $order = $this->repository->create($request->all());
 
         flash(trans('orders::orders.messages.created'));
 
-        return redirect()->route('dashboard.orders.show', $product);
+        return redirect()->route('dashboard.orders.show', $order);
     }
 
     /**
-     * @param Order $product
+     * @param Order $order
      *
      */
-    public function show(Order $product)
+    public function show(Order $order)
     {
-        $product = $this->repository->find($product);
+        $order = $this->repository->find($order);
 
-        return view('orders::orders.show', compact('product'));
+        $orderStatusUpdates = OrderStatusUpdate::where('order_id', $order->id)->paginate();
+
+        return view('orders::orders.show', compact('order', 'orderStatusUpdates'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Modules\Orders\Http\Requests\OrderRequest $request
-     * @param \Modules\Orders\Entities\Customer $productOwner
-     * @param \Modules\Orders\Entities\Store $product
+     * @param \Modules\Orders\Entities\Customer $orderOwner
+     * @param \Modules\Orders\Entities\Store $order
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Order $product)
+    public function update(OrderRequest $request, Order $order)
     {
-        $this->repository->update($product, $request->all());
+        $this->repository->update($order, $request->all());
 
         flash(trans('orders::orders.messages.updated'));
 
-        return redirect()->route('dashboard.orders.show', $product);
+        return redirect()->route('dashboard.orders.show', $order);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Customer $customer
-     * @param Order $product
+     * @param Order $order
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Customer $customer, Order $product)
+    public function edit(Customer $customer, Order $order)
     {
-        return view('orders::orders.edit', compact('storeOwner', 'product'));
+        return view('orders::orders.edit', compact('customer', 'order'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param \Modules\Orders\Entities\Customer $customer
-     * @param \Modules\Orders\Entities\Store $product
-     * @throws \Exception
+     * @param \Modules\Orders\Entities\Store $order
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function destroy(Customer $customer, Order $product)
+    public function destroy(Customer $customer, Order $order)
     {
-        $this->repository->delete($product);
+        $this->repository->delete($order);
 
         flash(trans('orders::orders.messages.deleted'));
 

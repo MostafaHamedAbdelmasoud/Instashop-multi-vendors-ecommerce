@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Modules\Orders\Entities\Order;
+use Modules\OrderStatuses\Entities\OrderStatus;
+use Modules\OrderStatuses\Policies\OrderStatusPolicy;
 use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
 use Modules\Accounts\Entities\Admin;
@@ -29,11 +31,13 @@ use Modules\CustomFields\Entities\CustomField;
 use Modules\Accounts\Policies\StoreOwnerPolicy;
 use Modules\Accounts\Policies\SupervisorPolicy;
 use Modules\Categories\Policies\CategoryPolicy;
+use Modules\OrderProducts\Entities\OrderProduct;
 use Modules\Subscriptions\Entities\Subscription;
 use Modules\CouponProducts\Entities\CouponProduct;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Modules\Accounts\Policies\ShippingCompanyPolicy;
 use Modules\CustomFields\Policies\CustomFieldPolicy;
+use Modules\OrderProducts\Policies\OrderProductPolicy;
 use Modules\Subscriptions\Policies\SubscriptionPolicy;
 use Modules\CouponProducts\Policies\CouponProductPolicy;
 use Modules\Accounts\Policies\ShippingCompanyOwnerPolicy;
@@ -72,11 +76,13 @@ class AuthServiceProvider extends ServiceProvider
         Store::class => StorePolicy::class,
         Category::class => CategoryPolicy::class,
         Product::class => ProductPolicy::class,
+        OrderProduct::class => OrderProductPolicy::class,
         CustomField::class => CustomFieldPolicy::class,
         CustomFieldOption::class => CustomFieldOptionPolicy::class,
         Subscription::class => SubscriptionPolicy::class,
         Order::class => OrderPolicy::class,
         CouponProduct::class => CouponProductPolicy::class,
         Coupon::class => CouponPolicy::class,
+        OrderStatus::class => OrderStatusPolicy::class,
     ];
 }

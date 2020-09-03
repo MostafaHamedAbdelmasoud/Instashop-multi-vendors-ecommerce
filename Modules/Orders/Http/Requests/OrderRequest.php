@@ -40,16 +40,13 @@ class OrderRequest extends FormRequest
     {
         return RuleFactory::make(
             [
-                '%name%' => ['required', 'string'],
-                'store_id' => ['required', 'exists:stores,id'],
-                'category_id' => ['required', 'exists:categories,id'],
-                'code' => ['required', 'string', 'max:30' , 'min:1'],
-                'price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'old_price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'weight' => ['required', 'integer'],
-                'stock' => ['required', 'integer'],
-                '%description%' => ['required', 'max:1500', 'min:2'],
-                '%meta_description%' => ['required', 'max:200', 'min:2'],
+                'user_id' => ['required', 'exists:users,id'],
+                'coupon_id' => ['required', 'exists:coupons,id'],
+                'shipping_company_id' => ['required', 'exists:shipping_companies,id'],
+                'shipping_company_notes' => ['required', 'string'],
+                'discount' => ['required', 'numeric', 'max:100.00', 'min:0'],
+                'subtotal' => ['required', 'numeric', 'max:1e7', 'min:1'],
+                'total' => ['required', 'numeric', 'max:1e7', 'min:1'],
             ]
         );
     }
@@ -63,16 +60,13 @@ class OrderRequest extends FormRequest
     {
         return RuleFactory::make(
             [
-                '%name%' => ['required', 'string'],
-                'store_id' => ['required', 'exists:stores,id,' . $this->route('product')->id],
-                'category_id' => ['required', 'exists:categories,id,'.$this->route('product')->id],
-                'code' => ['required', 'string', 'max:30' , 'min:1'],
-                'price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'old_price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'weight' => ['required', 'integer'],
-                'stock' => ['required', 'integer'],
-                '%description%' => ['required', 'max:1500', 'min:2'],
-                '%meta_description%' => ['required', 'max:200', 'min:2'],
+                'coupon_id' => ['required', 'exists:coupons,id'],
+                'shipping_company_id' => ['required', 'exists:shipping_companies,id'],
+                'address_id' => ['required', 'exists:addresses,id'],
+                'shipping_company_notes' => ['required', 'string'],
+                'discount' => ['required', 'numeric', 'max:100.00', 'min:0'],
+                'subtotal' => ['required', 'numeric', 'max:1e7', 'min:1'],
+                'total' => ['required', 'numeric', 'max:1e7', 'min:1'],
             ]
         );
     }
@@ -84,6 +78,6 @@ class OrderRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('products::products.attributes');
+        return trans('orders::orders.attributes');
     }
 }

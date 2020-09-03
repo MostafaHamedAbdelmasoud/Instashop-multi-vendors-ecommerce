@@ -14,12 +14,14 @@
 
             <thead>
             <tr>
-                <th>@lang('orders::orders.attributes.name')</th>
-                <th>@lang('orders::orders.attributes.code')</th>
-                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.category_id')</th>
-                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.store_id')</th>
-                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.price')</th>
-                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.meta_description')</th>
+                <th>@lang('orders::orders.attributes.id')</th>
+                <th>@lang('orders::orders.attributes.user_id')</th>
+                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.address_id')</th>
+                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.shipping_company_id')</th>
+                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.coupon_id')</th>
+                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.shipping_company_notes')</th>
+                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.discount')</th>
+                <th class="d-none d-md-table-cell">@lang('orders::orders.attributes.total')</th>
                 <th style="width: 160px">...</th>
             </tr>
             </thead>
@@ -27,35 +29,46 @@
             @forelse($orders as $order)
                 <tr>
                     <td>
-                        <a href="{{ route('dashboard.orders.show', $order) }}"
-                           class="text-decoration-none text-ellipsis">
-                            {{ $order->name }}
-                        </a>
+                        {{ $order->id }}
                     </td>
 
                     <td>
-                        {{ $order->code }}
-                    </td>
-                    <td class="d-none d-md-table-cell">
-                        <a href="{{ route('dashboard.categories.show', $order->category) }}"
+                        <a href="{{ route('dashboard.customers.show', $order->user) }}"
                            class="text-decoration-none text-ellipsis">
-                            {{$order->category->name}}
+                            {{ $order->getUserName() }}
                         </a>
                     </td>
 
                     <td class="d-none d-md-table-cell">
-                        <a href="{{ route('dashboard.stores.show', $order->store) }}"
+                        {!! Str::limit($order->getAddress(), 10, ' ...') !!}
+
+                    </td>
+
+                    <td class="d-none d-md-table-cell">
+                        <a href="{{ route('dashboard.shipping_company_owners.show',[$order->shipping_company->ShippingCompanyOwner ]) }}"
                            class="text-decoration-none text-ellipsis">
-                            {{$order->store->name}}
+                            {!! Str::limit($order->getShippingCompanyName(), 25, ' ...') !!}
                         </a>
                     </td>
 
                     <td class="d-none d-md-table-cell">
-                        {{$order->price}}
+                        <a href="{{ route('dashboard.coupons.show', $order->coupon) }}"
+                           class="text-decoration-none text-ellipsis">
+                            {{$order->getCouponCode()}}
+                        </a>
                     </td>
 
                     <td class="d-none d-md-table-cell">
-                        {!! Str::limit($order->meta_description, 25, ' ...') !!}
+                        {!! Str::limit($order->shipping_company_notes, 10, ' ...') !!}
+                    </td>
+
+
+                    <td class="d-none d-md-table-cell">
+                        {{$order->getDiscountValue()}}
+                    </td>
+
+                    <td class="d-none d-md-table-cell">
+                        {{$order->total}}
                     </td>
 
                     <td style="width: 160px">

@@ -40,6 +40,15 @@ class ProductTableSeeder extends Seeder
                 'meta_description:ar' => 'وصف مختصر منتج 1',
                 'meta_description:en' => 'product brifely description 1',
             ],
+             [
+                'name:ar' => ' منتج 2',
+                'name:en' => 'product 2',
+                'description:ar' => 'وصف منتج 2',
+                'description:en' => 'product description 2',
+                'meta_description:ar' => 'وصف مختصر منتج 2',
+                'meta_description:en' => 'product brifely description 2',
+            ],
+
         ];
     }
 }

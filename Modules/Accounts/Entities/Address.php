@@ -2,11 +2,16 @@
 
 namespace Modules\Accounts\Entities;
 
+use App\Http\Filters\Filterable;
 use Modules\Countries\Entities\City;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Address.
+ */
 class Address extends Model
 {
+    use Filterable;
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +22,20 @@ class Address extends Model
         'city_id',
         'is_primary',
     ];
+
+
+    /**
+     * to make eager loading when get model.
+     * @var string[]
+     */
+    protected $with = [
+        'customer',
+    ];
+
+    public function getForeignKey()
+    {
+        return  'address_id';
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

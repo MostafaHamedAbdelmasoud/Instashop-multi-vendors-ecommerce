@@ -30,7 +30,7 @@ class OrderPolicy
      */
     public function view(User $user, Order $order)
     {
-        return $user->isAdmin() || $user->is($order->store->StoreOwner);
+        return $user->isAdmin() || $user->is($order->user);
     }
 
     /**
@@ -41,7 +41,7 @@ class OrderPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->is($store->StoreOwner);
+        return $user->isAdmin() || $user->is($order->user);
     }
 
     /**
@@ -53,7 +53,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order)
     {
-        return $user->isAdmin() || $user->is($order->store->StoreOwner);
+        return $user->isAdmin() || $user->is($order->user);
     }
 
     /**
@@ -65,6 +65,6 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order)
     {
-        return $user->isAdmin() || $user->is($order->store->StoreOwner);
+        return $user->isAdmin() || $user->is($order->user);
     }
 }

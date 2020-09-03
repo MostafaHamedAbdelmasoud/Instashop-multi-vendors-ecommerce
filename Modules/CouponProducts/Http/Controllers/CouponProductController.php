@@ -47,7 +47,7 @@ class CouponProductController extends Controller
     public function index()
     {
         $couponProducts = $this->repository->all();
-
+//        dd($couponProducts);
         return view('coupon_products::coupon_products.index', compact('couponProducts'));
     }
 

@@ -36,6 +36,10 @@ class CategoriesTableSeeder extends Seeder
                 'name:ar' => ' فئة 1',
                 'name:en' => 'category 1',
             ],
+            [
+                'name:ar' => ' فئة 2',
+                'name:en' => 'category 2',
+            ],
         ];
     }
 }

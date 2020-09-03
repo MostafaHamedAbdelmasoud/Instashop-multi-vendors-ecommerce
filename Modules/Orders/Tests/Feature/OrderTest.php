@@ -4,51 +4,83 @@ namespace Modules\Orders\Tests\Feature;
 
 use Tests\TestCase;
 use Modules\Orders\Entities\Order;
-use Modules\Stores\Entities\Store;
-use Modules\Categories\Entities\Category;
+use Modules\Coupons\Entities\Coupon;
+use Modules\Accounts\Entities\Customer;
+use Modules\Accounts\Entities\ShippingCompany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Astrotomic\Translatable\Validation\RuleFactory;
+use Modules\Accounts\Entities\ShippingCompanyOwner;
 
 class OrderTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_can_list_products()
+    public function it_can_list_orders()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        factory(Order::class)->create([
-            'name' => 'ProductTestName',
+        $customer = factory(Customer::class)->create();
+        $coupon = factory(Coupon::class)->create([
+            'code' => '443',
+            'percentage_discount' => 3.4,
+        ]);
+        $shipping_company_owner = factory(ShippingCompanyOwner::class)->create();
+        $shipping_company = factory(ShippingCompany::class)->create([
+            'owner_id' => $shipping_company_owner->id,
         ]);
 
-        $response = $this->get(route('dashboard.products.index'));
+        factory(Order::class)->create([
+            'user_id' => $customer->id,
+            'shipping_company_id' => $shipping_company->id,
+            'address_id' => $customer->addresses()->first()->id,
+            'coupon_id' => $coupon->id,
+            'discount' => 12.0,
+        ]);
+
+        $response = $this->get(route('dashboard.orders.index'));
 
         $response->assertSuccessful();
 
-        $response->assertSee('ProductTestName');
+        $response->assertSee(12.0);
     }
 
     /** @test */
-    public function it_can_display_product_details()
+    public function it_can_display_order_details()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        $product = factory(Order::class)->create();
+        $customer = factory(Customer::class)->create();
+        $coupon = factory(Coupon::class)->create([
+            'code' => '443',
+            'percentage_discount' => 3.4,
+        ]);
+        $shipping_company_owner = factory(ShippingCompanyOwner::class)->create();
+        $shipping_company = factory(ShippingCompany::class)->create([
+            'owner_id' => $shipping_company_owner->id,
+        ]);
 
-        $response = $this->get(route('dashboard.products.show', $product));
+        $order = factory(Order::class)->create([
+            'user_id' => $customer->id,
+            'shipping_company_id' => $shipping_company->id,
+            'address_id' => $customer->addresses()->first()->id,
+            'coupon_id' => $coupon->id,
+            'discount' => 12.0,
+        ]);
+
+        $response = $this->get(route('dashboard.orders.show', $order));
 
         $response->assertSuccessful();
 
-        $response->assertSee(e($product->name));
+        $response->assertSee(e($order->id));
     }
 
     /** @test */
-    public function it_can_create_a_new_product()
+    public function it_can_create_a_new_order()
     {
         $this->withoutExceptionHandling();
 
@@ -56,27 +88,30 @@ class OrderTest extends TestCase
 
         $this->assertEquals(0, Order::count());
 
-        $store = factory(Store::class)->create([
-            'owner_id' => 1,
-            'domain' => 'facebook',
+        $customer = factory(Customer::class)->create();
+
+        $coupon = factory(Coupon::class)->create([
+            'code' => '443',
+            'percentage_discount' => 3.4,
+        ]);
+        $shipping_company_owner = factory(ShippingCompanyOwner::class)->create();
+        $shipping_company = factory(ShippingCompany::class)->create([
+            'owner_id' => $shipping_company_owner->id,
         ]);
 
-        $category = factory(Category::class)->create(['store_id'=>1]);
 
         $response = $this->post(
-            route('dashboard.products.store'),
+            route('dashboard.orders.store'),
             RuleFactory::make(
                 [
-                    '%name%' => 'productName',
-                    'category_id' => $category->id,
-                    'store_id' => $store->id,
-                    'code' => 'cysnfnfyy',
-                    'old_price' => 110.2,
-                    'price' => 11.2,
-                    'weight' => 1,
-                    'stock' => 1,
-                    '%description%' => 'it is desc helloDomaind.com',
-                    '%meta_description%' => 'it is meta_desc helloDomaind.com',
+                    'user_id' => $customer->id,
+                    'shipping_company_id' => $shipping_company->id,
+                    'address_id' => $customer->addresses()->first()->id,
+                    'coupon_id' => $coupon->id,
+                    'discount' => 12.0,
+                    'subtotal' => 110.2,
+                    'total' => 11.2,
+                    'shipping_company_notes' => 'it is notes for shipping company test',
                 ]
             )
         );
@@ -87,77 +122,91 @@ class OrderTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_product_create_form()
+    public function it_can_display_order_create_form()
     {
         $this->actingAsAdmin();
 
-        $response = $this->get(route('dashboard.products.create'));
+        $response = $this->get(route('dashboard.orders.create'));
 
         $response->assertSuccessful();
 
-        $response->assertSee(trans('products::products.actions.create'));
+        $response->assertSee(trans('orders::orders.actions.create'));
     }
 
     /** @test */
-    public function it_can_display_product_edit_form()
+    public function it_can_display_order_edit_form()
     {
         $this->actingAsAdmin();
 
-        $product = factory(Order::class)->create();
+        $order = factory(Order::class)->create();
 
-        $response = $this->get(route('dashboard.products.edit', $product));
+        $response = $this->get(route('dashboard.orders.edit', $order));
 
         $response->assertSuccessful();
 
-        $response->assertSee(trans('products::products.actions.edit'));
+        $response->assertSee(trans('orders::orders.actions.edit'));
     }
 
     /** @test */
-    public function it_can_update_product()
+    public function it_can_update_order()
     {
         $this->actingAsAdmin();
 
         $this->assertEquals(0, Order::count());
 
-        $product = factory(Order::class)->create();
+        $customer = factory(Customer::class)->create();
+        $coupon = factory(Coupon::class)->create([
+            'code' => '443',
+            'percentage_discount' => 3.4,
+        ]);
+        $shipping_company_owner = factory(ShippingCompanyOwner::class)->create();
+        $shipping_company = factory(ShippingCompany::class)->create([
+            'owner_id' => $shipping_company_owner->id,
+        ]);
+
+
+        $order = factory(Order::class)->create([
+            'user_id' => $customer->id,
+            'shipping_company_id' => $shipping_company->id,
+            'address_id' => $customer->addresses()->first()->id,
+            'coupon_id' => $coupon->id,
+            'discount' => 12.0,
+        ]);
 
         $response = $this->put(
-            route('dashboard.products.update', $product),
+            route('dashboard.orders.update', $order),
             RuleFactory::make(
                 [
-                    '%name%' => 'productName2',
-                    'category_id' => 1,
-                    'store_id' => 1,
-                    'code' => 'cysyy',
-                    'old_price' => '110.2',
-                    'price' => '11.2',
-                    'weight' => '1',
-                    'stock' => '1',
-                    '%description%' => 'it is desc helloDomaind.com',
-                    '%meta_description%' => 'it is meta_desc helloDomaind.com',
+                    'shipping_company_id' => $shipping_company->id,
+                    'address_id' => $customer->addresses()->first()->id,
+                    'coupon_id' => $coupon->id,
+                    'discount' => 12.0,
+                    'subtotal' => 110.2,
+                    'total' => 11.2,
+                    'shipping_company_notes' => 'it is notes for shipping company test',
                 ]
             )
         );
 
-        $product->refresh();
+        $order->refresh();
 
         $response->assertRedirect();
 
-        $this->assertEquals($product->name, 'productName2');
+        $this->assertEquals($order->discount, 12.0);
     }
 
     /** @test */
-    public function it_can_delete_product()
+    public function it_can_delete_order()
     {
         $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
-        $product = factory(Order::class)->create();
+        $order = factory(Order::class)->create();
 
         $this->assertEquals(Order::count(), 1);
 
-        $response = $this->delete(route('dashboard.products.destroy', $product));
+        $response = $this->delete(route('dashboard.orders.destroy', $order));
 
         $response->assertRedirect();
 

@@ -4,6 +4,8 @@ namespace Modules\Orders\Repositories;
 
 use Modules\Orders\Entities\Order;
 use Modules\Contracts\CrudRepository;
+use Modules\Accounts\Entities\Address;
+use Modules\Accounts\Entities\Customer;
 use Modules\Orders\Http\Filters\OrderFilter;
 
 /**
@@ -45,9 +47,13 @@ class OrderRepository implements CrudRepository
      */
     public function create(array $data)
     {
-        $order = Order::create($data);
+        $customer = Customer::where('id', $data['user_id'])->first();
 
-        $this->uploadAvatar($order, $data);
+        $address_id = Address::where('user_id', $customer->id)->where('is_primary', 1)->first()->id;
+
+        $data['address_id'] = $address_id;
+
+        $order = Order::create($data);
 
         return $order;
     }
@@ -72,16 +78,20 @@ class OrderRepository implements CrudRepository
      *
      * @param mixed $model
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function update($model, array $data)
     {
-        $order = $this->find($model);
+        $address = Address::where('id', $data['address_id'])->first();
 
-        $this->uploadAvatar($model, $data);
+        $customer_id = Customer::where('id', $address->user_id)->first()->id;
+
+        $data['user_id'] = $customer_id;
+
+        $order = $this->find($model);
 
         $order->update($data);
 
@@ -98,21 +108,5 @@ class OrderRepository implements CrudRepository
     public function delete($model)
     {
         $this->find($model)->delete();
-    }
-
-    /**
-     * Upload the avatar image.
-     *
-     * @param Order $product
-     * @param array $data
-     * @return Order
-     */
-    private function uploadAvatar(Order $product, array $data)
-    {
-        if (isset($data['store'])) {
-            $product->addMedia($data['store'])->toMediaCollection('stores');
-        }
-
-        return $product;
     }
 }

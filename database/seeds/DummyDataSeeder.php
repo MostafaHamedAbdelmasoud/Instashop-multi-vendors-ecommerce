@@ -1,12 +1,16 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Modules\Orders\Database\Seeders\OrderStatusUpdateTableSeeder;
+use Modules\Orders\Database\Seeders\OrderTableSeeder;
+use Modules\OrderStatuses\Database\Seeders\OrderStatusTableSeeder;
 use Modules\Stores\Database\Seeders\StoresTableSeeder;
 use Modules\Coupons\Database\Seeders\CouponTableSeeder;
 use Modules\Products\Database\Seeders\ProductTableSeeder;
 use Modules\Categories\Database\Seeders\CategoriesTableSeeder;
 use Modules\CustomFields\Database\Seeders\CustomFieldTableSeeder;
 use Modules\Accounts\Database\Seeders\ShippingCompaniesTableSeeder;
+use Modules\OrderProducts\Database\Seeders\OrderProductTableSeeder;
 use Modules\Subscriptions\Database\Seeders\SubscriptionTableSeeder;
 use Modules\CouponProducts\Database\Seeders\CouponProductTableSeeder;
 use Modules\CustomFieldOptions\Database\Seeders\CustomFieldOptionTableSeeder;
@@ -32,5 +36,9 @@ class DummyDataSeeder extends Seeder
         $this->call(SubscriptionTableSeeder::class);
         $this->call(CouponTableSeeder::class);
         $this->call(CouponProductTableSeeder::class);
+        $this->call(OrderTableSeeder::class);
+        $this->call(OrderProductTableSeeder::class);
+        $this->call(OrderStatusTableSeeder::class);
+        $this->call(OrderStatusUpdateTableSeeder::class);
     }
 }

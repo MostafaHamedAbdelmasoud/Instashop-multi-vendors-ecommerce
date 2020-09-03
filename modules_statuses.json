@@ -11,5 +11,7 @@
     "CustomFieldOptions": true,
     "Coupons": true,
     "Orders": true,
-    "CouponProducts": true
+    "CouponProducts": true,
+    "OrderProducts": true,
+    "OrderStatuses": true
 }

@@ -2,9 +2,6 @@
 
 namespace Modules\CouponProducts\Entities\Helpers;
 
-use Modules\Products\Entities\Product;
-use Modules\Categories\Entities\Category;
-
 /**
  * Trait ProductHelper.
  */

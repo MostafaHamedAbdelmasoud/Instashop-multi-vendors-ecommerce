@@ -12,7 +12,7 @@ Breadcrumbs::for('dashboard.orders.create', function ($breadcrumb) {
 
 Breadcrumbs::for('dashboard.orders.show', function ($breadcrumb, $order) {
     $breadcrumb->parent('dashboard.orders.index');
-    $breadcrumb->push($order->name, route('dashboard.orders.show', $order));
+    $breadcrumb->push($order->id, route('dashboard.orders.show', $order));
 });
 
 Breadcrumbs::for('dashboard.orders.edit', function ($breadcrumb, $order) {

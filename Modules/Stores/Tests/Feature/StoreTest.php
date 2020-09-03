@@ -138,12 +138,12 @@ class StoreTest extends TestCase
 
         $store = factory(Store::class)->create();
 //        dd(Store::first());
-        $this->assertEquals(Store::count(), 2);
+        $this->assertEquals(Store::count(), 1);
 
         $response = $this->delete(route('dashboard.stores.destroy', $store));
 
         $response->assertRedirect();
 
-        $this->assertEquals(Store::count(), 1);
+        $this->assertEquals(Store::count(), 0);
     }
 }

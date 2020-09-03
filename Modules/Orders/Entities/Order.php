@@ -3,30 +3,20 @@
 namespace Modules\Orders\Entities;
 
 use App\Http\Filters\Filterable;
-use Modules\Stores\Entities\Store;
-use Modules\Support\Traits\Selectable;
 use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Translatable;
-use Modules\Categories\Entities\Category;
-use Modules\Orders\Entities\Helpers\ProductHelper;
+use Modules\Accounts\Entities\Address;
+use Modules\Accounts\Entities\ShippingCompany;
+use Modules\Accounts\Entities\User;
+use Modules\Coupons\Entities\Coupon;
+use Modules\Orders\Entities\Helpers\OrderHelper;
+use Modules\Support\Traits\Selectable;
 
 /**
  * Class Category.
  */
 class Order extends Model
 {
-    use Translatable, Filterable, Selectable, ProductHelper;
-
-    /**
-     * The translated attributes that are mass assignable.
-     *
-     * @var array
-     */
-    public $translatedAttributes = [
-        'name',
-        'description',
-        'meta_description',
-    ];
+    use Filterable, Selectable, OrderHelper;
 
     /**
      * The relations to eager load on every query.
@@ -34,9 +24,10 @@ class Order extends Model
      * @var array
      */
     protected $with = [
-        'translations',
-        'store',
-        'category',
+        'user',
+        'address',
+        'shipping_company',
+        'coupon',
     ];
 
     /**
@@ -45,13 +36,14 @@ class Order extends Model
      * @var array
      */
     public $fillable = [
-        'store_id',
-        'category_id',
-        'code',
-        'old_price',
-        'price',
-        'weight',
-        'stock',
+        'user_id',
+        'coupon_id',
+        'address_id',
+        'shipping_company_id',
+        'shipping_company_notes',
+        'subtotal',
+        'total',
+        'discount',
     ];
 
     /**
@@ -61,22 +53,39 @@ class Order extends Model
      */
     public function getForeignKey()
     {
-        return 'product_id';
+        return 'order_id';
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function store()
+    public function coupon()
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Coupon::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
+    public function shipping_company()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(ShippingCompany::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
+

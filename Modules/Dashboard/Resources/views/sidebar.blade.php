@@ -15,4 +15,6 @@
 @include('orders::sidebar')
 @include('coupons::sidebar')
 @include('coupon_products::sidebar')
+@include('order_products::sidebar')
+@include('order_statuses::sidebar')
 

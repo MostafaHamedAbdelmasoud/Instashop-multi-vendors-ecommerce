@@ -30,6 +30,17 @@ class CouponProduct extends Model
         'coupon_id',
     ];
 
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    public $with = [
+        'product',
+        'category',
+    ];
+
     /**
      * it defines foreign key in relations.
      *

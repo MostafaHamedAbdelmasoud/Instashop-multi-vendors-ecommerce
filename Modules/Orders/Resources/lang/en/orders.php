@@ -22,9 +22,15 @@ return [
         'deleted' => 'The orders has been deleted successfully.',
     ],
     'attributes' => [
-        'name' => 'Name',
-        'category_id' => ' Category ',
-        'code' => 'Code',
+        'id' => 'Id',
+        'user_id' => 'User Name',
+        'address_id' => 'Address  ',
+        'shipping_company_id' => 'Shipping Company',
+        'coupon_id' => ' Coupon',
+        'shipping_company_notes' => 'Shipping Company Notes',
+        'subtotal' => ' Subtotal ',
+        'total' => 'Total',
+        'discount' => 'Discount ',
     ],
     'dialogs' => [
         'delete' => [
@@ -34,9 +40,7 @@ return [
             'cancel' => 'Cancel',
         ],
     ],
-    'units' => [
-        'gram' => 'Gram',
-        'kilo_gram' => 'Kilo Gram',
-        'piece' => 'Piece',
+    'additions' => [
+        'notes' => 'Notes'
     ],
 ];

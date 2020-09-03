@@ -3,12 +3,23 @@
 namespace Modules\Accounts\Entities;
 
 use Parental\HasParent;
-use Modules\Accounts\Entities\Address;
 use Modules\Accounts\Entities\Relations\CustomerRelations;
 
+/**
+ * Class Customer.
+ */
 class Customer extends User
 {
     use HasParent, CustomerRelations;
+
+    /**
+     * eager loading.
+     *
+     * @var string[]
+     */
+    protected $with = [
+        'addresses',
+    ];
 
     /**
      * Get the class name for polymorphic relations.

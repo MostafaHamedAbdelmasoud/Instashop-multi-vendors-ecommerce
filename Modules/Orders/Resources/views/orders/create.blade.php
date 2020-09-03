@@ -1,17 +1,17 @@
-@extends('dashboard::layouts.master', ['title' => trans('products::products.actions.create')])
+@extends('dashboard::layouts.master', ['title' => trans('orders::orders.actions.create')])
 @section('content')
     @component('dashboard::layouts.components.page')
-        @slot('title', trans('products::products.plural'))
-        @slot('breadcrumbs', ['dashboard.products.create'])
+        @slot('title', trans('orders::orders.plural'))
+        @slot('breadcrumbs', ['dashboard.orders.create'])
 
-        {{ BsForm::resource('products::products')->post(route('dashboard.products.store') , ['files' => true]) }}
+        {{ BsForm::resource('orders::orders')->post(route('dashboard.orders.store') , ['files' => true]) }}
         @component('dashboard::layouts.components.box')
-            @slot('title', trans('products::products.actions.create'))
+            @slot('title', trans('orders::orders.actions.create'))
 
-            @include('products::products.partials.form')
+            @include('orders::orders.partials.form_create')
 
             @slot('footer')
-                {{ BsForm::submit()->label(trans('products::products.actions.save')) }}
+                {{ BsForm::submit()->label(trans('orders::orders.actions.save')) }}
             @endslot
         @endcomponent
         {{ BsForm::close() }}
