@@ -13,5 +13,5 @@
 
 Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
     Route::resource('orders', 'OrderController');
-    Route::resource('order_status_updates', 'OrderController');
+    Route::resource('orders.order_status_updates', 'OrderStatusUpdateController');
 });

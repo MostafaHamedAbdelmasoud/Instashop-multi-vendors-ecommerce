@@ -1,10 +1,10 @@
-@extends('dashboard::layouts.master', ['title' => $order->id])
+@extends('dashboard::layouts.master', ['title' => $orderStatusUpdate->id])
 @section('content')
     @component('dashboard::layouts.components.page')
-        @slot('title', $order->id)
-        @slot('breadcrumbs', ['dashboard.order_status_updates.edit', $order])
+        @slot('title', $orderStatusUpdate->id)
+        @slot('breadcrumbs', ['dashboard.order_status_updates.edit', $order,$orderStatusUpdate])
 
-        {{ BsForm::resource('orders::orders')->putModel($order, route('dashboard.order_status_updates.update', $order) , ['files'=>true]) }}
+        {{ BsForm::resource('orders::orders')->putModel($orderStatusUpdate, route('dashboard.orders.order_status_updates.update', [$order,$orderStatusUpdate]) ) }}
         @component('dashboard::layouts.components.box')
             @slot('title', trans('orders::order_status_updates.actions.edit'))
 

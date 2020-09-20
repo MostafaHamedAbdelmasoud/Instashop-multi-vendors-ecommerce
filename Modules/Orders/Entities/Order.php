@@ -87,5 +87,15 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orderStatusUpdates()
+    {
+        return $this->hasMany(OrderStatusUpdate::class);
+    }
+
+
 }
 

@@ -21,12 +21,12 @@
                     @lang('orders::orders.dialogs.delete.info')
                 </div>
                 <div class="modal-footer">
-                    {{ BsForm::delete(route('dashboard.orders.destroy', $orderStatusUpdate)) }}
+                    {{ BsForm::delete(route('dashboard.orders.order_status_updates.destroy', [$order,$orderStatusUpdate])) }}
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        @lang('orders::orders.dialogs.delete.cancel')
+                        @lang('orders::order_status_updates.dialogs.delete.cancel')
                     </button>
                     <button type="submit" class="btn btn-danger">
-                        @lang('orders::orders.dialogs.delete.confirm')
+                        @lang('orders::order_status_updates.dialogs.delete.confirm')
                     </button>
                     {{ BsForm::close() }}
                 </div>

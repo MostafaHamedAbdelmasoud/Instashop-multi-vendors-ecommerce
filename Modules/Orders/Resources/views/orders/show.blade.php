@@ -95,18 +95,18 @@
                 @endcomponent
                 <div class="row">
                     <div class="col-md-4">
-                        {{--                            {{ BsForm::resource('orders::order_status_updates')--}}
-                        {{--                                ->post(route('dashboard.order_status_updates.store', $order->order_status_update)) }}--}}
-                        {{--                            @component('dashboard::layouts.components.box')--}}
-                        {{--                                @slot('title', trans('orders::order_status_updates.actions.create'))--}}
+                                                    {{ BsForm::resource('orders::order_status_updates')
+                                                        ->post(route('dashboard.orders.order_status_updates.store', $order)) }}
+                                                    @component('dashboard::layouts.components.box')
+                                                        @slot('title', trans('orders::order_status_updates.actions.create'))
 
-                        {{--                                @include('orders::order_status_updates.partials.form')--}}
+                                                        @include('orders::order_status_updates.partials.form')
 
-                        {{--                                @slot('footer')--}}
-                        {{--                                    {{ BsForm::submit()->label(trans('orders::order_status_updates.actions.save')) }}--}}
-                        {{--                                @endslot--}}
-                        {{--                            @endcomponent--}}
-                        {{--                            {{ BsForm::close() }}--}}
+                                                        @slot('footer')
+                                                            {{ BsForm::submit()->label(trans('orders::order_status_updates.actions.save')) }}
+                                                        @endslot
+                                                    @endcomponent
+                                                    {{ BsForm::close() }}
                     </div>
                     <div class="col-md-8">
                         @component('dashboard::layouts.components.table-box')
@@ -115,7 +115,8 @@
 
                             <thead>
                             <tr>
-                                <th>@lang('orders::orders.additions.notes')</th>
+                                <th>@lang('orders::order_status_updates.attributes.notes')</th>
+                                <th>@lang('orders::order_status_updates.attributes.order_status_id')</th>
                                 <th style="width: 160px">...</th>
                             </tr>
                             </thead>
@@ -123,6 +124,7 @@
                             @forelse($orderStatusUpdates as $orderStatusUpdate)
                                 <tr>
                                     <td>{{ $orderStatusUpdate->notes }}</td>
+                                    <td>{{ $orderStatusUpdate->orderStatus->type }}</td>
                                     <td style="width: 160px">
                                         @include('orders::order_status_updates.partials.actions.edit')
                                         @include('orders::order_status_updates.partials.actions.delete')

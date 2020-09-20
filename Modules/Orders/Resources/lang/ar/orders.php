@@ -40,7 +40,4 @@ return [
             'cancel' => 'إلغاء',
         ],
     ],
-    'additions' => [
-        'notes' => 'ملاحظات'
-    ],
 ];

@@ -22,15 +22,9 @@ return [
         'deleted' => 'The order status updates have been deleted successfully.',
     ],
     'attributes' => [
-        'id' => 'Id',
-        'user_id' => 'User Name',
-        'address_id' => 'Address  ',
-        'shipping_company_id' => 'Shipping Company',
-        'coupon_id' => ' Coupon',
-        'shipping_company_notes' => 'Shipping Company Notes',
-        'subtotal' => ' Subtotal ',
-        'total' => 'Total',
-        'discount' => 'Discount ',
+        'notes' => 'Notes',
+        'order_status_id' => 'Order Status',
+        'order_id' => 'Order',
     ],
     'dialogs' => [
         'delete' => [

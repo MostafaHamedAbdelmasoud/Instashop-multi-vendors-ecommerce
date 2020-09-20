@@ -3,6 +3,10 @@
 namespace Modules\Orders\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use Modules\Orders\Transformers\SelectOrderStatusResource;
+use Modules\Orders\Http\Filters\SelectOrderStatusFilter;
+use Modules\OrderStatuses\Entities\OrderStatus;
+use Modules\OrderStatuses\Http\Filters\OrderStatusFilter;
 use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
 use Modules\Coupons\Entities\Coupon;
@@ -113,5 +117,18 @@ class SelectController extends Controller
         $customers = Customer::filter($filter)->paginate();
 
         return SelectCustomerResource::collection($customers);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Modules\Coupons\Http\Filters\SelectStoreFilter  $filter
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function order_status(SelectOrderStatusFilter $filter)
+    {
+        $orderStatus= OrderStatus::filter($filter)->paginate();
+
+        return SelectOrderStatusResource::collection($orderStatus);
     }
 }

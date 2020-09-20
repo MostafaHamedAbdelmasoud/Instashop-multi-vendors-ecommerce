@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Modules\Orders\Entities\Order;
+use Modules\Orders\Entities\OrderStatusUpdate;
+use Modules\Orders\Policies\OrderStatusUpdatePolicy;
 use Modules\OrderStatuses\Entities\OrderStatus;
 use Modules\OrderStatuses\Policies\OrderStatusPolicy;
 use Modules\Stores\Entities\Store;
@@ -84,5 +86,6 @@ class AuthServiceProvider extends ServiceProvider
         CouponProduct::class => CouponProductPolicy::class,
         Coupon::class => CouponPolicy::class,
         OrderStatus::class => OrderStatusPolicy::class,
+        OrderStatusUpdate::class => OrderStatusUpdatePolicy::class,
     ];
 }

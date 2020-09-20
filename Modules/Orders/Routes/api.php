@@ -20,3 +20,4 @@ use Illuminate\Http\Request;
 Route::get('/select/coupons', 'SelectController@select_coupon')->name('coupons.select');
 Route::get('/select/customers', 'SelectController@select_customer')->name('customers.select');
 Route::get('/select/addresses/{customer?}', 'SelectController@select_address')->name('addresses.select');
+Route::get('/select/order_status', 'SelectController@order_status')->name('order_statues.select');

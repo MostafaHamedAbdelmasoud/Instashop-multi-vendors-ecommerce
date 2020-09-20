@@ -7,6 +7,7 @@ use Modules\Contracts\CrudRepository;
 use Modules\Accounts\Entities\Address;
 use Modules\Accounts\Entities\Customer;
 use Modules\Orders\Http\Filters\OrderFilter;
+use Modules\Orders\Entities\OrderStatusUpdate;
 
 /**
  * Class ShippingCompanyOwnerRepository.
@@ -59,6 +60,18 @@ class OrderRepository implements CrudRepository
     }
 
     /**
+     * Save the created model to storage.
+     *
+     * @param array $data
+     * @param Order $order
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function CreateOrderStatusUpdate(array $data, Order $order)
+    {
+        return $order->orderStatusUpdates()->create($data);
+    }
+
+    /**
      * Display the given client instance.
      *
      * @param mixed $model
@@ -71,6 +84,21 @@ class OrderRepository implements CrudRepository
         }
 
         return Order::findOrFail($model);
+    }
+
+    /**
+     * Display the given client instance.
+     *
+     * @param mixed $model
+     * @return \Modules\Accounts\Entities\Category
+     */
+    public function findOrderStatusUpdate($model)
+    {
+        if ($model instanceof OrderStatusUpdate) {
+            return $model;
+        }
+
+        return OrderStatusUpdate::findOrFail($model);
     }
 
     /**
@@ -99,6 +127,25 @@ class OrderRepository implements CrudRepository
     }
 
     /**
+     * Update the given client in the storage.
+     *
+     * @param mixed $model
+     * @param array $data
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function updateOrderStatusUpdate($model, array $data)
+    {
+        $orderStatusUpdate = $this->findOrderStatusUpdate($model);
+
+        $orderStatusUpdate->update($data);
+
+        return $orderStatusUpdate;
+    }
+
+    /**
      * Delete the given client from storage.
      *
      * @param mixed $model
@@ -108,5 +155,17 @@ class OrderRepository implements CrudRepository
     public function delete($model)
     {
         $this->find($model)->delete();
+    }
+
+    /**
+     * Delete the given client from storage.
+     *
+     * @param mixed $model
+     * @throws \Exception
+     * @return void
+     */
+    public function deleteOrderStatusUpdate($model)
+    {
+        $this->findOrderStatusUpdate($model)->delete();
     }
 }

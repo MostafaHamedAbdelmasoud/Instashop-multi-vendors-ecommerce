@@ -3,9 +3,10 @@
 namespace Modules\Orders\Entities;
 
 use App\Http\Filters\Filterable;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Orders\Entities\Helpers\OrderHelper;
 use Modules\Support\Traits\Selectable;
+use Illuminate\Database\Eloquent\Model;
+use Modules\OrderStatuses\Entities\OrderStatus;
+use Modules\Orders\Entities\Helpers\OrderHelper;
 
 /**
  * Class Category.
@@ -19,7 +20,9 @@ class OrderStatusUpdate extends Model
      *
      * @var array
      */
-    protected $with = [];
+    protected $with = [
+        'order',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -27,8 +30,8 @@ class OrderStatusUpdate extends Model
      * @var array
      */
     public $fillable = [
-        'order_id',
         'order_status_id',
+        'order_id',
         'notes',
     ];
 
@@ -42,5 +45,23 @@ class OrderStatusUpdate extends Model
         return 'order_status_update_id';
     }
 
+    /**
+     * it defines foreign key in relations.
+     *
+     * @return string
+     */
+    public function orderStatus()
+    {
+        return $this->belongsTo(OrderStatus::class);
+    }
 
+    /**
+     * it defines foreign key in relations.
+     *
+     * @return string
+     */
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
