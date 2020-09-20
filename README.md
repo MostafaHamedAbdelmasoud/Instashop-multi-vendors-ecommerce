@@ -43,6 +43,18 @@ it's a multi-vendors ecommerce website built from scratch with laravel, and it i
         <tr>  
     </tbody>
     </table>
+    <table>
+    <thead>
+        <th>Product Page</th>
+    </thead>
+    <tbody>
+          <tr> 
+               <td>
+                <img src="/visual/product.png"/>
+             </td> 
+        <tr>  
+    </tbody>
+    </table>
 
 
 <table>
