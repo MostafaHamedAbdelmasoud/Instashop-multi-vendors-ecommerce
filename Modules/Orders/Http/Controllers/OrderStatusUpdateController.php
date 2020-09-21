@@ -47,7 +47,7 @@ class OrderStatusUpdateController extends Controller
      * @param Order $order
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(\Illuminate\Http\Request $request, Order $order)
+    public function store(OrderStatusUpdateRequest $request, Order $order)
     {
         $this->repository->createOrderStatusUpdate($request->all(), $order);
 
@@ -60,13 +60,14 @@ class OrderStatusUpdateController extends Controller
      * Update the specified resource in storage.
      *
      * @param OrderStatusUpdateRequest $request
+     * @param Order $order
      * @param OrderStatusUpdate $orderStatusUpdate
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(OrderStatusUpdateRequest $request, OrderStatusUpdate $orderStatusUpdate)
+    public function update(OrderStatusUpdateRequest $request, Order $order, OrderStatusUpdate $orderStatusUpdate)
     {
         $this->repository->updateOrderStatusUpdate($orderStatusUpdate, $request->all());
 

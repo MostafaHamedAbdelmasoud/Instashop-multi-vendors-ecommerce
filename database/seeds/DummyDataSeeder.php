@@ -26,9 +26,9 @@ class DummyDataSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
-        $this->call(AddressesTableSeeder::class);
         $this->call(ShippingCompaniesTableSeeder::class);
         $this->call(StoresTableSeeder::class);
+        $this->call(AddressesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(ProductTableSeeder::class);
         $this->call(CustomFieldTableSeeder::class);

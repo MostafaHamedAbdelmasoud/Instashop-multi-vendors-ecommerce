@@ -51,7 +51,6 @@ class OrderRepository implements CrudRepository
         $customer = Customer::where('id', $data['user_id'])->first();
 
         $address_id = Address::where('user_id', $customer->id)->where('is_primary', 1)->first()->id;
-
         $data['address_id'] = $address_id;
 
         $order = Order::create($data);

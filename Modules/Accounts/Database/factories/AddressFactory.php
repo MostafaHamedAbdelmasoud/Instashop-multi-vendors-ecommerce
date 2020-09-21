@@ -21,8 +21,7 @@ $factory->define(Address::class, function (Faker $faker) {
 
     return [
         'address' => $faker->address,
-        'is_primary' => $faker->boolean,
-
+        'is_primary' => 1,
         'user_id' => $h->random_or_create(\Modules\Accounts\Entities\Customer::class)->id,
         'city_id' => $h->random_or_create(\Modules\Countries\Entities\City::class)->id,
     ];

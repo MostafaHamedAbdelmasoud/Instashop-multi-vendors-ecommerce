@@ -54,7 +54,7 @@ class AddressTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_customer_edit_form()
+    public function it_can_display_address_edit_form()
     {
         $this->actingAsAdmin();
 
@@ -70,7 +70,7 @@ class AddressTest extends TestCase
     }
 
     /** @test */
-    public function it_can_update_customers()
+    public function it_can_update_addresses()
     {
         $this->actingAsAdmin();
 
@@ -97,7 +97,7 @@ class AddressTest extends TestCase
     }
 
     /** @test */
-    public function it_can_delete_customer()
+    public function it_can_delete_address()
     {
         $this->actingAsAdmin();
 

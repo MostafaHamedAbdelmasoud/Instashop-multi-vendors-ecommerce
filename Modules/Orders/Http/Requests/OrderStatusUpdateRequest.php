@@ -55,8 +55,8 @@ class OrderStatusUpdateRequest extends FormRequest
     {
         return RuleFactory::make(
             [
-//                'order_status_id' => ['required', 'exists:order_statuses,id,'.$this->route('order_status_updates')],
-                'notes' => ['required', 'string', 'max:2000', 'min:0'],
+                'order_status_id' => ['required', 'exists:order_statuses,id'],
+                'notes' => ['required', 'max:2000', 'min:0'],
             ]
         );
     }
@@ -68,6 +68,6 @@ class OrderStatusUpdateRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('order::order_status_updates.attributes');
+        return trans('orders::order_status_updates.attributes');
     }
 }
