@@ -119,3 +119,40 @@ php artisan serve
 > now go to (http//:127.0.0.1:8000) 
 
 
+## Roles:
+
+<table>
+    <thead>
+        <th>Role</th>
+        <th>Email</th>
+        <th>Password</th>
+        </thead>
+    <tbody>
+        <tr> 
+            <td>Admin</td>
+            <td>admin@demo.com</td>
+            <td>password</td>
+        </tr>
+        <tr> 
+            <td>Customer</td>
+            <td>jeffrey@laracasts.com</td>
+            <td>password</td>
+        </tr>
+         <tr> 
+            <td>Shipping Company Owner</td>
+            <td>fedex@shipping.org</td>
+            <td>password</td>
+        </tr>
+          <tr> 
+            <td>Store Owner</td>
+            <td>alice@toptal.org</td>
+            <td>password</td>
+        </tr>
+         <tr> 
+            <td>Supervisor</td>
+            <td>andre@madarang.org</td>
+            <td>password</td>
+        </tr>
+    </tbody>
+    </table>
+
