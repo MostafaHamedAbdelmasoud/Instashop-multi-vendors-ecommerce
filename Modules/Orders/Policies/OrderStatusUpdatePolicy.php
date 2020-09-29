@@ -4,8 +4,8 @@ namespace Modules\Orders\Policies;
 
 use Modules\Orders\Entities\Order;
 use Modules\Accounts\Entities\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Orders\Entities\OrderStatusUpdate;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
  * Class StorePolicy.

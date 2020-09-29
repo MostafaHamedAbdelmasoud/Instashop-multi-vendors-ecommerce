@@ -2,8 +2,8 @@
 
 namespace Modules\OrderStatuses\Policies;
 
-use Modules\OrderStatuses\Entities\OrderStatus;
 use Modules\Accounts\Entities\User;
+use Modules\OrderStatuses\Entities\OrderStatus;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**

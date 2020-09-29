@@ -82,6 +82,17 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'inspector-apm/inspector-laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Inspector\\Laravel\\InspectorServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Inspector' => 'Inspector\\Laravel\\Facades\\Inspector',
+    ),
+  ),
   'intervention/image' => 
   array (
     'providers' => 

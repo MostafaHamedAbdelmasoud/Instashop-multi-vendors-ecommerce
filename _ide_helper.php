@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.21.0 on 2020-07-26 17:40:53.
+ * Generated for Laravel 7.21.0 on 2020-09-26 17:43:56.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16616,6 +16616,151 @@ namespace Facade\Ignition\Facades {
  
 }
 
+namespace Inspector\Laravel\Facades { 
+
+    /**
+     * 
+     *
+     * @method bool isRecording
+     */ 
+    class Inspector {
+        
+        /**
+         * A wrap to monitor a function execution called by Laravel Container.
+         *
+         * @param mixed $callback
+         * @param array $parameters
+         * @return mixed|void 
+         * @throws \Throwable
+         * @static 
+         */ 
+        public static function call($callback, $parameters = [])
+        {
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->call($callback, $parameters);
+        }
+        
+        /**
+         * Create and start new Transaction.
+         *
+         * @param string $name
+         * @return \Inspector\Transaction 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function startTransaction($name)
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->startTransaction($name);
+        }
+        
+        /**
+         * Get current transaction instance.
+         *
+         * @return null|\Inspector\Transaction 
+         * @static 
+         */ 
+        public static function currentTransaction()
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->currentTransaction();
+        }
+        
+        /**
+         * Check if a transaction was started.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isRecording()
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->isRecording();
+        }
+        
+        /**
+         * Add new span to the queue.
+         *
+         * @param string $type
+         * @param null|string $label
+         * @return \Inspector\PerformanceModel 
+         * @static 
+         */ 
+        public static function startSegment($type, $label = null)
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->startSegment($type, $label);
+        }
+        
+        /**
+         * Monitor the execution of a code block.
+         *
+         * @param $callback
+         * @param string $type
+         * @param null|string $label
+         * @param bool $throw
+         * @return mixed|void 
+         * @throws \Throwable
+         * @static 
+         */ 
+        public static function addSegment($callback, $type, $label = null, $throw = false)
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->addSegment($callback, $type, $label, $throw);
+        }
+        
+        /**
+         * Error reporting.
+         *
+         * @param \Throwable $exception
+         * @param bool $handled
+         * @return \Error 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function reportException($exception, $handled = true)
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->reportException($exception, $handled);
+        }
+        
+        /**
+         * Add an entry to the queue.
+         *
+         * @param \Inspector\PerformanceModel[]|\Inspector\PerformanceModel $entries
+         * @return \Inspector 
+         * @static 
+         */ 
+        public static function addEntries($entries)
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->addEntries($entries);
+        }
+        
+        /**
+         * Flush data to the remote platform.
+         *
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function flush()
+        {
+            //Method inherited from \Inspector\Inspector            
+                        /** @var \Inspector\Laravel\Inspector $instance */
+                        return $instance->flush();
+        }
+         
+    }
+ 
+}
+
 namespace Intervention\Image\Facades { 
 
     /**
@@ -21842,6 +21987,8 @@ namespace  {
     class Locales extends \Elnooronline\LaravelLocales\Facades\Locales {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
+
+    class Inspector extends \Inspector\Laravel\Facades\Inspector {}
 
     class Image extends \Intervention\Image\Facades\Image {}
 

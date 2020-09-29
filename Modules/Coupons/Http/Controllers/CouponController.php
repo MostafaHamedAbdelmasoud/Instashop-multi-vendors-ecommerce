@@ -120,7 +120,7 @@ class CouponController extends Controller
      * @param StoreOwner $storeOwner
      * @param Coupon $coupon
      *@throws \Exception
-     * @return \Illuminate\Http\RedirectResponse
+     *@return \Illuminate\Http\RedirectResponse
      */
     public function destroy(StoreOwner $storeOwner, Coupon $coupon)
     {

@@ -3,13 +3,13 @@
 namespace Modules\Orders\Entities;
 
 use App\Http\Filters\Filterable;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Accounts\Entities\Address;
-use Modules\Accounts\Entities\ShippingCompany;
 use Modules\Accounts\Entities\User;
 use Modules\Coupons\Entities\Coupon;
-use Modules\Orders\Entities\Helpers\OrderHelper;
+use Modules\Accounts\Entities\Address;
 use Modules\Support\Traits\Selectable;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Accounts\Entities\ShippingCompany;
+use Modules\Orders\Entities\Helpers\OrderHelper;
 
 /**
  * Class Category.
@@ -95,7 +95,4 @@ class Order extends Model
     {
         return $this->hasMany(OrderStatusUpdate::class);
     }
-
-
 }
-

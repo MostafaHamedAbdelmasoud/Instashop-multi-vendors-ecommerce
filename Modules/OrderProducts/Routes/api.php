@@ -20,3 +20,4 @@ use Illuminate\Http\Request;
 Route::get('/select/stores', 'SelectController@index')->name('stores.select');
 Route::get('/select/categories', 'SelectController@select_category')->name('categories.select');
 Route::get('/select/orders', 'SelectController@select_order')->name('orders.select');
+Route::get('/select/custom_field_options', 'SelectController@select_custom_field_option')->name('custom_field_options.select');

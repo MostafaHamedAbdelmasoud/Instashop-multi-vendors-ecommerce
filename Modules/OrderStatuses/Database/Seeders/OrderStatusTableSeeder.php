@@ -10,7 +10,6 @@ use Modules\OrderStatuses\Entities\OrderStatus;
  */
 class OrderStatusTableSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *

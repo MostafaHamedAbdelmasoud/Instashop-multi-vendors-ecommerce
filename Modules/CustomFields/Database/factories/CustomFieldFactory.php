@@ -5,6 +5,7 @@
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use Modules\Stores\Entities\Store;
+use Modules\Categories\Entities\Category;
 use Modules\Accounts\Entities\Helpers\helpers;
 use Modules\CustomFields\Entities\CustomField;
 
@@ -24,6 +25,7 @@ $factory->define(CustomField::class, function (Faker $faker) {
 
     return [
         'store_id' => $h->random_or_create(Store::class)->id,
+        'category_id' => $h->random_or_create(Category::class)->id,
         'type' => 'writing',
         'name:en' => $faker->word . $faker->randomDigit,
         'name:ar' => 'حقل '.$faker->randomDigit,

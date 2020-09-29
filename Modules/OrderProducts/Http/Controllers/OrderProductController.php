@@ -89,7 +89,9 @@ class OrderProductController extends Controller
     {
         $orderProduct = $this->repository->find($orderProduct);
 
-        return view('order_products::order_products.show', compact('orderProduct'));
+        $orderProductFieldValues = $orderProduct->orderProductFieldValues()->paginate();
+
+        return view('order_products::order_products.show', compact('orderProduct', 'orderProductFieldValues'));
     }
 
     /**

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8193677b39d2dc1c8fb7ce120282d373",
+    "content-hash": "101a11bf96eb481cdabcd0f143e44c7b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -931,6 +931,7 @@
                 }
             ],
             "description": "Provides an easy way to use bootstrap components within your Laravel projects.",
+            "abandoned": "laraeast/laravel-bootstrap-forms",
             "time": "2020-03-11T18:04:25+00:00"
         },
         {
@@ -981,6 +982,7 @@
                 }
             ],
             "description": "The package used to support multi locales in your application.",
+            "abandoned": "laraeast/laravel-locales",
             "time": "2020-03-11T18:07:46+00:00"
         },
         {
@@ -1392,6 +1394,112 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "inspector-apm/inspector-laravel",
+            "version": "4.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inspector-apm/inspector-laravel.git",
+                "reference": "0224fd05ee4ffc95a117913bdbd1b80d16f22c88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inspector-apm/inspector-laravel/zipball/0224fd05ee4ffc95a117913bdbd1b80d16f22c88",
+                "reference": "0224fd05ee4ffc95a117913bdbd1b80d16f22c88",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^5.5|^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^5.5|^6.0|^7.0|^8.0",
+                "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
+                "inspector-apm/inspector-php": "^3.3",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Inspector\\Laravel\\InspectorServiceProvider"
+                    ],
+                    "aliases": {
+                        "Inspector": "Inspector\\Laravel\\Facades\\Inspector"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Inspector\\Laravel\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Valerio Barbera",
+                    "email": "valerio@inspector.dev"
+                }
+            ],
+            "description": "Real-Time monitoring for Laravel applications.",
+            "keywords": [
+                "inspector",
+                "laravel",
+                "monitoring",
+                "php"
+            ],
+            "time": "2020-09-16T12:54:35+00:00"
+        },
+        {
+            "name": "inspector-apm/inspector-php",
+            "version": "3.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inspector-apm/inspector-php.git",
+                "reference": "235ff746f102193432b14ed514c0f2e17724283c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inspector-apm/inspector-php/zipball/235ff746f102193432b14ed514c0f2e17724283c",
+                "reference": "235ff746f102193432b14ed514c0f2e17724283c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inspector\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Valerio Barbera",
+                    "email": "valerio@inspector.dev"
+                }
+            ],
+            "description": "Inspector for PHP applications.",
+            "keywords": [
+                "inspector",
+                "monitoring",
+                "php"
+            ],
+            "time": "2020-09-02T22:23:41+00:00"
         },
         {
             "name": "intervention/image",

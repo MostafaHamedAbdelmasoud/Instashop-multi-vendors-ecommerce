@@ -1,0 +1,98 @@
+<?php
+
+namespace Modules\Offers\Repositories;
+
+use Modules\Offers\Entities\Offer;
+use Modules\Contracts\CrudRepository;
+use Modules\Offers\Http\Filters\OfferFilter;
+
+/**
+ * Class ShippingCompanyOwnerRepository.
+ */
+class OfferRepository implements CrudRepository
+{
+
+    /**
+     * @var \Modules\Offers\Http\Filters\OfferFilter
+     */
+    private $filter;
+
+    /**
+     * ShippingCompanyOwnerRepository constructor.
+     *
+     * @param \Modules\Offers\Http\Filters\OfferFilter $filter
+     */
+    public function __construct(OfferFilter $filter)
+    {
+        $this->filter = $filter;
+    }
+
+    /**
+     * Get all clients as a collection.
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function all()
+    {
+        return Offer::filter($this->filter)->paginate();
+    }
+
+    /**
+     * Save the created model to storage.
+     *
+     * @param array $data
+     * @return \Modules\Offers\Entities\Offer
+     */
+    public function create(array $data)
+    {
+        $offer = Offer::create($data);
+
+        return $offer;
+    }
+
+    /**
+     * Display the given client instance.
+     *
+     * @param mixed $model
+     * @return \Modules\Accounts\Entities\Category
+     */
+    public function find($model)
+    {
+        if ($model instanceof Offer) {
+            return $model;
+        }
+
+        return Offer::findOrFail($model);
+    }
+
+    /**
+     * Update the given client in the storage.
+     *
+     * @param mixed $model
+     * @param array $data
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function update($model, array $data)
+    {
+        $offer = $this->find($model);
+
+        $offer->update($data);
+
+        return $offer;
+    }
+
+    /**
+     * Delete the given client from storage.
+     *
+     * @param mixed $model
+     * @throws \Exception
+     * @return void
+     */
+    public function delete($model)
+    {
+        $this->find($model)->delete();
+    }
+}

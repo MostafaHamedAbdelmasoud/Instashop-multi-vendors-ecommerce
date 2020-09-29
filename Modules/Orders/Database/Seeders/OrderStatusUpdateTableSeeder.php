@@ -4,8 +4,8 @@ namespace Modules\Orders\Database\Seeders;
 
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
-use Modules\Accounts\Entities\Helpers\helpers;
 use Modules\Orders\Entities\Order;
+use Modules\Accounts\Entities\Helpers\helpers;
 use Modules\Orders\Entities\OrderStatusUpdate;
 use Modules\OrderStatuses\Entities\OrderStatus;
 

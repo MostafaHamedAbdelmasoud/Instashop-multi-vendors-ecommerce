@@ -1,19 +1,21 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Modules\Orders\Database\Seeders\OrderStatusUpdateTableSeeder;
+use Modules\Offers\Database\Seeders\OfferTableSeeder;
 use Modules\Orders\Database\Seeders\OrderTableSeeder;
-use Modules\OrderStatuses\Database\Seeders\OrderStatusTableSeeder;
 use Modules\Stores\Database\Seeders\StoresTableSeeder;
 use Modules\Coupons\Database\Seeders\CouponTableSeeder;
 use Modules\Products\Database\Seeders\ProductTableSeeder;
 use Modules\Categories\Database\Seeders\CategoriesTableSeeder;
 use Modules\CustomFields\Database\Seeders\CustomFieldTableSeeder;
+use Modules\Orders\Database\Seeders\OrderStatusUpdateTableSeeder;
+use Modules\OrderStatuses\Database\Seeders\OrderStatusTableSeeder;
 use Modules\Accounts\Database\Seeders\ShippingCompaniesTableSeeder;
 use Modules\OrderProducts\Database\Seeders\OrderProductTableSeeder;
 use Modules\Subscriptions\Database\Seeders\SubscriptionTableSeeder;
 use Modules\CouponProducts\Database\Seeders\CouponProductTableSeeder;
 use Modules\CustomFieldOptions\Database\Seeders\CustomFieldOptionTableSeeder;
+use Modules\OrderProducts\Database\Seeders\OrderProductFieldValueTableSeeder;
 
 class DummyDataSeeder extends Seeder
 {
@@ -40,5 +42,7 @@ class DummyDataSeeder extends Seeder
         $this->call(OrderProductTableSeeder::class);
         $this->call(OrderStatusTableSeeder::class);
         $this->call(OrderStatusUpdateTableSeeder::class);
+        $this->call(OrderProductFieldValueTableSeeder::class);
+        $this->call(OfferTableSeeder::class);
     }
 }

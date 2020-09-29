@@ -2,10 +2,10 @@
 
 namespace Modules\OrderStatuses\Repositories;
 
-use Modules\OrderStatuses\Entities\OrderStatus;
 use Modules\Contracts\CrudRepository;
 use Modules\Accounts\Entities\Address;
 use Modules\Accounts\Entities\Customer;
+use Modules\OrderStatuses\Entities\OrderStatus;
 use Modules\OrderStatuses\Http\Filters\OrderStatusFilter;
 
 /**
@@ -79,7 +79,6 @@ class OrderStatusRepository implements CrudRepository
      */
     public function update($model, array $data)
     {
-
         $orderStatus = $this->find($model);
 
         $orderStatus->update($data);

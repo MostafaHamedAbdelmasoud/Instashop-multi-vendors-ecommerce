@@ -13,4 +13,5 @@
 
 Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
     Route::resource('order_products', 'OrderProductController');
+    Route::resource('order_products.order_product_field_values', 'OrderProductFieldValueController');
 });

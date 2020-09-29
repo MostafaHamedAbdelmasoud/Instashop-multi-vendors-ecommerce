@@ -4,8 +4,6 @@
 
 use Faker\Generator as Faker;
 use Modules\Orders\Entities\Order;
-use Modules\Orders\Entities\OrderStatusUpdate;
-use Modules\OrderStatuses\Entities\OrderStatus;
 use Modules\Stores\Entities\Store;
 use Modules\Coupons\Entities\Coupon;
 use Modules\Accounts\Entities\Address;
@@ -13,6 +11,8 @@ use Modules\Accounts\Entities\Customer;
 use Modules\Categories\Entities\Category;
 use Modules\Accounts\Entities\Helpers\helpers;
 use Modules\Accounts\Entities\ShippingCompany;
+use Modules\Orders\Entities\OrderStatusUpdate;
+use Modules\OrderStatuses\Entities\OrderStatus;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +34,3 @@ $factory->define(OrderStatusUpdate::class, function (Faker $faker) {
         'notes' => $faker->sentence($nbWords = 100, $variableNbWords = true),
        ];
 });
-

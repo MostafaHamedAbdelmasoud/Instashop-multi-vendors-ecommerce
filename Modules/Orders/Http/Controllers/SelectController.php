@@ -3,10 +3,6 @@
 namespace Modules\Orders\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Modules\Orders\Transformers\SelectOrderStatusResource;
-use Modules\Orders\Http\Filters\SelectOrderStatusFilter;
-use Modules\OrderStatuses\Entities\OrderStatus;
-use Modules\OrderStatuses\Http\Filters\OrderStatusFilter;
 use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
 use Modules\Coupons\Entities\Coupon;
@@ -15,6 +11,7 @@ use Modules\Accounts\Entities\Customer;
 use Modules\Categories\Entities\Category;
 use Modules\Accounts\Entities\ShippingCompany;
 use Modules\Orders\Transformers\SelectResource;
+use Modules\OrderStatuses\Entities\OrderStatus;
 use Modules\Orders\Http\Filters\SelectStoreFilter;
 use Modules\Orders\Http\Filters\SelectCouponFilter;
 use Modules\Orders\Http\Filters\SelectAddressFilter;
@@ -24,6 +21,9 @@ use Modules\Orders\Transformers\SelectCouponResource;
 use Modules\Orders\Transformers\SelectAddressResource;
 use Modules\Orders\Transformers\SelectCategoryResource;
 use Modules\Orders\Transformers\SelectCustomerResource;
+use Modules\Orders\Http\Filters\SelectOrderStatusFilter;
+use Modules\OrderStatuses\Http\Filters\OrderStatusFilter;
+use Modules\Orders\Transformers\SelectOrderStatusResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Modules\Subscriptions\Http\Filters\SelectShippingCompanyFilter;
 use Modules\Subscriptions\Transformers\SelectShippingCompanyResource;

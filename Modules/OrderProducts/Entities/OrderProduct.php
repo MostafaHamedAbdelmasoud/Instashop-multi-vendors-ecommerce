@@ -39,6 +39,7 @@ class OrderProduct extends Model
     protected $with = [
         'order',
         'product',
+        'orderProductFieldValues',
     ];
 
     /**
@@ -65,5 +66,13 @@ class OrderProduct extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orderProductFieldValues()
+    {
+        return $this->hasMany(OrderProductFieldValue::class);
     }
 }

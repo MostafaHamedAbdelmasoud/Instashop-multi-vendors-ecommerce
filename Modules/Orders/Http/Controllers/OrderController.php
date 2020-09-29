@@ -2,17 +2,17 @@
 
 namespace Modules\Orders\Http\Controllers;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Accounts\Entities\Customer;
-use Modules\Accounts\EntitiesCustomer;
 use Modules\Orders\Entities\Order;
+use Modules\Accounts\EntitiesCustomer;
+use Modules\Accounts\Entities\Customer;
 use Modules\Orders\Entities\OrderStatusUpdate;
 use Modules\Orders\Http\Requests\OrderRequest;
+use Illuminate\Contracts\Foundation\Application;
 use Modules\Orders\Repositories\OrderRepository;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
  * Class OrderController.
@@ -123,8 +123,8 @@ class OrderController extends Controller
      *
      * @param \Modules\Orders\Entities\Customer $customer
      * @param \Modules\Orders\Entities\Store $order
-     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Customer $customer, Order $order)
     {

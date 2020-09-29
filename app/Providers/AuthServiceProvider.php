@@ -2,16 +2,14 @@
 
 namespace App\Providers;
 
+use Modules\Offers\Entities\Offer;
+use Modules\Offers\Policies\OfferPolicy;
 use Modules\Orders\Entities\Order;
-use Modules\Orders\Entities\OrderStatusUpdate;
-use Modules\Orders\Policies\OrderStatusUpdatePolicy;
-use Modules\OrderStatuses\Entities\OrderStatus;
-use Modules\OrderStatuses\Policies\OrderStatusPolicy;
 use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
+use Modules\Coupons\Entities\Coupon;
 use Modules\Accounts\Entities\Admin;
 use Modules\Countries\Entities\City;
-use Modules\Coupons\Entities\Coupon;
 use Modules\Accounts\Entities\Address;
 use Modules\Products\Entities\Product;
 use Modules\Accounts\Entities\Delegate;
@@ -30,21 +28,27 @@ use Modules\Accounts\Policies\DelegatePolicy;
 use Modules\Countries\Policies\CountryPolicy;
 use Modules\Accounts\Entities\ShippingCompany;
 use Modules\CustomFields\Entities\CustomField;
+use Modules\Orders\Entities\OrderStatusUpdate;
 use Modules\Accounts\Policies\StoreOwnerPolicy;
 use Modules\Accounts\Policies\SupervisorPolicy;
 use Modules\Categories\Policies\CategoryPolicy;
+use Modules\OrderStatuses\Entities\OrderStatus;
 use Modules\OrderProducts\Entities\OrderProduct;
 use Modules\Subscriptions\Entities\Subscription;
 use Modules\CouponProducts\Entities\CouponProduct;
 use Modules\Accounts\Entities\ShippingCompanyOwner;
 use Modules\Accounts\Policies\ShippingCompanyPolicy;
 use Modules\CustomFields\Policies\CustomFieldPolicy;
+use Modules\Orders\Policies\OrderStatusUpdatePolicy;
+use Modules\OrderStatuses\Policies\OrderStatusPolicy;
 use Modules\OrderProducts\Policies\OrderProductPolicy;
 use Modules\Subscriptions\Policies\SubscriptionPolicy;
 use Modules\CouponProducts\Policies\CouponProductPolicy;
 use Modules\Accounts\Policies\ShippingCompanyOwnerPolicy;
 use Modules\CustomFieldOptions\Entities\CustomFieldOption;
+use Modules\OrderProducts\Entities\OrderProductFieldValue;
 use Modules\CustomFieldOptions\Policies\CustomFieldOptionPolicy;
+use Modules\OrderProducts\Policies\OrderProductFieldValuePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -87,5 +91,7 @@ class AuthServiceProvider extends ServiceProvider
         Coupon::class => CouponPolicy::class,
         OrderStatus::class => OrderStatusPolicy::class,
         OrderStatusUpdate::class => OrderStatusUpdatePolicy::class,
+        OrderProductFieldValue::class => OrderProductFieldValuePolicy::class,
+        Offer::class => OfferPolicy::class,
     ];
 }

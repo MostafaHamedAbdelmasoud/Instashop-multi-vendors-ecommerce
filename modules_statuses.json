@@ -13,5 +13,6 @@
     "Orders": true,
     "CouponProducts": true,
     "OrderProducts": true,
-    "OrderStatuses": true
+    "OrderStatuses": true,
+    "Offers": true
 }

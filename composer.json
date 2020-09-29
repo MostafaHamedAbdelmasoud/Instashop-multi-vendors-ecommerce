@@ -14,6 +14,7 @@
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
+        "inspector-apm/inspector-laravel": "^4.5",
         "laravel/framework": "^7.0",
         "laravel/passport": "^7.3",
         "laravel/tinker": "^2.0",

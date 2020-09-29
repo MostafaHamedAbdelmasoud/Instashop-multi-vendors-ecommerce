@@ -3,10 +3,10 @@
 namespace Modules\OrderStatuses\Entities;
 
 use App\Http\Filters\Filterable;
-use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model;
-use Modules\OrderStatuses\Entities\Helpers\OrderStatusHelper;
 use Modules\Support\Traits\Selectable;
+use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
+use Modules\OrderStatuses\Entities\Helpers\OrderStatusHelper;
 
 /**
  * Class Category.
@@ -51,5 +51,4 @@ class OrderStatus extends Model
     {
         return 'order_status_id';
     }
-
 }

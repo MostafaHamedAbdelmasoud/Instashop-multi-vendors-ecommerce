@@ -4,6 +4,7 @@ namespace Modules\OrderProducts\Repositories;
 
 use Modules\Contracts\CrudRepository;
 use Modules\OrderProducts\Entities\OrderProduct;
+use Modules\OrderProducts\Entities\OrderProductFieldValue;
 use Modules\OrderProducts\Http\Filters\OrderProductFilter;
 
 /**
@@ -53,6 +54,17 @@ class OrderProductRepository implements CrudRepository
     }
 
     /**
+     * Save the created model to storage.
+     *
+     * @param array $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function createOrderProductFieldValue(array $data, OrderProduct  $orderProduct)
+    {
+        return $orderProduct->orderProductFieldValues()->create($data);
+    }
+
+    /**
      * check for duplication in model.
      *
      * @param $model
@@ -83,6 +95,21 @@ class OrderProductRepository implements CrudRepository
     }
 
     /**
+     * Display the given client instance.
+     *
+     * @param mixed $model
+     * @return \Modules\Accounts\Entities\Category
+     */
+    public function findOrderProductFieldValue($model)
+    {
+        if ($model instanceof OrderProductFieldValue) {
+            return $model;
+        }
+
+        return OrderProductFieldValue::findOrFail($model);
+    }
+
+    /**
      * Update the given client in the storage.
      *
      * @param mixed $model
@@ -102,6 +129,23 @@ class OrderProductRepository implements CrudRepository
     }
 
     /**
+     * Update the given client in the storage.
+     *
+     * @param mixed $model
+     * @param array $data
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function updateOrderProductFieldValue($model, array $data)
+    {
+        $orderProductFieldValue = $this->findOrderProductFieldValue($model);
+
+        $orderProductFieldValue->update($data);
+    }
+
+    /**
      * Delete the given client from storage.
      *
      * @param mixed $model
@@ -111,5 +155,17 @@ class OrderProductRepository implements CrudRepository
     public function delete($model)
     {
         $this->find($model)->delete();
+    }
+
+    /**
+     * Delete the given client from storage.
+     *
+     * @param mixed $model
+     * @throws \Exception
+     * @return void
+     */
+    public function deleteOrderProductFieldValue($model)
+    {
+        $model->delete();
     }
 }

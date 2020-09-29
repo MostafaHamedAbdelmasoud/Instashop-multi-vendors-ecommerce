@@ -2,10 +2,10 @@
 
 namespace Modules\OrderStatuses\Tests\Feature;
 
-use Astrotomic\Translatable\Validation\RuleFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\OrderStatuses\Entities\OrderStatus;
 use Tests\TestCase;
+use Modules\OrderStatuses\Entities\OrderStatus;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Astrotomic\Translatable\Validation\RuleFactory;
 
 class OrderStatusTest extends TestCase
 {

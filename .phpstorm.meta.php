@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2020-07-26 17:40:54.
+    * Generated on 2020-09-26 17:44:05.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -168,6 +168,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -353,6 +354,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -538,6 +540,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -723,6 +726,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -908,6 +912,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1093,6 +1098,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1278,6 +1284,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1463,6 +1470,7 @@ namespace PHPSTORM_META {
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
         'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
+        'inspector' => \Inspector\Laravel\Inspector::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mail.manager' => \Illuminate\Mail\MailManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
