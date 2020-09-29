@@ -2,13 +2,13 @@
 @section('content')
     @component('dashboard::layouts.components.page')
         @slot('title', trans('offers::offers.plural'))
-        @slot('breadcrumbs', ['dashboard.Offers.create'])
+        @slot('breadcrumbs', ['dashboard.offers.create'])
 
-        {{ BsForm::resource('Offers::Offers')->post(route('dashboard.Offers.store') , ['files' => true]) }}
+        {{ BsForm::resource('offers::offers')->post(route('dashboard.offers.store') , ['files' => true]) }}
         @component('dashboard::layouts.components.box')
             @slot('title', trans('offers::offers.actions.create'))
 
-            @include('Offers::Offers.partials.form')
+            @include('offers::offers.partials.form')
 
             @slot('footer')
                 {{ BsForm::submit()->label(trans('offers::offers.actions.save')) }}

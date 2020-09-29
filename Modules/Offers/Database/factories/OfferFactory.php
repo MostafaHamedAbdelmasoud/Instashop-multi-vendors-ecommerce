@@ -22,10 +22,11 @@ use Modules\Accounts\Entities\Helpers\helpers;
 $factory->define(Offer::class, function (Faker $faker) {
     $h = new helpers();
     $category = $h->random_or_create(Category::class);
+
     return [
         'fixed_discount_price' => $faker->randomFloat($nbMaxDecimals = 4, $min = 0, $max = 1000),
         'percentage_discount_price' => $faker->randomFloat($nbMaxDecimals = 3, $min = 0, $max = 100),
-        'model_type' => $category->name,
+        'model_type' => 'category',
         'model_id' => $category->id,
         'expire_at' => \Carbon\Carbon::now()->addDays(5),
         'name:ar' => 'عرض 10%',

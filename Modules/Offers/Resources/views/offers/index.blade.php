@@ -3,68 +3,68 @@
 @section('content')
     @component('dashboard::layouts.components.page')
         @slot('title', trans('offers::offers.plural'))
-        @slot('breadcrumbs', ['dashboard.Offers.index'])
+        @slot('breadcrumbs', ['dashboard.offers.index'])
 
         @component('dashboard::layouts.components.table-box')
             @slot('title', trans('offers::offers.actions.list'))
             @slot('tools')
-                @include('Offers::Offers.partials.actions.filter')
-                @include('Offers::Offers.partials.actions.create')
+                @include('offers::offers.partials.actions.filter')
+                @include('offers::offers.partials.actions.create')
             @endslot
 
             <thead>
             <tr>
-                <th>@lang('Offers::Offers.attributes.code')</th>
-                <th>@lang('Offers::Offers.attributes.fixed_discount')</th>
-                <th class="d-none d-md-table-cell">@lang('Offers::Offers.attributes.percentage_discount')</th>
-                <th class="d-none d-md-table-cell">@lang('Offers::Offers.attributes.max_usage_per_order')</th>
-                <th class="d-none d-md-table-cell">@lang('Offers::Offers.attributes.max_usage_per_user')</th>
-                <th class="d-none d-md-table-cell">@lang('Offers::Offers.attributes.min_total')</th>
+                <th>@lang('offers::offers.attributes.name')</th>
+                <th>@lang('offers::offers.attributes.fixed_discount_price')</th>
+                <th class="d-none d-md-table-cell">@lang('offers::offers.attributes.percentage_discount_price')</th>
+                <th class="d-none d-md-table-cell">@lang('offers::offers.attributes.model_type')</th>
+                <th class="d-none d-md-table-cell">@lang('offers::offers.attributes.model_id')</th>
+                <th class="d-none d-md-table-cell">@lang('offers::offers.attributes.expire_at')</th>
                 <th style="width: 160px">...</th>
             </tr>
             </thead>
             <tbody>
-            @forelse($Offers as $offer)
+            @forelse($offers as $offer)
                 <tr>
                     <td>
-                        {{ $offer->code }}
+                        {{ $offer->name }}
                     </td>
 
                     <td>
-                        {{ $offer->get_fixed_discount() }}
+                        {{ $offer->getFixedDiscountPrice() }}
                     </td>
                     <td class="d-none d-md-table-cell">
-                        {{$offer->get_percentage_discount()}}
-                    </td>
-
-                    <td class="d-none d-md-table-cell">
-                        {{$offer->max_usage_per_order}}
+                        {{$offer->getPercentageDiscountPrice()}}
                     </td>
 
                     <td class="d-none d-md-table-cell">
-                        {{$offer->max_usage_per_user}}
+                        {{$offer->getModelType()}}
                     </td>
 
                     <td class="d-none d-md-table-cell">
-                        {{$offer->get_min_total()}}
+                        {{$offer->getModelName()}}
+                    </td>
+
+                    <td class="d-none d-md-table-cell">
+                        {{$offer->getExpiredAtFormatYMD()}}
                     </td>
 
 
                     <td style="width: 160px">
-                        @include('Offers::Offers.partials.actions.show')
-                        @include('Offers::Offers.partials.actions.edit')
-                        @include('Offers::Offers.partials.actions.delete')
+                        @include('offers::offers.partials.actions.show')
+                        @include('offers::offers.partials.actions.edit')
+                        @include('offers::offers.partials.actions.delete')
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="100" class="text-center">@lang('Offers::Offers.empty')</td>
+                    <td colspan="100" class="text-center">@lang('offers::offers.empty')</td>
                 </tr>
             @endforelse
 
-            @if($Offers->hasPages())
+            @if($offers->hasPages())
                 @slot('footer')
-                    {{ $Offers->links() }}
+                    {{ $offers->links() }}
                 @endslot
             @endif
         @endcomponent

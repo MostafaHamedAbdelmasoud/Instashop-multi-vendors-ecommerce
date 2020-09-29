@@ -12,5 +12,5 @@
 */
 
 Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
-    Route::resource('Offers', 'OfferController');
+    Route::resource('offers', 'OfferController');
 });

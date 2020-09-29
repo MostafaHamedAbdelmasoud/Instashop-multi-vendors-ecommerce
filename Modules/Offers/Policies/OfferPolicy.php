@@ -30,7 +30,7 @@ class OfferPolicy
      */
     public function view(User $user, Offer $offer)
     {
-        return $user->isAdmin() || $user->is($offer->order->user_id);
+        return $user->isAdmin() || $user->is($offer->model->user_id);
     }
 
     /**

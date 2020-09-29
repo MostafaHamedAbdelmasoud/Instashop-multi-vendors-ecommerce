@@ -1,8 +1,8 @@
-@extends('dashboard::layouts.master', ['title' => $offer->code])
+@extends('dashboard::layouts.master', ['title' => $offer->name])
 @section('content')
     @component('dashboard::layouts.components.page')
-        @slot('title', $offer->code)
-        @slot('breadcrumbs', ['dashboard.Offers.show', $offer])
+        @slot('title', $offer->name)
+        @slot('breadcrumbs', ['dashboard.offers.show', $offer])
 
         <div class="row">
             <div class="col-md-12">
@@ -12,42 +12,42 @@
                     <table class="table table-striped table-middle">
                         <tbody>
                         <tr>
-                            <th width="200">@lang('Offers::Offers.attributes.code')</th>
-                            <td>{{ $offer->code }}</td>
+                            <th width="200">@lang('offers::offers.attributes.name')</th>
+                            <td>{{ $offer->name }}</td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('Offers::Offers.attributes.fixed_discount')</th>
+                            <th width="200">@lang('offers::offers.attributes.fixed_discount_price')</th>
                             <td>
-                                {{$offer->get_fixed_discount()}}
+                                {{$offer->getFixedDiscountPrice()}}
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('Offers::Offers.attributes.percentage_discount')</th>
+                            <th width="200">@lang('offers::offers.attributes.percentage_discount_price')</th>
                             <td>
-                                {{$offer->get_percentage_discount()}}
+                                {{$offer->getPercentageDiscountPrice()}}
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('Offers::Offers.attributes.max_usage_per_order')</th>
+                            <th width="200">@lang('offers::offers.attributes.model_type')</th>
                             <td>
-                                    {{$offer->max_usage_per_order}}
+                                    {{$offer->getModelType()}}
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('Offers::Offers.attributes.max_usage_per_user')</th>
+                            <th width="200">@lang('offers::offers.attributes.model_id')</th>
                             <td>
-                                    {{$offer->max_usage_per_user}}
+                                    {{$offer->getModelName()}}
                             </td>
                         </tr>
 
                         <tr>
-                            <th width="200">@lang('Offers::Offers.attributes.min_total')</th>
+                            <th width="200">@lang('offers::offers.attributes.expire_at')</th>
                             <td>
-                                    {{$offer->get_min_total()}}
+                                    {{$offer->getExpiredAtFormatYMD()}}
                             </td>
                         </tr>
 
@@ -58,8 +58,8 @@
                     </table>
 
                     @slot('footer')
-                        @include('Offers::Offers.partials.actions.edit')
-                        @include('Offers::Offers.partials.actions.delete')
+                        @include('offers::offers.partials.actions.edit')
+                        @include('offers::offers.partials.actions.delete')
                     @endslot
                 @endcomponent
             </div>

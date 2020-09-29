@@ -37,4 +37,9 @@ return [
             'cancel' => 'Cancel',
         ],
     ],
+    'type' => [
+        'category' => 'Category',
+        'product' => 'Product',
+        'store' => 'Store',
+    ],
 ];

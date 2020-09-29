@@ -12,21 +12,21 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title-{{ $offer->id }}">@lang('Offers::Offers.dialogs.delete.title')</h5>
+                    <h5 class="modal-title" id="modal-title-{{ $offer->id }}">@lang('offers::offers.dialogs.delete.title')</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    @lang('Offers::Offers.dialogs.delete.info')
+                    @lang('offers::offers.dialogs.delete.info')
                 </div>
                 <div class="modal-footer">
-                    {{ BsForm::delete(route('dashboard.Offers.destroy', $offer)) }}
+                    {{ BsForm::delete(route('dashboard.offers.destroy', $offer)) }}
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        @lang('Offers::Offers.dialogs.delete.cancel')
+                        @lang('offers::offers.dialogs.delete.cancel')
                     </button>
                     <button type="submit" class="btn btn-danger">
-                        @lang('Offers::Offers.dialogs.delete.confirm')
+                        @lang('offers::offers.dialogs.delete.confirm')
                     </button>
                     {{ BsForm::close() }}
                 </div>

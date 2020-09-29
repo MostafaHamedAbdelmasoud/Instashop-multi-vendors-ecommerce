@@ -3,17 +3,17 @@
 namespace App\Providers;
 
 use Modules\Offers\Entities\Offer;
-use Modules\Offers\Policies\OfferPolicy;
 use Modules\Orders\Entities\Order;
 use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
-use Modules\Coupons\Entities\Coupon;
 use Modules\Accounts\Entities\Admin;
 use Modules\Countries\Entities\City;
+use Modules\Coupons\Entities\Coupon;
 use Modules\Accounts\Entities\Address;
 use Modules\Products\Entities\Product;
 use Modules\Accounts\Entities\Delegate;
 use Modules\Countries\Entities\Country;
+use Modules\Offers\Policies\OfferPolicy;
 use Modules\Orders\Policies\OrderPolicy;
 use Modules\Stores\Policies\StorePolicy;
 use Modules\Accounts\Entities\StoreOwner;

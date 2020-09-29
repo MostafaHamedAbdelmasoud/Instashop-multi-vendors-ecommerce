@@ -44,9 +44,9 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $Offers = $this->repository->all();
+        $offers = $this->repository->all();
 
-        return view('offers::offers.index', compact('Offers'));
+        return view('offers::offers.index', compact('offers'));
     }
 
     /**
@@ -72,7 +72,7 @@ class OfferController extends Controller
 
         flash(trans('offers::offers.messages.created'));
 
-        return redirect()->route('dashboard.Offers.show', $offer);
+        return redirect()->route('dashboard.offers.show', $offer);
     }
 
     /**
@@ -83,7 +83,7 @@ class OfferController extends Controller
     {
         $offer = $this->repository->find($offer);
 
-        return view('offers::offers.show', compact('coupon'));
+        return view('offers::offers.show', compact('offer'));
     }
 
     /**
@@ -110,7 +110,7 @@ class OfferController extends Controller
      * @param Offer $offer
      * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Customer $storeOwner, Offer $offer)
+    public function edit(StoreOwner $storeOwner, Offer $offer)
     {
         return view('offers::offers.edit', compact('storeOwner', 'coupon'));
     }
@@ -128,6 +128,6 @@ class OfferController extends Controller
 
         flash(trans('offers::offers.messages.deleted'));
 
-        return redirect()->route('dashboard.Offers.index');
+        return redirect()->route('dashboard.offers.index');
     }
 }

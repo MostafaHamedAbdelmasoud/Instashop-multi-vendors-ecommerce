@@ -45,16 +45,14 @@ class OfferRepository implements CrudRepository
      */
     public function create(array $data)
     {
-        $offer = Offer::create($data);
-
-        return $offer;
+        return Offer::create($data);
     }
 
     /**
      * Display the given client instance.
      *
      * @param mixed $model
-     * @return \Modules\Accounts\Entities\Category
+     * @return \Modules\Offers\Entities\Offer
      */
     public function find($model)
     {

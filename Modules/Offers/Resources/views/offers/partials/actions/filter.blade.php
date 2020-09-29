@@ -6,7 +6,7 @@
 </button>
 
 <div id="popover-content" class="d-none">
-    {{ BsForm::resource('Offers::Offers')->get(url()->current()) }}
+    {{ BsForm::resource('offers::offers')->get(url()->current()) }}
         {{ BsForm::text('name')->value(request('name')) }}
         {{ BsForm::number('perPage')
                 ->value(request('perPage', 15))
@@ -15,7 +15,7 @@
 
         <button type='submit' class='btn btn-primary btn-sm'>
             <i class="fas fa fa-fw fa-filter"></i>
-            @lang('Offers::Offers.actions.filter')
+            @lang('offers::offers.actions.filter')
         </button>
 
     {{ BsForm::close() }}
