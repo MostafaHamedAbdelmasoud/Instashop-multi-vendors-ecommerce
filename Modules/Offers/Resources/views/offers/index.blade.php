@@ -9,7 +9,6 @@
             @slot('title', trans('offers::offers.actions.list'))
             @slot('tools')
                 @include('offers::offers.partials.actions.filter')
-                @include('offers::offers.partials.actions.create')
             @endslot
 
             <thead>
@@ -46,7 +45,7 @@
                     </td>
 
                     <td class="d-none d-md-table-cell">
-                        {{$offer->getExpiredAtFormatYMD()}}
+                        {{$offer->expire_at}}
                     </td>
 
 

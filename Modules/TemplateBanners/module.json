@@ -1,0 +1,13 @@
+{
+    "name": "TemplateBanners",
+    "alias": "template_banners",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\TemplateBanners\\Providers\\TemplateBannerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

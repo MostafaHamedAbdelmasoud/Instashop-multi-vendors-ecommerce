@@ -19,3 +19,4 @@ use Illuminate\Http\Request;
 
 Route::get('/select/stores', 'SelectController@index')->name('stores.select');
 Route::get('/select/categories', 'SelectController@select_category')->name('categories.select');
+Route::get('/select/model_types', 'SelectController@select_model_type')->name('model_types.select');

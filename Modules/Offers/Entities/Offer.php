@@ -36,6 +36,15 @@ class Offer extends Model
         'expire_at',
     ];
 
+    /**
+     * append custom attributes to model.
+     *
+     * @var string[]
+     */
+    protected $appends = [
+        'Product',
+    ];
+
 
     /**
      * The attributes that are mass assignable.
@@ -54,5 +63,10 @@ class Offer extends Model
     public function getForeignKey()
     {
         return 'offer_id';
+    }
+
+    public function getExpireAtAttribute()
+    {
+        return $this->attributes['expire_at'];
     }
 }

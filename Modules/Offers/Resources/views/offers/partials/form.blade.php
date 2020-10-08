@@ -1,11 +1,15 @@
 @include('dashboard::errors')
 
 
-{{ BsForm::text('code') }}
-{{ BsForm::text('fixed_discount') }}
-{{ BsForm::text('percentage_discount') }}
-{{ BsForm::number('max_usage_per_order') }}
-{{ BsForm::number('max_usage_per_user') }}
-{{ BsForm::text('min_total') }}
+
+
+{{BsForm::select($name = 'model_type', $options = [trans('offers::offers.additions.product'),trans('offers::offers.additions.category'),trans('offers::offers.additions.store')], $value = null)}}
+
+
+{{ BsForm::text('name') }}
+{{ BsForm::text('fixed_discount_price') }}
+{{ BsForm::text('percentage_discount_price') }}
+{{ BsForm::number('model_id') }}
+{{ BsForm::date('expire_at') }}
 
 

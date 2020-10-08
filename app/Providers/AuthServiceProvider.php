@@ -50,6 +50,8 @@ use Modules\OrderProducts\Entities\OrderProductFieldValue;
 use Modules\CustomFieldOptions\Policies\CustomFieldOptionPolicy;
 use Modules\OrderProducts\Policies\OrderProductFieldValuePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Modules\TemplateBanners\Entities\TemplateBanner;
+use Modules\TemplateBanners\Policies\TemplateBannerPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -93,5 +95,6 @@ class AuthServiceProvider extends ServiceProvider
         OrderStatusUpdate::class => OrderStatusUpdatePolicy::class,
         OrderProductFieldValue::class => OrderProductFieldValuePolicy::class,
         Offer::class => OfferPolicy::class,
+        TemplateBanner::class => TemplateBannerPolicy::class,
     ];
 }

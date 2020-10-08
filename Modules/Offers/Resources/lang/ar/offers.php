@@ -10,6 +10,9 @@ return [
         'list' => ' عرض الكل ',
         'show' => 'عرض',
         'create' => 'إضافة عرض جديد',
+        'create_product_offer' => 'إضافة عرض منتج جديد',
+        'create_category_offer' => 'إضافة عرض قسم جديد',
+        'create_store_offer' => 'إضافة عرض متجر جديد',
         'new' => 'إضافة',
         'edit' => 'تعديل  العرض',
         'delete' => 'حذف العرض',
@@ -40,6 +43,14 @@ return [
     'type' => [
         'category' => 'قسم',
         'product' => 'منتج',
+        'store' => 'متجر',
+    ],
+    'additions' => [
+        'model_type' => 'نوع العرض',
+        'select' => 'إختر نوع العرض',
+        'select model' => 'إختر قسم العرض',
+        'product' => 'منتج',
+        'category' => 'قسم',
         'store' => 'متجر',
     ],
 ];

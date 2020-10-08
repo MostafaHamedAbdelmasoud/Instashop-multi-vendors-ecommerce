@@ -14,5 +14,6 @@
     "CouponProducts": true,
     "OrderProducts": true,
     "OrderStatuses": true,
-    "Offers": true
+    "Offers": true,
+    "TemplateBanners": true
 }

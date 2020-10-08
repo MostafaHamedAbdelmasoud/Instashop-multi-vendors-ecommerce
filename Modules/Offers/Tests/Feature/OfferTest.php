@@ -2,6 +2,7 @@
 
 namespace Modules\Coupons\Tests\Feature;
 
+use Carbon\Carbon;
 use Tests\TestCase;
 use Modules\Offers\Entities\Offer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,19 +20,18 @@ class OfferTest extends TestCase
         $this->actingAsAdmin();
 
         factory(Offer::class)->create([
-            'code' => '443',
-            'percentage_discount' => 3.4,
+            'percentage_discount_price' => 19,
         ]);
 
-        $response = $this->get(route('dashboard.Offers.index'));
+        $response = $this->get(route('dashboard.offers.index'));
 
         $response->assertSuccessful();
 
-        $response->assertSee('443');
+        $response->assertSee('19');
     }
 
     /** @test */
-    public function it_can_display_coupon_details()
+    public function it_can_display_offer_details()
     {
         $this->withoutExceptionHandling();
 
@@ -39,32 +39,32 @@ class OfferTest extends TestCase
 
         $offer = factory(Offer::class)->create();
 
-        $response = $this->get(route('dashboard.Offers.show', $offer));
+        $response = $this->get(route('dashboard.offers.show', $offer));
 
         $response->assertSuccessful();
 
-        $response->assertSee(e($offer->code));
+        $response->assertSee(e($offer->percentage_discount_price));
     }
 
     /** @test */
-    public function it_can_create_a_new_coupon()
+    public function it_can_create_a_new_offer_cateogry()
     {
-        $this->withoutExceptionHandling();
+//        $this->withoutExceptionHandling();
 
         $this->actingAsAdmin();
 
         $this->assertEquals(0, Offer::count());
 
         $response = $this->post(
-            route('dashboard.Offers.store'),
+            route('dashboard.store.create_category_offer', 'category'),
             RuleFactory::make(
                 [
-                    'code' => 'h112',
-                    'percentage_discount' => 12.21,
-                    'fixed_discount' => 2.21,
-                    'max_usage_per_order' => 2,
-                    'max_usage_per_user' => 2,
-                    'min_total' => 20.2,
+                    'fixed_discount_price' => 1,
+                    'percentage_discount_price'=>21,
+                    'name:ar'=>'قسم تجريبي',
+                    'name:en'=>'category test',
+                    'model_id'=>1,
+                    'expire_at'=>Carbon::now()->addDay(3),
                 ]
             )
         );
@@ -75,11 +75,13 @@ class OfferTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_product_create_form()
+    public function it_can_display_offer_create_form()
     {
+//        $this->withoutExceptionHandling();
+
         $this->actingAsAdmin();
 
-        $response = $this->get(route('dashboard.Offers.create'));
+        $response = $this->get(route('dashboard.offers.create_category_offer', 'category'));
 
         $response->assertSuccessful();
 
@@ -87,13 +89,15 @@ class OfferTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_product_edit_form()
+    public function it_can_display_category_offer_edit_form()
     {
+        $this->withoutExceptionHandling();
+
         $this->actingAsAdmin();
 
         $offer = factory(Offer::class)->create();
 
-        $response = $this->get(route('dashboard.Offers.edit', $offer));
+        $response = $this->get(route('dashboard.offers.edit', $offer));
 
         $response->assertSuccessful();
 
@@ -101,8 +105,10 @@ class OfferTest extends TestCase
     }
 
     /** @test */
-    public function it_can_update_product()
+    public function it_can_update_offer()
     {
+        $this->withoutExceptionHandling();
+
         $this->actingAsAdmin();
 
         $this->assertEquals(0, Offer::count());
@@ -110,15 +116,15 @@ class OfferTest extends TestCase
         $offer = factory(Offer::class)->create();
 
         $response = $this->put(
-            route('dashboard.Offers.update', $offer),
+            route('dashboard.offers.update', $offer),
             RuleFactory::make(
                 [
-                    'code' => 'h112',
-                    'percentage_discount' => 12.21,
-                    'fixed_discount' => 2.21,
-                    'max_usage_per_order' => 2,
-                    'max_usage_per_user' => 2,
-                    'min_total' => 20.2,
+                    'fixed_discount_price' => 1,
+                    'percentage_discount_price'=>21,
+                    'name:ar'=>'قسم تجريبي',
+                    'name:en'=>'category test',
+                    'model_id'=>1,
+                    'expire_at'=>Carbon::now()->addDay(3),
 
                 ]
             )
@@ -128,11 +134,11 @@ class OfferTest extends TestCase
 
         $response->assertRedirect();
 
-        $this->assertEquals($offer->code, 'h112');
+        $this->assertEquals($offer->percentage_discount_price, '21');
     }
 
     /** @test */
-    public function it_can_delete_product()
+    public function it_can_delete_offer()
     {
         $this->withoutExceptionHandling();
 
@@ -142,7 +148,7 @@ class OfferTest extends TestCase
 
         $this->assertEquals(Offer::count(), 1);
 
-        $response = $this->delete(route('dashboard.Offers.destroy', $offer));
+        $response = $this->delete(route('dashboard.offers.destroy', $offer));
 
         $response->assertRedirect();
 

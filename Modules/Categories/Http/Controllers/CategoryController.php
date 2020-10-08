@@ -10,6 +10,7 @@ use Modules\Categories\Http\Requests\CategoryRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Modules\Categories\Repositories\CategoryRepository;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Modules\Stores\Entities\Store;
 
 /**
  * Class CategoryController.
@@ -52,7 +53,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category)
     {
         return view('categories::categories.create');
     }

@@ -47,7 +47,7 @@
                         <tr>
                             <th width="200">@lang('offers::offers.attributes.expire_at')</th>
                             <td>
-                                    {{$offer->getExpiredAtFormatYMD()}}
+                                    {{$offer->expire_at}}
                             </td>
                         </tr>
 

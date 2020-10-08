@@ -2,6 +2,7 @@
 
 namespace Modules\Categories\Policies;
 
+use Modules\Stores\Entities\Store;
 use Modules\Accounts\Entities\User;
 use Modules\Categories\Entities\Category;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -19,7 +20,7 @@ class CategoryPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->isStoreOwner();
     }
 
     /**
@@ -41,7 +42,7 @@ class CategoryPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->is($store->StoreOwner);
+        return $user->isAdmin() || $user->isStoreOwner();
     }
 
     /**

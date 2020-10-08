@@ -10,6 +10,9 @@ return [
         'list' => 'List all',
         'show' => 'Show Offer',
         'create' => 'Create a new offer',
+        'create_product_offer' => 'Create a new product offer',
+        'create_category_offer' => 'Create a new category offer',
+        'create_store_offer' => 'Create a new store offer',
         'new' => 'New',
         'edit' => 'Edit Offer',
         'delete' => 'Delete Offer',
@@ -40,6 +43,14 @@ return [
     'type' => [
         'category' => 'Category',
         'product' => 'Product',
+        'store' => 'Store',
+    ],
+    'additions' => [
+        'model_type' => 'Model Type',
+        'select' => 'Select Model Type',
+        'select model' => 'Select Model',
+        'product' => 'Product',
+        'category' => 'Category',
         'store' => 'Store',
     ],
 ];

@@ -13,4 +13,4 @@
 
 Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
     Route::resource('stores', 'StoreController');
-});
+   });

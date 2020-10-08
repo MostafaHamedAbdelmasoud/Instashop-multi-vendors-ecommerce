@@ -2,6 +2,7 @@
 
 namespace Modules\Offers\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Offers\Entities\Offer;
@@ -52,7 +53,7 @@ class OfferController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
     public function create()
     {
@@ -60,15 +61,45 @@ class OfferController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
+     */
+    public function create_product_offer()
+    {
+        return view('offers::offers.create_product');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
+     */
+    public function create_category_offer()
+    {
+        return view('offers::offers.create_category');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
+     */
+    public function create_store_offer()
+    {
+        return view('offers::offers.create_store');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
-     * @param \Modules\Offers\Http\Requests\OfferRequest $request
-     * @param \Modules\Offers\Entities\Customer $offerOwner
+     * @param Request $request
+     * @param null $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(OfferRequest $request)
+    public function store(OfferRequest $request, $model = null)
     {
-        $offer = $this->repository->create($request->all());
+        $offer = $this->repository->createOffer($request->all(), $model);
 
         flash(trans('offers::offers.messages.created'));
 
@@ -100,7 +131,7 @@ class OfferController extends Controller
 
         flash(trans('offers::offers.messages.updated'));
 
-        return redirect()->route('dashboard.Offers.show', $offer);
+        return redirect()->route('dashboard.offers.show', $offer);
     }
 
     /**
@@ -112,7 +143,7 @@ class OfferController extends Controller
      */
     public function edit(StoreOwner $storeOwner, Offer $offer)
     {
-        return view('offers::offers.edit', compact('storeOwner', 'coupon'));
+        return view('offers::offers.edit', compact('storeOwner', 'offer'));
     }
 
     /**

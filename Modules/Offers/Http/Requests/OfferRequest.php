@@ -7,6 +7,8 @@ use Astrotomic\Translatable\Validation\RuleFactory;
 
 class OfferRequest extends FormRequest
 {
+
+    protected $start_date;
     /**
      * Determine if the supervisor is authorized to make this request.
      *
@@ -24,6 +26,7 @@ class OfferRequest extends FormRequest
      */
     public function rules()
     {
+        $this->start_date= now();
         if ($this->isMethod('POST')) {
             return $this->createRules();
         } else {
@@ -40,12 +43,11 @@ class OfferRequest extends FormRequest
     {
         return RuleFactory::make(
             [
-                'code' => ['required', 'string' , 'max:15'],
-                'fixed_discount' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'percentage_discount' => ['required', 'numeric', 'max:100'],
-                'max_usage_per_order' => ['required', 'max:100', 'min:0'],
-                'max_usage_per_user' => ['required', 'max:100', 'min:0'],
-                'min_total' => ['required', 'numeric', 'max:1e7', 'min:1'],
+                'model_id' => ['required'],
+                '%name%' => ['required' , 'string' , 'max:100'],
+                'fixed_discount_price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
+                'percentage_discount_price' => ['required', 'numeric', 'max:100'],
+                'expire_at' => ['required', 'date',  'after:'.$this->start_date],
             ]
         );
     }
@@ -59,12 +61,11 @@ class OfferRequest extends FormRequest
     {
         return RuleFactory::make(
             [
-                'code' => ['required', 'string' , 'max:15'],
-                'fixed_discount' => ['required', 'numeric', 'max:1e7' , 'min:1'],
-                'percentage_discount' => ['required', 'numeric', 'max:100'],
-                'max_usage_per_order' => ['required', 'max:100', 'min:0'],
-                'max_usage_per_user' => ['required', 'max:100', 'min:0'],
-                'min_total' => ['required', 'numeric', 'max:1e7', 'min:1'],
+                'model_id' => ['required'],
+                '%name%' => ['required' , 'string' , 'max:100'],
+                'fixed_discount_price' => ['required', 'numeric', 'max:1e7' , 'min:1'],
+                'percentage_discount_price' => ['required', 'numeric', 'max:100'],
+                'expire_at' => ['required', 'date', 'after:'.$this->start_date],
             ]
         );
     }
@@ -76,6 +77,6 @@ class OfferRequest extends FormRequest
      */
     public function attributes()
     {
-        return trans('products::products.attributes');
+        return trans('offers::offers.attributes');
     }
 }

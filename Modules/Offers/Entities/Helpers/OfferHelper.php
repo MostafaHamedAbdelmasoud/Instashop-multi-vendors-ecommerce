@@ -78,18 +78,19 @@ trait OfferHelper
         return $model;
     }
 
+
     /**
-     * return expire_at format (Y-M-D).
+     * return name of model
      *
      * @return mixed
      */
-    public function getExpiredAtFormatYMD()
-    {
-        return $this->expire_at->format('Y-m-d');
-    }
-
     public function getModelName()
     {
         return $this->getModel()->name;
+    }
+
+    public function OfferResourse(array $arr)
+    {
+
     }
 }

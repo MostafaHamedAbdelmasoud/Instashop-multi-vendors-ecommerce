@@ -45,6 +45,26 @@ class OfferRepository implements CrudRepository
      */
     public function create(array $data)
     {
+        //
+    }
+
+    /**
+     * Save the created model to storage.
+     *
+     * @param array $data
+     * @param $model
+     * @return \Modules\Offers\Entities\Offer
+     */
+    public function createOffer(array $data, $model)
+    {
+        if ($model == 'category') {
+            $data['model_type'] = 'category';
+        } elseif ($model == 'product') {
+            $data['model_type'] = 'product';
+        } else {
+            $data['model_type'] = 'store';
+        }
+
         return Offer::create($data);
     }
 
@@ -68,9 +88,9 @@ class OfferRepository implements CrudRepository
      *
      * @param mixed $model
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function update($model, array $data)
