@@ -1,5 +1,5 @@
 
-![](https://banners.beyondco.de/Instashop.png?theme=light&packageName=&pattern=architect&style=style_1&description=multi+vendors+ecommerce&md=1&showWatermark=1&fontSize=100px&images=share)
+![](/visual/Instashop.png)
 
 ## abstract
 
