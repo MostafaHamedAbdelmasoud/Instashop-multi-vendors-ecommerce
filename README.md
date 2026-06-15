@@ -1,160 +1,93 @@
+# Instashop — Multi-Vendor E-Commerce Platform
 
-![](/visual/Instashop.png)
+A full-featured multi-vendor marketplace built with Laravel, featuring vendor storefronts, real-time chat, role-based access, and a bilingual (AR/EN) admin dashboard.
 
-## abstract
+> 72 stars · 30 forks
 
-it's a multi-vendors ecommerce website built from scratch with laravel, and it is built with:
+![Instashop](visual/Instashop.png)
 
-![](db_design.png)
+---
 
+## Features
 
+- **Multi-vendor architecture** — vendors register, manage their own store and inventory via a dedicated dashboard
+- **Role-based access control** — Admin, Supervisor, Store Owner, Shipping Company, Customer
+- **Bilingual support** — full Arabic/English UI with RTL layout
+- **Real-time chat** — vendor-customer messaging
+- **Payment & shipping integration** — pluggable gateway support
+- **REST API** — Laravel Passport authentication with Repository pattern
+- **Media management** — Spatie MediaLibrary for product images
+- **PHPUnit test suite**
 
-    
- 
+---
 
-<table>
-    <thead>
-        <th>home</th>
-        <th>dashboard arabic</th>
-    </thead>
-    <tbody>
-          <tr> 
-              <td>
-                <img src="/visual/home.png"/>
-              </td> 
-              <td> 
-                <img src="/visual/dashboard-ar.png"/>
-              </td> 
-             </td> 
-        </tr>
-    </tbody>
-    </table>
-    <table>
-    <thead>
-        <th>dashboard english</th>
-        <th>chat</th>
-    </thead>
-    <tbody>
-          <tr> 
-               <td>
-                <img src="/visual/dashboard-en.png"/>
-             </td> 
-              <td>  
-                  <img src="/visual/chat.png"/>
-              </td>
-        <tr>  
-    </tbody>
-    </table>
-    <table>
-    <thead>
-        <th>Product Page</th>
-    </thead>
-    <tbody>
-          <tr> 
-               <td>
-                <img src="/visual/product.png"/>
-             </td> 
-        <tr>  
-    </tbody>
-    </table>
+## Architecture & Patterns
 
+- Repository Pattern for data access abstraction
+- Laravel Modules for domain separation
+- Resource Policies & Form Requests for authorization and validation
+- Query Filters for flexible API querying
+- AdminLTE 3 + Vue.js frontend
 
-<table>
-    <thead>
-        <th>packages</th>
-    </thead>
-    <tbody>
-        <tr> <td>Laravel Modules Package</td>
-            </tr>
-          <tr>  <td> laravel-vue-i18n-generator (multi languages)</td> </tr>
-          <tr>  <td> Laravel Spatie MediaLibrary</td> </tr>
-          <tr>  <td> elnooronline package Bsforms</td> </tr>
-          <tr>  <td>  davejamesmiller/laravel-breadcrumbs</td> </tr>
-        <tr>  <td>  maged-karim/laravel-scaffolding</td> </tr>
-    </tbody>
-    </table>
+---
 
+## Screenshots
 
-<table>
-    <tbody>
-        <tr> <td>Laravel Passport</td>
-            </tr>
-          <tr>  <td> Repository Patternt</td> </tr>
-          <tr>  <td> Resourses Policies</td> </tr>
-          <tr>  <td> Requests</td> </tr>
-          <tr>  <td>  Filters</td> </tr>
-          <tr>  <td>  PHP-unit testing</td> </tr>
-          <tr>  <td>  MySQL</td> </tr>
-          <tr>  <td>  Vue Js</td> </tr>
-          <tr>  <td>  Admin LTE3</td> </tr>
-    </tbody>
-    </table>
+| Home | Vendor Dashboard (EN) |
+|------|-----------------------|
+| ![Home](visual/home.png) | ![Dashboard EN](visual/dashboard-en.png) |
 
+| Vendor Dashboard (AR) | Real-time Chat |
+|-----------------------|----------------|
+| ![Dashboard AR](visual/dashboard-ar.png) | ![Chat](visual/chat.png) |
 
-## requirements
-<ul>
-                <li>php >= 7.2 </li>
-                <li>mysql</li>
-                <li>apache</li>
-                <li>laravel >= 7.0 </li>
-                <li>composer</li>
-      </ul>
+| Product Page |
+|--------------|
+| ![Product](visual/product.png) |
 
-> you must copy .env.example contents to new file .env ans setup database. 
+---
 
+## Database Design
 
-## installation:
+![DB Design](db_design.png)
 
-```
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Backend | PHP 7.2+, Laravel 7 |
+| Frontend | Vue.js, AdminLTE 3, jQuery |
+| Database | MySQL |
+| Auth | Laravel Passport (OAuth2) |
+| Media | Spatie MediaLibrary |
+| i18n | laravel-vue-i18n-generator |
+| Testing | PHPUnit |
+
+---
+
+## Quick Start
+
+```bash
 composer install
-
 npm install
-
-php artisan cache:clear
-
+cp .env.example .env
 php artisan key:generate
-
+php artisan migrate --seed
 php artisan serve
-
 ```
 
-> now go to (http//:127.0.0.1:8000) 
+Visit `http://127.0.0.1:8000`
 
+---
 
-## Roles:
+## Demo Credentials
 
-<table>
-    <thead>
-        <th>Role</th>
-        <th>Email</th>
-        <th>Password</th>
-        </thead>
-    <tbody>
-        <tr> 
-            <td>Admin</td>
-            <td>admin@demo.com</td>
-            <td>password</td>
-        </tr>
-        <tr> 
-            <td>Customer</td>
-            <td>jeffrey@laracasts.com</td>
-            <td>password</td>
-        </tr>
-         <tr> 
-            <td>Shipping Company Owner</td>
-            <td>fedex@shipping.org</td>
-            <td>password</td>
-        </tr>
-          <tr> 
-            <td>Store Owner</td>
-            <td>alice@toptal.org</td>
-            <td>password</td>
-        </tr>
-         <tr> 
-            <td>Supervisor</td>
-            <td>andre@madarang.org</td>
-            <td>password</td>
-        </tr>
-    </tbody>
-    </table>
-
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@demo.com | password |
+| Customer | jeffrey@laracasts.com | password |
+| Store Owner | alice@toptal.org | password |
+| Shipping Company | fedex@shipping.org | password |
+| Supervisor | andre@madarang.org | password |
