@@ -14,7 +14,7 @@
     },
     "devDependencies": {
         "admin-lte": "^3.0.4",
-        "axios": "^0.19",
+        "axios": "^0.21",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0.2",
         "icomoon": "^1.0.0",
